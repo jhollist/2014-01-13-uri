@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Intoduction to R, RStudio, and R Data Structures</title>
+<title>Intoduction to R and RStudio</title>
 
 <style type="text/css">
 body, td {
@@ -179,7 +179,7 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>Intoduction to R, RStudio, and R Data Structures</h1>
+<h1>Intoduction to R and RStudio</h1>
 
 <p><em>Note: This material is a mash-up from Jenny Bryan&#39;s <a href="http://www.stat.ubc.ca/%7Ejenny/STAT545A/quick-index.html">course materials on r</a> and Karthik Ram&#39;s <a href="https://github.com/swcarpentry/2013-10-09-canberra">material from the Canberra Software Carpentry R Bootcamp</a>.  Anything good is there becuase of Jenny and Karthik.  Mistakes are all mine.</em></p>
 
@@ -299,23 +299,35 @@ parentheses, which causes assignment and &ldquo;print to screen&rdquo; to happen
 <pre><code class="r">date()
 </code></pre>
 
-<pre><code>## [1] &quot;Tue Jan 07 14:35:32 2014&quot;
+<pre><code>## [1] &quot;Tue Jan 07 16:19:57 2014&quot;
 </code></pre>
 
 <pre><code class="r"># see list of files in your current directory
 dir()
 </code></pre>
 
-<pre><code>## [1] &quot;01Intro.html&quot;   &quot;01Intro.md&quot;     &quot;01Intro.Rmd&quot;    &quot;avgX.txt&quot;      
-## [5] &quot;figure&quot;         &quot;myPlot.pdf&quot;     &quot;README.md&quot;      &quot;rLessons.Rproj&quot;
+<pre><code>##  [1] &quot;01Intro.html&quot;          &quot;01Intro.md&quot;           
+##  [3] &quot;01Intro.Rmd&quot;           &quot;02DataFileControl.Rmd&quot;
+##  [5] &quot;03Functions.Rmd&quot;       &quot;04DataViz.Rmd&quot;        
+##  [7] &quot;avgX.txt&quot;              &quot;data-types.png&quot;       
+##  [9] &quot;figure&quot;                &quot;myPlot.pdf&quot;           
+## [11] &quot;README.html&quot;           &quot;README.md&quot;            
+## [13] &quot;README.Rmd&quot;            &quot;rLessons.Rproj&quot;       
+## [15] &quot;uriBootcamp&quot;
 </code></pre>
 
 <pre><code class="r"># or
 list.files()
 </code></pre>
 
-<pre><code>## [1] &quot;01Intro.html&quot;   &quot;01Intro.md&quot;     &quot;01Intro.Rmd&quot;    &quot;avgX.txt&quot;      
-## [5] &quot;figure&quot;         &quot;myPlot.pdf&quot;     &quot;README.md&quot;      &quot;rLessons.Rproj&quot;
+<pre><code>##  [1] &quot;01Intro.html&quot;          &quot;01Intro.md&quot;           
+##  [3] &quot;01Intro.Rmd&quot;           &quot;02DataFileControl.Rmd&quot;
+##  [5] &quot;03Functions.Rmd&quot;       &quot;04DataViz.Rmd&quot;        
+##  [7] &quot;avgX.txt&quot;              &quot;data-types.png&quot;       
+##  [9] &quot;figure&quot;                &quot;myPlot.pdf&quot;           
+## [11] &quot;README.html&quot;           &quot;README.md&quot;            
+## [13] &quot;README.Rmd&quot;            &quot;rLessons.Rproj&quot;       
+## [15] &quot;uriBootcamp&quot;
 </code></pre>
 
 <p>Now look at your workspace &ndash; in the upper right pane. The workspace is
@@ -478,15 +490,15 @@ y &lt;- a + b * x + rnorm(40, sd = sqrt(sigSq))
 (avgX &lt;- mean(x))
 </code></pre>
 
-<pre><code>## [1] 0.4937
+<pre><code>## [1] 0.5404
 </code></pre>
 
 <pre><code class="r">write(avgX, &quot;avgX.txt&quot;)
-plot(x, y)
+plot(x, y, xlab = &quot;myX&quot;, ylab = &quot;myY&quot;, main = &quot;My First Plot&quot;)
 abline(a, b, col = &quot;purple&quot;)
 </code></pre>
 
-<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-16"/> </p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAllBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5ADk5AGU5OQA5OWU5OY85ZmU5ZrU5j9plAABlADllAGVlOQBlOY9lZjllZmVlj49ltf2POQCPOTmPOWWPZgCPj2WPtY+P27WP29qP2/2gIPC1ZgC1Zjm124+1/rW1/v3ajzna24/a/rXa/tra/v39tWX924/9/rX9/tr9/v2efZFZAAAAMnRSTlP/////////////////////////////////////////////////////////////////AA1QmO8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAA3WSURBVHic7d0Le6PGGYbhYMdS06aVNt2m1rZNqlXbVRvr9P//XAEdsRGCmQG+mfd5riTr+DCW9hYMAiS+O5Bk3419A2icgBcNeNGAFw140YAXDXjRgBcNeNGAFw140YAXDXjRgBcNeNGAFw140YAXDXjRgBcNeNGAFw140YAXDXjREoffL7Jslv+5zrKXt3efL3rdzZ+/vf+h1Wv5x25+/JbDu+85fTnykod/+n0uXjjXw9f8zCqrwD8tq/Cr2h+KrvTh/5Kr7eZ/nL78tsg/2pQrgPzzJ8sCtfim3Hc7zbLif3LsyfFLxWNllc2O8PlKI//Z65cjL334X6avOfdfpy9v63xZXT0tj5+vwOeYL/8rF/D84VEPvyoX/wnwcZTD/zqfHdbP/87ht9PJGfy0qp+c4XPK7fQ0GdSu6rfT/BGzm+f/YVUfQzn8cpUvxS//zVn3i3yxnpw+X4EvVgOlc/GwqMKX3s/fNuViXq4zgI+gwnT9/J/5rFye1/l6f3b6fHWOL9b/xRyf3SzSx1X96XuAj6vCdDv9ufhPrpjTHqf4Wvii1Y1sBZ5VfVwVpvkqu4A7Pqs7WdbAlwt8dtyMu9m4O33PeePucPly5AnA51ST06bb6mx2b1V/egSU4lX409O565cjL3H4d63TWE2HSAr+spyTFPy6fhetZkrwdBPwogEvGvCiAS8a8KIBLxrwogEvGvCiAS8a8KIBLxrwogEvGvCiAS8a8KIBLxrwovnAZ2S5HuE9fpb6DnjRgBcNeNGAFw140YAXDXjRgBcNeNEGhX+4o5AGa0j47PHvo6ECXjRv+O00m62O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" alt="plot of chunk unnamed-chunk-16"/> </p>
 
 <pre><code class="r">dev.print(pdf, &quot;myPlot.pdf&quot;)
 </code></pre>
@@ -505,13 +517,13 @@ abline(a, b, col = &quot;purple&quot;)
 
 <ul>
 <li>Walk through line by line by keyboard shortcut (command + enter) or mouse (click Run in the upper right corner of editor pane).</li>
-<li>Source the entire document &ndash; equivalent to entering <code>source(&#39;~/tmp/swc/projectStartDemo.R&#39;)</code> in the Console &ndash; by keyboard shortcut (shift command S) or mouse (click Source in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).</li>
+<li>Source the entire document &ndash; equivalent to entering <code>source(&#39;~/uriBootcamp/projectStartDemo.R&#39;)</code> in the Console &ndash; by keyboard shortcut (shift command S) or mouse (click Source in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).</li>
 <li>Source with echo from the Source mini-menu.</li>
 </ul>
 
 <p>Visit your figure in an external viewer to verify that the PDF is changing as you expect.</p>
 
-<p>In your favorite OS-specific way, search your files for &ldquo;myPlot.pdf&rdquo; and presumably you will find the PDF itself (no surprise) but <em>also the script that created it (<code>swc/projectStartDemo.R</code>)</em>. This latter phenomenon is a huge win. One day you will want to remake a figure or just simply understand where it came from. If you rigorously save figures to file <strong>with R code and not ever ever ever the mouse or the clipboard</strong>, you will sing my praises one day. Trust me.</p>
+<p>In your favorite OS-specific way, search your files for &ldquo;myPlot.pdf&rdquo; and presumably you will find the PDF itself (no surprise) but <em>also the script that created it (<code>uriBootcamp/projectStartDemo.R</code>)</em>. This latter phenomenon is a huge win. One day you will want to remake a figure or just simply understand where it came from. If you rigorously save figures to file <strong>with R code and not ever ever ever the mouse or the clipboard</strong>, you will sing my praises one day. Trust me.</p>
 
 <h3>Organizing code as scripts</h3>
 
@@ -537,18 +549,29 @@ there</li>
 
 <h3>Packages and Package management</h3>
 
-<p>Use <code>old.packages()</code> to keep track of what&#39;s out of date.<br/>
-<code>update.packages()</code> - with package name will update a single package. Otherwise it will update all interactively. This can take a while if you haven&#39;t done it recently. To update everything without any user intervention, use the <code>ask = F</code> argument.</p>
+<p>R is an extensible system and many people share useful code they have developed as a <em>package</em> via CRAN and/or github. To install a package from CRAN, for example the <a href="http://ggplot2.org"><code>ggplot2</code></a> a very popular package for data visualization, here is one way to do it in the R console (there are others).</p>
 
-<pre><code class="r">update.packages(ask = FALSE)
+<pre><code class="r">install.packages(&quot;ggplo2&quot;, dependencies = TRUE)
 </code></pre>
 
 <pre><code>## Error: trying to use CRAN without setting a mirror
 </code></pre>
 
+<p>We will use this package tomorrow, so go ahead and install it!</p>
+
+<p>Another package we won&#39;t have time to cover in this bootcamp <a href="http://yihui.name/knitr/"><code>knitr</code></a>, which facilitates the creation of dynamic reports. You can install it in the same way.</p>
+
+<pre><code>  install.packages(&quot;knitr&quot;, dependencies = TRUE)
+</code></pre>
+
+<p>Packages are updated frequently, thus the packages you have installed may become out of date.  Two functions can help you manage your installed pakcages. Use <code>old.packages()</code> to keep track of what&#39;s out of date.  <code>update.packages()</code> - with package name will update a single package. Otherwise it will update all interactively. This can take a while if you haven&#39;t done it recently. To update everything without any user intervention, use the <code>ask = F</code> argument.</p>
+
+<pre><code class="r">update.packages(ask = FALSE)
+</code></pre>
+
 <p><strong>Quitting R</strong></p>
 
-<p>type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit.</p>
+<p>At some point you may want to stop using R (never!) To do so, type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit.</p>
 
 <hr/>
 

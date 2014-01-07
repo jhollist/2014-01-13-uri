@@ -1,4 +1,4 @@
-Intoduction to R, RStudio, and R Data Structures
+Intoduction to R and RStudio
 ========================================================
 
 *Note: This material is a mash-up from Jenny Bryan's [course materials on r] (http://www.stat.ubc.ca/~jenny/STAT545A/quick-index.html) and Karthik Ram's [material from the Canberra Software Carpentry R Bootcamp](https://github.com/swcarpentry/2013-10-09-canberra).  Anything good is there becuase of Jenny and Karthik.  Mistakes are all mine.*
@@ -144,7 +144,7 @@ date()
 ```
 
 ```
-## [1] "Tue Jan 07 14:35:32 2014"
+## [1] "Tue Jan 07 16:19:57 2014"
 ```
 
 ```r
@@ -153,8 +153,14 @@ dir()
 ```
 
 ```
-## [1] "01Intro.html"   "01Intro.md"     "01Intro.Rmd"    "avgX.txt"      
-## [5] "figure"         "myPlot.pdf"     "README.md"      "rLessons.Rproj"
+##  [1] "01Intro.html"          "01Intro.md"           
+##  [3] "01Intro.Rmd"           "02DataFileControl.Rmd"
+##  [5] "03Functions.Rmd"       "04DataViz.Rmd"        
+##  [7] "avgX.txt"              "data-types.png"       
+##  [9] "figure"                "myPlot.pdf"           
+## [11] "README.html"           "README.md"            
+## [13] "README.Rmd"            "rLessons.Rproj"       
+## [15] "uriBootcamp"
 ```
 
 ```r
@@ -163,8 +169,14 @@ list.files()
 ```
 
 ```
-## [1] "01Intro.html"   "01Intro.md"     "01Intro.Rmd"    "avgX.txt"      
-## [5] "figure"         "myPlot.pdf"     "README.md"      "rLessons.Rproj"
+##  [1] "01Intro.html"          "01Intro.md"           
+##  [3] "01Intro.Rmd"           "02DataFileControl.Rmd"
+##  [5] "03Functions.Rmd"       "04DataViz.Rmd"        
+##  [7] "avgX.txt"              "data-types.png"       
+##  [9] "figure"                "myPlot.pdf"           
+## [11] "README.html"           "README.md"            
+## [13] "README.Rmd"            "rLessons.Rproj"       
+## [15] "uriBootcamp"
 ```
 
 
@@ -361,12 +373,12 @@ y <- a + b * x + rnorm(40, sd = sqrt(sigSq))
 ```
 
 ```
-## [1] 0.4937
+## [1] 0.5404
 ```
 
 ```r
 write(avgX, "avgX.txt")
-plot(x, y)
+plot(x, y, xlab = "myX", ylab = "myY", main = "My First Plot")
 abline(a, b, col = "purple")
 ```
 
@@ -390,12 +402,12 @@ Restart RStudio. Notice that things, by default, restore to where we were earlie
 
 Change some things about your code. Top priority would be to set a sample size `n` at the top, e.g. `n <- 40`, and then replace all the hard-wired 40's with `n`. Change some other minor-but-detectable stuff, i.e. alter the sample size `n`, the slope of the line `b`,the color of the line ... whatever. Practice the different ways to re-run the code:
   * Walk through line by line by keyboard shortcut (command + enter) or mouse (click Run in the upper right corner of editor pane).
-  * Source the entire document -- equivalent to entering `source('~/tmp/swc/projectStartDemo.R')` in the Console -- by keyboard shortcut (shift command S) or mouse (click Source in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).
+  * Source the entire document -- equivalent to entering `source('~/uriBootcamp/projectStartDemo.R')` in the Console -- by keyboard shortcut (shift command S) or mouse (click Source in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).
   * Source with echo from the Source mini-menu.
   
 Visit your figure in an external viewer to verify that the PDF is changing as you expect.
 
-In your favorite OS-specific way, search your files for "myPlot.pdf" and presumably you will find the PDF itself (no surprise) but _also the script that created it (`swc/projectStartDemo.R`)_. This latter phenomenon is a huge win. One day you will want to remake a figure or just simply understand where it came from. If you rigorously save figures to file __with R code and not ever ever ever the mouse or the clipboard__, you will sing my praises one day. Trust me.
+In your favorite OS-specific way, search your files for "myPlot.pdf" and presumably you will find the PDF itself (no surprise) but _also the script that created it (`uriBootcamp/projectStartDemo.R`)_. This latter phenomenon is a huge win. One day you will want to remake a figure or just simply understand where it came from. If you rigorously save figures to file __with R code and not ever ever ever the mouse or the clipboard__, you will sing my praises one day. Trust me.
 
 ### Organizing code as scripts
 
@@ -419,22 +431,35 @@ Many long-time users never save the workspace, never save `.RData` files (I'm on
 
 ### Packages and Package management
 
-Use `old.packages()` to keep track of what's out of date.  
-`update.packages()` - with package name will update a single package. Otherwise it will update all interactively. This can take a while if you haven't done it recently. To update everything without any user intervention, use the `ask = F` argument.
+R is an extensible system and many people share useful code they have developed as a _package_ via CRAN and/or github. To install a package from CRAN, for example the [`ggplot2`](http://ggplot2.org) a very popular package for data visualization, here is one way to do it in the R console (there are others).
 
 
 ```r
-update.packages(ask = FALSE)
+install.packages("ggplo2", dependencies = TRUE)
 ```
 
 ```
 ## Error: trying to use CRAN without setting a mirror
 ```
 
+We will use this package tomorrow, so go ahead and install it!
+
+Another package we won't have time to cover in this bootcamp [`knitr`](http://yihui.name/knitr/), which facilitates the creation of dynamic reports. You can install it in the same way.
+```
+  install.packages("knitr", dependencies = TRUE)
+```
+
+Packages are updated frequently, thus the packages you have installed may become out of date.  Two functions can help you manage your installed pakcages. Use `old.packages()` to keep track of what's out of date.  `update.packages()` - with package name will update a single package. Otherwise it will update all interactively. This can take a while if you haven't done it recently. To update everything without any user intervention, use the `ask = F` argument.
+
+
+```r
+update.packages(ask = FALSE)
+```
+
 
 **Quitting R**
 
-type in `quit()` or `q()` and answer `Y` to quit.
+At some point you may want to stop using R (never!) To do so, type in `quit()` or `q()` and answer `Y` to quit.
 
 ---
 

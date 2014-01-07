@@ -18,7 +18,6 @@ R Data Structures, File I/O, Control Structures
 * logical
 * complex
 
-
 | Example | Type |
 | ------- | ---- |
 | "a", "swc" | character |
@@ -28,11 +27,13 @@ R Data Structures, File I/O, Control Structures
 | 1+4i | complex | 
 
 
-```{r eval=FALSE}
-typeof() # what is it?
-length() # how long is it? What about two dimensional objects?
-attributes() # does it have any metadata?
+
+```r
+typeof()  # what is it?
+length()  # how long is it? What about two dimensional objects?
+attributes()  # does it have any metadata?
 ```
+
 
 R also has many data structures. These include
 
@@ -55,98 +56,234 @@ A vector can be a vector of characters, logical, integers or numeric.
 
 Create an empty vector with `vector()`
 
-```{r}
+
+```r
 x <- vector()
 x
+```
+
+```
+## logical(0)
+```
+
+```r
 # with a pre-defined length
 x <- vector(length = 10)
 x
+```
+
+```
+##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+```
+
+```r
 # with a length and type
 vector("character", length = 10)
+```
+
+```
+##  [1] "" "" "" "" "" "" "" "" "" ""
+```
+
+```r
 vector("numeric", length = 10)
+```
+
+```
+##  [1] 0 0 0 0 0 0 0 0 0 0
+```
+
+```r
 vector("integer", length = 10)
+```
+
+```
+##  [1] 0 0 0 0 0 0 0 0 0 0
+```
+
+```r
 vector("logical", length = 10)
 ```
+
+```
+##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+```
+
 The general pattern is `vector(class of object, length)`.  You can also create vectors by concactenating them using the `c()` function.
 
 Various examples:
 
-```{r}
+
+```r
 x <- c(1, 2, 3)
 ```
+
 x is a numeric vector. These are the most common kind. They are numeric objects and are treated as double precision real numbers. To explicitly create integers, add a `L` at the end.
 
-```{r}
+
+```r
 x1 <- c(1L, 2L, 3L)
 ```
 
+
 You can also have logical vectors. 
 
-```{r}
+
+```r
 y <- c(TRUE, TRUE, FALSE, FALSE)
 ```
 
+
 Finally you can have character vectors:
 
-```{r}
+
+```r
 z <- c("Alec", "Dan", "Rob", "Karthik")
 ```
 
+
 **Examine your vector**  
 
-```{r}
+
+```r
 typeof(z)
+```
+
+```
+## [1] "character"
+```
+
+```r
 length(z)
+```
+
+```
+## [1] 4
+```
+
+```r
 class(z)
+```
+
+```
+## [1] "character"
+```
+
+```r
 str(z)
 ```
+
+```
+##  chr [1:4] "Alec" "Dan" "Rob" "Karthik"
+```
+
 
 Question: Do you see a property that's common to all these vectors above?
 
 **Add elements**
 
-```{r}
+
+```r
 z <- c(z, "Annette")
 z
 ```
 
+```
+## [1] "Alec"    "Dan"     "Rob"     "Karthik" "Annette"
+```
+
+
 More examples of vectors
 
-```{r}
+
+```r
 x <- c(0.5, 0.7)
-x <-c (TRUE, FALSE)
-x <- c(T,F)
+x <- c(TRUE, FALSE)
+x <- c(T, F)
 x <- c("a", "b", "c", "d", "e")
 x <- 9:100
-x <- c(i+0i, 2+4i)
+x <- c(i + 0, 2 + 4)
 ```
+
+```
+## Error: object 'i' not found
+```
+
 
 You can also create vectors as sequence of numbers
 
-```{r}
+
+```r
 series <- 1:10
 seq(10)
+```
+
+```
+##  [1]  1  2  3  4  5  6  7  8  9 10
+```
+
+```r
 seq(1, 10, by = 0.1)
 ```
+
+```
+##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
+## [15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
+## [29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
+## [43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
+## [57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
+## [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
+## [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
+```
+
 
 **Other objects**
 
 `Inf` is infinity. You can have positive or negative infinity.
 
-```{r}
- 1/0
+
+```r
+1/0
+```
+
+```
+## [1] Inf
+```
+
+```r
 # [1] Inf
- 1/Inf
+1/Inf
+```
+
+```
+## [1] 0
+```
+
+```r
 # [1] 0
 ```
 
 
+
 `NaN` means Not a number. it's an undefined value.
 
-```{r}
+
+```r
 0/0
+```
+
+```
+## [1] NaN
+```
+
+```r
 NaN.
 ```
+
+```
+## Error: object 'NaN.' not found
+```
+
 
 Each object has an attribute. Attribues can be part of an object of R. These include 
 
@@ -165,82 +302,191 @@ R will create a resulting vector that is the least common denominator. The coerc
 
 **Guess what the following do without running them first**
 
-```{r}
-xx <- c(1.7, "a") 
-xx <- c(TRUE, 2) 
-xx <- c("a", TRUE) 
+
+```r
+xx <- c(1.7, "a")
+xx <- c(TRUE, 2)
+xx <- c("a", TRUE)
 ```
+
 
 This is called implicit coercion.  You can also coerce vectors explicitly using the `as.<class_name>`. Example
 
-```{r eval=FALSE}
+
+```r
 as.numeric()
 as.character()
 ```
 
 
+
 When you coerce an existing numeric vector with `as.numeric()`, it does nothing.
 
-```{r}
+
+```r
 x <- 0:6
 as.numeric(x)
-as.logical(x) 
-as.character(x)
-as.complex(x) 
 ```
 
-Sometimes coercions, especially nonsensical ones won’t work.
+```
+## [1] 0 1 2 3 4 5 6
+```
 
-```{r}
+```r
+as.logical(x)
+```
+
+```
+## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
+
+```r
+as.character(x)
+```
+
+```
+## [1] "0" "1" "2" "3" "4" "5" "6"
+```
+
+```r
+as.complex(x)
+```
+
+```
+## [1] 0+0i 1+0i 2+0i 3+0i 4+0i 5+0i 6+0i
+```
+
+
+Sometimes coercions, especially nonsensical ones wont work.
+
+
+```r
 x <- c("a", "b", "c")
 as.numeric(x)
+```
+
+```
+## Warning: NAs introduced by coercion
+```
+
+```
+## [1] NA NA NA
+```
+
+```r
 as.logical(x)
+```
+
+```
+## [1] NA NA NA
+```
+
+```r
 # both don't work
 ```
 
+
 **Sometimes there is implicit conversion**
-```{r}
+
+```r
 1 < "2"
+```
+
+```
+## [1] TRUE
+```
+
+```r
 "1" > 2
 ```
+
+```
+## [1] FALSE
+```
+
 
 ## Matrix
 
 Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns. 
 
-```{r}
+
+```r
 m <- matrix(nrow = 2, ncol = 2)
 m
+```
+
+```
+##      [,1] [,2]
+## [1,]   NA   NA
+## [2,]   NA   NA
+```
+
+```r
 dim(m)
-#same as 
+```
+
+```
+## [1] 2 2
+```
+
+```r
+# same as
 attributes(m)
 ```
 
+```
+## $dim
+## [1] 2 2
+```
+
+
 Matrices are constructed columnwise. 
 
-```{r}
-m <- matrix(1:6, nrow=2, ncol =3)
+
+```r
+m <- matrix(1:6, nrow = 2, ncol = 3)
 ```
+
 
 Other ways to construct a matrix
 
-```{r}
+
+```r
 m <- 1:10
-dim(m) <- c(2,5)
+dim(m) <- c(2, 5)
 ```
+
 
 This takes a vector and transform into a matrix with 2 rows and 5 columns.
 
 
 Another way is to bind columns or rows using `cbind()` and `rbind()`.
 
-```{r}
+
+```r
 x <- 1:3
 y <- 10:12
-cbind(x,y)
-# or 
-rbind(x,y)
+cbind(x, y)
 ```
+
+```
+##      x  y
+## [1,] 1 10
+## [2,] 2 11
+## [3,] 3 12
+```
+
+```r
+# or
+rbind(x, y)
+```
+
+```
+##   [,1] [,2] [,3]
+## x    1    2    3
+## y   10   11   12
+```
+
 
 ---
 
@@ -255,33 +501,59 @@ List is a special vector. Each element can be a different class.
 Create lists using `list` or coerce other objects using `as.list()`
 
 
-```{r}
-x <- list(1, "a", TRUE, 1+4i)
+
+```r
+x <- list(1, "a", TRUE, 1 + 4)
 ```
 
-```{r}
+
+
+```r
 x <- 1:10
 x <- as.list(x)
 length(x)
 ```
 
+```
+## [1] 10
+```
+
+
 What is the class of `x[1]`?  
 how about `x[[1]]`?
 
-```{r}
+
+```r
 xlist <- list(a = "Karthik Ram", b = 1:10, data = head(iris))
 ```
+
 
 what is the length of this object?
 what about its structure?
 
 List can contain as many lists nested inside.
 
-```{r}
+
+```r
 temp <- list(list(list(list())))
 temp
+```
+
+```
+## [[1]]
+## [[1]][[1]]
+## [[1]][[1]][[1]]
+## list()
+```
+
+```r
 is.recursive(temp)
 ```
+
+```
+## [1] TRUE
+```
+
 
 Lists are extremely useful inside functions. You can "staple" together lots of different kinds of results into a single object that a function can return.
 
@@ -314,10 +586,17 @@ Which is male? 1 or 2? You wouldn't be able to tell with just integer data. Fact
 
 Factors can be created with `factor()`. Input is a character vector.
 
-```{r}
+
+```r
 x <- factor(c("yes", "no", "no", "yes", "yes"))
 x
 ```
+
+```
+## [1] yes no  no  yes yes
+## Levels: no yes
+```
+
 
 `table(x)` will return a frequency table.
 
@@ -326,9 +605,11 @@ x
 In modeling functions, importnat to know whta baseline levels is.
 This is the first factor but by default the ordering is determined by alphabetical order of words entered. You can change this by speciying the levels.
 
-```{r}
+
+```r
 x <- factor(c("yes", "no", "yes"), levels = c("yes", "no"))
 ```
+
 ## Data frame
 
 A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.
@@ -353,10 +634,26 @@ rownames are usually 1..n.
 
 **Combining data frames**
 
-```{r}
+
+```r
 df <- data.frame(id = letters[1:10], x = 1:10, y = rnorm(10))
 df
 ```
+
+```
+##    id  x        y
+## 1   a  1 -0.13851
+## 2   b  2  0.15227
+## 3   c  3 -1.41397
+## 4   d  4  2.01073
+## 5   e  5 -0.26149
+## 6   f  6  0.31528
+## 7   g  7  0.30388
+## 8   h  8  0.98182
+## 9   i  9 -0.02237
+## 10  j 10 -0.13139
+```
+
 
 `cbind(df, data.frame(z = 4))`
 
@@ -386,28 +683,70 @@ See that it is actually a special list:
 
 Other R objects can also have names not just true for data.frames. Adding names is helpful since it's useful for readable code and self describing objects.
 
-```{r}
+
+```r
 x <- 1:3
 names(x) <- c("karthik", "ram", "rocks")
 x
 ```
 
+```
+## karthik     ram   rocks 
+##       1       2       3
+```
+
+
 Lists can also have names.
 
-```{r}
+
+```r
 x <- as.list(1:10)
 names(x) <- letters[seq(x)]
 x
 ```
 
+```
+## $a
+## [1] 1
+## 
+## $b
+## [1] 2
+## 
+## $c
+## [1] 3
+## 
+## $d
+## [1] 4
+## 
+## $e
+## [1] 5
+## 
+## $f
+## [1] 6
+## 
+## $g
+## [1] 7
+## 
+## $h
+## [1] 8
+## 
+## $i
+## [1] 9
+## 
+## $j
+## [1] 10
+```
+
+
 Finally matrices can have names and these are called `dimnames`
 
-```{r}
+
+```r
 m <- matrix(1:4, nrow = 2)
 dimnames(m) <- list(c("a", "b"), c("c", "d"))
-# first element = rownames
-# second element = colnames
+# first element = rownames second element = colnames
 ```
+
 ---
 
 
@@ -415,10 +754,12 @@ dimnames(m) <- list(c("a", "b"), c("c", "d"))
 
 dennoted by `NA` and/or `NaN` for undefined mathematical operations.
 
-```{r eval=FALSE}
+
+```r
 is.na()
 is.nan()
 ```
+
 
 check for both.
 
@@ -426,17 +767,43 @@ NA values have a class. So you can have both an integer NA and a missing charact
 
 Nan is also NA. But not the other way around.
 
-```{r}
-x <- c(1,2, NA, 4, 5)
+
+```r
+x <- c(1, 2, NA, 4, 5)
 is.na(x)  #returns logical. shows third
-is.nan(x) #none are NaN.
 ```
 
-```{r}
-x <- c(1,2, NA, NaN, 4, 5)
-is.na(x)  #shows 2 TRUE.
-is.nan(x) #shows 1 TRUE
 ```
+## [1] FALSE FALSE  TRUE FALSE FALSE
+```
+
+```r
+is.nan(x)  #none are NaN.
+```
+
+```
+## [1] FALSE FALSE FALSE FALSE FALSE
+```
+
+
+
+```r
+x <- c(1, 2, NA, NaN, 4, 5)
+is.na(x)  #shows 2 TRUE.
+```
+
+```
+## [1] FALSE FALSE  TRUE  TRUE FALSE FALSE
+```
+
+```r
+is.nan(x)  #shows 1 TRUE
+```
+
+```
+## [1] FALSE FALSE FALSE  TRUE FALSE FALSE
+```
+
 
 ---
 
