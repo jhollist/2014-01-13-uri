@@ -1,7 +1,3 @@
----
-layout: bootcamp
----
-
 Software Carpentry R Bootcamp - URI R Lessons
 ========================================================
 
