@@ -363,7 +363,7 @@ as.complex(x)
 ```
 
 
-Sometimes coercions, especially nonsensical ones wonÂ’t work.
+Sometimes coercions, especially nonsensical ones won’t work.
 
 
 ```r
@@ -647,16 +647,16 @@ df
 
 ```
 ##    id  x        y
-## 1   a  1 -0.26131
-## 2   b  2  1.45045
-## 3   c  3 -0.01588
-## 4   d  4  1.09468
-## 5   e  5  1.97097
-## 6   f  6 -2.26730
-## 7   g  7 -0.71520
-## 8   h  8 -0.70979
-## 9   i  9  0.42534
-## 10  j 10 -0.03409
+## 1   a  1 -0.01436
+## 2   b  2  0.20581
+## 3   c  3 -1.07375
+## 4   d  4  1.78155
+## 5   e  5 -0.74328
+## 6   f  6  0.53381
+## 7   g  7  1.48326
+## 8   h  8  1.32897
+## 9   i  9  0.69037
+## 10  j 10  0.03094
 ```
 
 
@@ -672,6 +672,7 @@ When you combine column wise, only row numbers need to match. If you are adding 
 `ncol()` - number of columns
 `str()` - structure of each column
 `names()` - will list column names for a data.frame (or any object really).
+`summary()` - summarizes each column in a data frame
 
 A data frame is a special type of list where every element of a list has same length.
 
@@ -816,8 +817,8 @@ is.nan(x)  #shows 1 TRUE
 
 ![](https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png)
 
-# File I/O
 
+# File I/O
 
 ## Input output operations
 
@@ -901,7 +902,7 @@ my_data <- read.csv(url, header = TRUE)
 
 ### Local file operations
 
-One can list files from any local source as well.
+One can list files from any local source as well.  This is review from the first R lesson, but handy to repeat here.
 
 
 ```r
@@ -909,12 +910,16 @@ list.files()
 ```
 
 ```
-##  [1] "avgX.txt"       "data-types.png" "data.dat"       "Data.html"     
-##  [5] "Data.md"        "Data.Rmd"       "data_file.txt"  "DataViz.html"  
-##  [9] "DataViz.md"     "DataViz.Rmd"    "figure"         "Functions.html"
-## [13] "Functions.md"   "Functions.Rmd"  "Intro.html"     "Intro.md"      
-## [17] "Intro.Rmd"      "messy_data.txt" "myPlot.pdf"     "README.html"   
-## [21] "README.md"      "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+##  [1] "avgX.txt"         "data-types.png"   "data.dat"        
+##  [4] "Data.html"        "Data.md"          "Data.Rmd"        
+##  [7] "data_file.txt"    "DataViz.html"     "DataViz.md"      
+## [10] "DataViz.Rmd"      "diamonds.csv.bz2" "diamonds.sqlite" 
+## [13] "figure"           "Functions.html"   "Functions.md"    
+## [16] "Functions.Rmd"    "Intro.html"       "Intro.md"        
+## [19] "Intro.Rmd"        "messy_data.txt"   "myPlot.pdf"      
+## [22] "README.html"      "README.md"        "README.Rmd"      
+## [25] "rLessons.Rproj"   "tgac_iris.csv"    "tgac_iris.rds"   
+## [28] "uriBootcamp"
 ```
 
 ```r
@@ -930,12 +935,16 @@ dir()
 ```
 
 ```
-##  [1] "avgX.txt"       "data-types.png" "data.dat"       "Data.html"     
-##  [5] "Data.md"        "Data.Rmd"       "data_file.txt"  "DataViz.html"  
-##  [9] "DataViz.md"     "DataViz.Rmd"    "figure"         "Functions.html"
-## [13] "Functions.md"   "Functions.Rmd"  "Intro.html"     "Intro.md"      
-## [17] "Intro.Rmd"      "messy_data.txt" "myPlot.pdf"     "README.html"   
-## [21] "README.md"      "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+##  [1] "avgX.txt"         "data-types.png"   "data.dat"        
+##  [4] "Data.html"        "Data.md"          "Data.Rmd"        
+##  [7] "data_file.txt"    "DataViz.html"     "DataViz.md"      
+## [10] "DataViz.Rmd"      "diamonds.csv.bz2" "diamonds.sqlite" 
+## [13] "figure"           "Functions.html"   "Functions.md"    
+## [16] "Functions.Rmd"    "Intro.html"       "Intro.md"        
+## [19] "Intro.Rmd"        "messy_data.txt"   "myPlot.pdf"      
+## [22] "README.html"      "README.md"        "README.Rmd"      
+## [25] "rLessons.Rproj"   "tgac_iris.csv"    "tgac_iris.rds"   
+## [28] "uriBootcamp"
 ```
 
 ```r
@@ -1010,8 +1019,174 @@ diamonds5 <- read.csv("diamonds.csv.bz2")
 
 Files stored with `saveRDS()` are automatically compressed.
 
+### Now a database example (teaser for tomorrow)
+
+There are many options for using R to access data stored in a databse.  One simple and lightweight example is using `sqlite` and the R Package `RSQLite`.
+
+This is a bit more involved, but wanted to show this simply as an example of what is possible.  Skys the limit on what type of database you can use.
+
+
+```r
+# If not already installed install.packages('RSQLite')
+library(RSQLite)
+```
+
+```
+## Loading required package: DBI
+```
+
+```r
+con <- dbConnect(dbDriver("SQLite"), dbname = "diamonds.sqlite")
+dbWriteTable(con, "tDiamonds", diamonds5)
+```
+
+```
+## Warning: table tDiamonds exists in database: aborting dbWriteTable
+```
+
+```
+## [1] FALSE
+```
+
+```r
+list.files(pattern = "^dia")
+```
+
+```
+## [1] "diamonds.csv.bz2" "diamonds.sqlite"
+```
+
+```r
+# And to prove it did someting read the new table back in
+sqliteDiamonds <- dbReadTable(con, "tDiamonds")
+head(sqliteDiamonds)
+```
+
+```
+##   carat       cut color clarity depth table price    x    y    z
+## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
+## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
+## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
+## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
+## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
+## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
+```
+
+
+## Data Structure and File I/O Exercise
+
+For this exercise we will practice what we have learned so far.  You will download three files, create data.frames, answer some questions about the data, and just for fun, output the data as an sqlite database.  Each of these steps must be done solely in R and saved as a script with simple comments
+
+1 Download the [2007 National Lakes Assessment Station Information](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_SampledLakeInformation_20091113.csv)
+2 Download the [2007 National Lakes Assessment Water Quality Data](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_WaterQuality_20091123.csv)
+3 Download the [2007 National Lakes Assessment Buffer Landuse](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Buffer_Landuse_Metrics_20091022.csv)
+5 Create a data frame for each file.
+6 How many rows are in the water quality data? How many columns?
+7 How many rows and columns are in the Landuse data?
+8 What is the name of the first column in each dataframe
+9 What class of data is this column?
+10 What are the max, min, and mean values for `PCT_DEVELOPED_BUFR` in the buffer landuse data?
+11 What are the max, min and mean values for `NTL` in the water quality data?
+
 
 # Data Subsetting and Manipulation
+
+## Subsetting data
+
+R has many powerful subset operators and mastering them will allow you to easily perform complex operation on any kind of dataset. Allows you to manipulate data very succinctly.
+
+As the last section for this topic we'll cover:
+
+* The three subsetting operators,
+* The six types of subsetting,
+* Important difference in subsetting behaviour for different objects 
+* Using subsetting in conjunction with assignment
+
+
+### Subsetting atomic vectors
+
+
+```r
+x <- c(5.4, 6.2, 7.1, 4.8)
+```
+
+
+**We can subset this in 5 ways**
+
+1. Using positive integers
+
+
+```r
+x[1]
+```
+
+```
+## [1] 5.4
+```
+
+```r
+x[c(3, 1)]
+```
+
+```
+## [1] 7.1 5.4
+```
+
+```r
+# We can duplicate indices
+x[c(1, 1)]
+```
+
+```
+## [1] 5.4 5.4
+```
+
+```r
+# Real numbers are silently truncated to integers
+x[c(2.1, 2.9)]
+```
+
+```
+## [1] 6.2 6.2
+```
+
+
+2. Using negative integers
+
+
+```r
+# skip the first element
+x[-1]
+```
+
+```
+## [1] 6.2 7.1 4.8
+```
+
+```r
+# skip the first and the fifth
+x[-c(1, 5)]
+```
+
+```
+## [1] 6.2 7.1 4.8
+```
+
+
+3. Using logical operators
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
