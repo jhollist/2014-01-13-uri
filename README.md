@@ -16,7 +16,7 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 
 ## Bootcamp Schedule
 
-### MONDAY JANUARY 13, 2014
+#### MONDAY JANUARY 13, 2014
 
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
@@ -30,7 +30,7 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | _BREAK_ | Monday, January 13, 2014 | 2:30 PM - 2:45 PM | |
 | [Functions, Documentation and Control Structures](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/03Functions.md)| Monday, January 13, 2014 | 2:45 PM - 4:00 PM | Jeff Hollister |
 
-### TUESDAY JANUARY 14, 2014
+#### TUESDAY JANUARY 14, 2014
 
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
@@ -42,7 +42,7 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | _BREAK_ | Tuesday, January 14, 2014 | 2:30 PM - 2:45 PM | |
 | [Introduction to Databases](#) | Tuesday, January 14, 2014 | 2:45 PM - 2:30 PM | Patrick Fuller |
 
-### WEDNESDAY, JANUARY 15, 2014
+#### WEDNESDAY, JANUARY 15, 2014
 
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
