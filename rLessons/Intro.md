@@ -144,7 +144,7 @@ date()
 ```
 
 ```
-## [1] "Wed Jan 08 10:14:58 2014"
+## [1] "Wed Jan 08 11:16:20 2014"
 ```
 
 ```r
@@ -154,9 +154,11 @@ dir()
 
 ```
 ##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
-##  [5] "Data.Rmd"       "DataViz.Rmd"    "figure"         "Functions.Rmd" 
-##  [9] "Intro.Rmd"      "myPlot.pdf"     "README.html"    "README.md"     
-## [13] "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+##  [5] "Data.Rmd"       "DataViz.html"   "DataViz.md"     "DataViz.Rmd"   
+##  [9] "figure"         "Functions.html" "Functions.md"   "Functions.Rmd" 
+## [13] "Intro.html"     "Intro.md"       "Intro.Rmd"      "myPlot.pdf"    
+## [17] "README.html"    "README.md"      "README.Rmd"     "rLessons.Rproj"
+## [21] "uriBootcamp"
 ```
 
 ```r
@@ -166,9 +168,11 @@ list.files()
 
 ```
 ##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
-##  [5] "Data.Rmd"       "DataViz.Rmd"    "figure"         "Functions.Rmd" 
-##  [9] "Intro.Rmd"      "myPlot.pdf"     "README.html"    "README.md"     
-## [13] "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+##  [5] "Data.Rmd"       "DataViz.html"   "DataViz.md"     "DataViz.Rmd"   
+##  [9] "figure"         "Functions.html" "Functions.md"   "Functions.Rmd" 
+## [13] "Intro.html"     "Intro.md"       "Intro.Rmd"      "myPlot.pdf"    
+## [17] "README.html"    "README.md"      "README.Rmd"     "rLessons.Rproj"
+## [21] "uriBootcamp"
 ```
 
 
@@ -365,7 +369,7 @@ y <- a + b * x + rnorm(40, sd = sqrt(sigSq))
 ```
 
 ```
-## [1] 0.4923
+## [1] 0.4786
 ```
 
 ```r
@@ -454,6 +458,206 @@ update.packages(ask = FALSE)
 At some point you may want to stop using R (never!) To do so, type in `quit()` or `q()` and answer `Y` to quit.
 
 ---
+
+# Getting Help
+
+
+## Diagnostic functions in R
+
+**Super helpful functions**  
+* `str()` - Compactly display the internal structure of an R object. Perhaps the most uesful diagnostic function in R.
+* `class()` *Retrieves the internal class of an object*
+* `mode()` *Get or set the type or storage mode of an object.*
+* `length()` *Retrieve or set the dimension of an object.*  
+* `dim()` *Retrieve or set the dimension of an object.*
+* `R -- vanilla` - *Allows you to start a clean session of R. A great way to test whether your code is reproducible.*
+* `sessionInfo()` *Print version information about R and attached or loaded packages.*  
+* `options()` *Allow the user to set and examine a variety of global options which affect the way in which R computes and displays its results.*
+
+`str()` is your best friend
+
+`str` is short for structure. You can use it on any object. Try the following:
+
+
+```r
+x <- 1:10
+class(x)
+```
+
+```
+## [1] "integer"
+```
+
+```r
+mode(x)
+```
+
+```
+## [1] "numeric"
+```
+
+```r
+str(x)
+```
+
+```
+##  int [1:10] 1 2 3 4 5 6 7 8 9 10
+```
+
+
+
+
+
+---
+
+## Seeking help
+
+There are various ways to seek help on R.
+
+If you are searching for help on a specific function that is in a package loaded into your namespace:
+
+```
+?function_name
+```
+
+If you're not sure what package it belongs to:
+
+```
+??function_name
+```
+
+This will search across all installed packages in your library and pop up several options
+
+Another recent package that's really useful in this context is called `Rdocumentation`. It searches across all packages on CRAN even if you do not have it installed locally.
+
+![](https://github.com/swcarpentry/2013-10-09-canberra/raw/master/01-R-basics/rdocumentation.png)
+
+to install:
+
+
+```r
+library("devtools")
+install_github("Rdocumentation", "jonathancornelissen")
+```
+
+```
+## Installing github repo Rdocumentation/master from jonathancornelissen
+## Downloading Rdocumentation.zip from https://github.com/jonathancornelissen/Rdocumentation/archive/master.zip
+## Installing package from C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8/Rdocumentation.zip
+## Installing Rdocumentation
+## "C:/PROGRA~1/R/R-30~1.2/bin/x64/R" --vanilla CMD INSTALL  \
+##   "C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8\devtools228c8f66bf3\Rdocumentation_package-master"  \
+##   --library="C:/Program Files/R/R-3.0.2/library" --install-tests
+```
+
+```r
+library("Rdocumentation")
+```
+
+```
+## 
+## Attaching package: 'Rdocumentation'
+## 
+## The following objects are masked from 'package:utils':
+## 
+##     ?, help
+```
+
+```r
+# then all ?function searches go through the web If you do load this package
+# and want to remove it because of lack of internet, use
+detach("Rdocumentation")
+```
+
+```
+## Error: invalid 'name' argument
+```
+
+
+
+## Seeking help from peers
+
+* Always share some example data to help others replicate your problem.
+
+for example, the function `dput()` can help recreate R objects by simply pasting the output into another R terminal. Just `dput` a few rows for testing purposes.
+
+e.g.
+
+
+```r
+dput(head(iris))
+```
+
+```
+## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
+##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
+##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
+##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
+##     1L), .Label = c("setosa", "versicolor", "virginica"), class = "factor")), .Names = c("Sepal.Length", 
+## "Sepal.Width", "Petal.Length", "Petal.Width", "Species"), row.names = c(NA, 
+## 6L), class = "data.frame")
+```
+
+```r
+
+structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5, 
+    3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7), 
+    Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4), Species = structure(c(1L, 
+        1L, 1L, 1L, 1L, 1L), .Label = c("setosa", "versicolor", "virginica"), 
+        class = "factor")), .Names = c("Sepal.Length", "Sepal.Width", "Petal.Length", 
+    "Petal.Width", "Species"), row.names = c(NA, 6L), class = "data.frame")
+```
+
+```
+##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+```
+
+
+
+* Use the `sessionInfo()` function to share your current namespace and package versions. Super helpful for others to help debug your issues.
+
+The `knitr` function `stitch()` automatically includes this information. Try it on any example R script.
+
+
+```r
+stitch("my_script.R")
+```
+
+```
+## Warning: cannot open file 'my_script.R': No such file or directory
+```
+
+```
+## Error: cannot open the connection
+```
+
+
+
+## search StackOverflow
+
+9 times out of 10, the answers you are seeking have already been answered on stack overflow. Search using the `[r]`
+
+[http://stackoverflow.com/questions/tagged/r](http://stackoverflow.com/questions/tagged/r)
+
+![](https://github.com/swcarpentry/2013-10-09-canberra/raw/master/01-R-basics/stackoverflow.png)
+
+
+## Other resources
+
+CRAN task Views: [http://cran.at.r-project.org/web/views](http://cran.at.r-project.org/web/views)
+
+R mailing lists:
+ - [R-help](https://stat.ethz.ch/mailman/listinfo/r-help)
+ - [R-sig-ecology](https://stat.ethz.ch/mailman/listinfo/r-sig-ecology)
+ 
+
+
 
 # Some useful links
 

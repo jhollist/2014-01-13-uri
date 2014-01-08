@@ -299,7 +299,7 @@ parentheses, which causes assignment and &ldquo;print to screen&rdquo; to happen
 <pre><code class="r">date()
 </code></pre>
 
-<pre><code>## [1] &quot;Wed Jan 08 10:14:58 2014&quot;
+<pre><code>## [1] &quot;Wed Jan 08 11:16:20 2014&quot;
 </code></pre>
 
 <pre><code class="r"># see list of files in your current directory
@@ -307,9 +307,11 @@ dir()
 </code></pre>
 
 <pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;Data.html&quot;      &quot;Data.md&quot;       
-##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.Rmd&quot; 
-##  [9] &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;     &quot;README.html&quot;    &quot;README.md&quot;     
-## [13] &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot; &quot;uriBootcamp&quot;
+##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.html&quot;   &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;   
+##  [9] &quot;figure&quot;         &quot;Functions.html&quot; &quot;Functions.md&quot;   &quot;Functions.Rmd&quot; 
+## [13] &quot;Intro.html&quot;     &quot;Intro.md&quot;       &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;    
+## [17] &quot;README.html&quot;    &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
+## [21] &quot;uriBootcamp&quot;
 </code></pre>
 
 <pre><code class="r"># or
@@ -317,9 +319,11 @@ list.files()
 </code></pre>
 
 <pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;Data.html&quot;      &quot;Data.md&quot;       
-##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.Rmd&quot; 
-##  [9] &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;     &quot;README.html&quot;    &quot;README.md&quot;     
-## [13] &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot; &quot;uriBootcamp&quot;
+##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.html&quot;   &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;   
+##  [9] &quot;figure&quot;         &quot;Functions.html&quot; &quot;Functions.md&quot;   &quot;Functions.Rmd&quot; 
+## [13] &quot;Intro.html&quot;     &quot;Intro.md&quot;       &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;    
+## [17] &quot;README.html&quot;    &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
+## [21] &quot;uriBootcamp&quot;
 </code></pre>
 
 <p>Now look at your workspace &ndash; in the upper right pane. The workspace is
@@ -482,7 +486,7 @@ y &lt;- a + b * x + rnorm(40, sd = sqrt(sigSq))
 (avgX &lt;- mean(x))
 </code></pre>
 
-<pre><code>## [1] 0.4923
+<pre><code>## [1] 0.4786
 </code></pre>
 
 <pre><code class="r">write(avgX, &quot;avgX.txt&quot;)
@@ -490,7 +494,7 @@ plot(x, y, xlab = &quot;myX&quot;, ylab = &quot;myY&quot;, main = &quot;My First
 abline(a, b, col = &quot;purple&quot;)
 </code></pre>
 
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAllBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5ADk5AGU5OQA5OWU5OY85ZmU5ZrU5j9plAABlADllAGVlOQBlOY9lZjllZmVlj49ltf2POQCPOTmPOWWPZgCPj2WPtY+P27WP29qP2/2gIPC1ZgC1Zjm124+1/rW1/v3ajzna24/a/rXa/tra/v39tWX924/9/rX9/tr9/v2efZFZAAAAMnRSTlP/////////////////////////////////////////////////////////////////AA1QmO8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAA5nSURBVHic7d0NX9vWGYbxCgZet24mWdZBtqUFb8Nbwcbf/8tNsvweyZZ83p5z7uv6tU0K4cTm70eS5Rd+WJFkP6S+AJQm4EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA160wuE/nqpqWv86r6q7t5OPNz0uH25fT79o9rj+ZfnQ/pHVyZ/ZfDrzioe/+UMt3jh3w3d8zaw6gr95PoafdX5RdpUP/9dabfnwp8ndb0/1797XG4D64xvLBrX5Q7XvYlJVzf/U2Pftp5rbyqyatvD1RqP+2v2nM698+G+Tx5r7b5O7t3k9q7Ob5/bjR/A15t3/1gNe3zy64Wfr8b8HPo9q+F8epqv57b9r+MXkfgu+2dTfb+FrysVkszPo3NQvJvUtZvlQ/4dNfQ7V8M+zeorv/luzfjzVY32/+fgRfLMZWDs3N4tj+LX37ev7eszX2wzgM6gxnd/+52G6nud5vd2fbj5+vI9vtv/NPr46GOl2U7/5M8DnVWO6mPzc/KdWrGnbXXwnfNPsQPYInk19XjWm9Sa7gWvv1W0sO+DXA1+1h3EHB3ebP7M9uFvtPp15AvA11f3m0G22Nevb1G9uAWvxY/jN3bn9pzOvcPiT5mVspn0kBb+bc5KCn3efotVMCZ4OAl404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA140F/iKLBcQ3uFrKXTAiwa8aMCLBrxowIsGvGjAiwa8aMCLZgf+4llE8pkZ+Gr0V5BLwIsGvGhm4NnH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" alt="plot of chunk unnamed-chunk-16"/> </p>
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAllBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5ADk5AGU5OQA5OWU5OY85ZmU5ZrU5j9plAABlADllAGVlOQBlOY9lZjllZmVlj49ltf2POQCPOTmPOWWPZgCPj2WPtY+P27WP29qP2/2gIPC1ZgC1Zjm124+1/rW1/v3ajzna24/a/rXa/tra/v39tWX924/9/rX9/tr9/v2efZFZAAAAMnRSTlP/////////////////////////////////////////////////////////////////AA1QmO8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAA3iSURBVHic7d2LeuLGAYbhyI6hadOCt9vU3rabYtqaNuag+7+5SoiTMIgRM6M5/N/3JFlnbc/CvoxGSAL/UJJkP4S+ARQm4EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA160zOE3r0UxqX5dFMXTx9nv172sp4/v5980f9n+sp42X1Kefc3u04mXPfzD7yvx2vky/IXvmRct+IdZG35+8ZuSK3/4v1Rq6+kfx0+/vVYfLbcbgOr3d5Y1av1Fle9qXBT1/1TYo+ZT9WNlXkwa+GqjUX3v8dOJlz/89/FLxf3X8dPHopqr84dZ8/st+Arz6X/bCV49PC7Dz7fTfwR8GlXwv04n5eLx3xX8ajzag+829aM9fEW5Gu8Wg4ub+tW4esSsp9V/2NSnUAU/m1ez+Om/FevmtZrWo93vt+DrzcDWuX5YtOG33o/vy+00324zgE+g2nTx+J/pZDufF9V2f7L7/fYaX2//6zW+OJnSzaZ+9zXAp1Vtuhr/Uv+nUqxomyX+Inzd/ES2Bc+mPq1q02qTXcM1z+p2lhfgtxO+aHbjTnbudl+z37krD59OPAH4imq023Wb782ubep3j4CteBt+93Tu+OnEyxz+rEUem2kXScEf5jlJwS8uH6LVTAmeTgJeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNBv4gmLOI7zF95LvgBcNeNGAFw140YAXDXjRgBcNeNGAF20w+JsHCWnQhoIvbv9ZNGTAiwa8aKzxorFX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" alt="plot of chunk unnamed-chunk-16"/> </p>
 
 <pre><code class="r">dev.print(pdf, &quot;myPlot.pdf&quot;)
 </code></pre>
@@ -566,6 +570,176 @@ there</li>
 <p>At some point you may want to stop using R (never!) To do so, type in <code>quit()</code> or <code>q()</code> and answer <code>Y</code> to quit.</p>
 
 <hr/>
+
+<h1>Getting Help</h1>
+
+<h2>Diagnostic functions in R</h2>
+
+<p><strong>Super helpful functions</strong>  </p>
+
+<ul>
+<li><code>str()</code> - Compactly display the internal structure of an R object. Perhaps the most uesful diagnostic function in R.</li>
+<li><code>class()</code> <em>Retrieves the internal class of an object</em></li>
+<li><code>mode()</code> <em>Get or set the type or storage mode of an object.</em></li>
+<li><code>length()</code> <em>Retrieve or set the dimension of an object.</em><br/></li>
+<li><code>dim()</code> <em>Retrieve or set the dimension of an object.</em></li>
+<li><code>R -- vanilla</code> - <em>Allows you to start a clean session of R. A great way to test whether your code is reproducible.</em></li>
+<li><code>sessionInfo()</code> <em>Print version information about R and attached or loaded packages.</em><br/></li>
+<li><code>options()</code> <em>Allow the user to set and examine a variety of global options which affect the way in which R computes and displays its results.</em></li>
+</ul>
+
+<p><code>str()</code> is your best friend</p>
+
+<p><code>str</code> is short for structure. You can use it on any object. Try the following:</p>
+
+<pre><code class="r">x &lt;- 1:10
+class(x)
+</code></pre>
+
+<pre><code>## [1] &quot;integer&quot;
+</code></pre>
+
+<pre><code class="r">mode(x)
+</code></pre>
+
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre>
+
+<pre><code class="r">str(x)
+</code></pre>
+
+<pre><code>##  int [1:10] 1 2 3 4 5 6 7 8 9 10
+</code></pre>
+
+<hr/>
+
+<h2>Seeking help</h2>
+
+<p>There are various ways to seek help on R.</p>
+
+<p>If you are searching for help on a specific function that is in a package loaded into your namespace:</p>
+
+<pre><code>?function_name
+</code></pre>
+
+<p>If you&#39;re not sure what package it belongs to:</p>
+
+<pre><code>??function_name
+</code></pre>
+
+<p>This will search across all installed packages in your library and pop up several options</p>
+
+<p>Another recent package that&#39;s really useful in this context is called <code>Rdocumentation</code>. It searches across all packages on CRAN even if you do not have it installed locally.</p>
+
+<p><img src="https://github.com/swcarpentry/2013-10-09-canberra/raw/master/01-R-basics/rdocumentation.png" alt=""/></p>
+
+<p>to install:</p>
+
+<pre><code class="r">library(&quot;devtools&quot;)
+install_github(&quot;Rdocumentation&quot;, &quot;jonathancornelissen&quot;)
+</code></pre>
+
+<pre><code>## Installing github repo Rdocumentation/master from jonathancornelissen
+## Downloading Rdocumentation.zip from https://github.com/jonathancornelissen/Rdocumentation/archive/master.zip
+## Installing package from C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8/Rdocumentation.zip
+## Installing Rdocumentation
+## &quot;C:/PROGRA~1/R/R-30~1.2/bin/x64/R&quot; --vanilla CMD INSTALL  \
+##   &quot;C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8\devtools228c8f66bf3\Rdocumentation_package-master&quot;  \
+##   --library=&quot;C:/Program Files/R/R-3.0.2/library&quot; --install-tests
+</code></pre>
+
+<pre><code class="r">library(&quot;Rdocumentation&quot;)
+</code></pre>
+
+<pre><code>## 
+## Attaching package: &#39;Rdocumentation&#39;
+## 
+## The following objects are masked from &#39;package:utils&#39;:
+## 
+##     ?, help
+</code></pre>
+
+<pre><code class="r"># then all ?function searches go through the web If you do load this package
+# and want to remove it because of lack of internet, use
+detach(&quot;Rdocumentation&quot;)
+</code></pre>
+
+<pre><code>## Error: invalid &#39;name&#39; argument
+</code></pre>
+
+<h2>Seeking help from peers</h2>
+
+<ul>
+<li>Always share some example data to help others replicate your problem.</li>
+</ul>
+
+<p>for example, the function <code>dput()</code> can help recreate R objects by simply pasting the output into another R terminal. Just <code>dput</code> a few rows for testing purposes.</p>
+
+<p>e.g.</p>
+
+<pre><code class="r">dput(head(iris))
+</code></pre>
+
+<pre><code>## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
+##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
+##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
+##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
+##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
+## &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
+## 6L), class = &quot;data.frame&quot;)
+</code></pre>
+
+<pre><code class="r">
+structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5, 
+    3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7), 
+    Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4), Species = structure(c(1L, 
+        1L, 1L, 1L, 1L, 1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), 
+        class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, 
+    &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 6L), class = &quot;data.frame&quot;)
+</code></pre>
+
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+</code></pre>
+
+<ul>
+<li>Use the <code>sessionInfo()</code> function to share your current namespace and package versions. Super helpful for others to help debug your issues.</li>
+</ul>
+
+<p>The <code>knitr</code> function <code>stitch()</code> automatically includes this information. Try it on any example R script.</p>
+
+<pre><code class="r">stitch(&quot;my_script.R&quot;)
+</code></pre>
+
+<pre><code>## Warning: cannot open file &#39;my_script.R&#39;: No such file or directory
+</code></pre>
+
+<pre><code>## Error: cannot open the connection
+</code></pre>
+
+<h2>search StackOverflow</h2>
+
+<p>9 times out of 10, the answers you are seeking have already been answered on stack overflow. Search using the <code>[r]</code></p>
+
+<p><a href="http://stackoverflow.com/questions/tagged/r">http://stackoverflow.com/questions/tagged/r</a></p>
+
+<p><img src="https://github.com/swcarpentry/2013-10-09-canberra/raw/master/01-R-basics/stackoverflow.png" alt=""/></p>
+
+<h2>Other resources</h2>
+
+<p>CRAN task Views: <a href="http://cran.at.r-project.org/web/views">http://cran.at.r-project.org/web/views</a></p>
+
+<p>R mailing lists:</p>
+
+<ul>
+<li><a href="https://stat.ethz.ch/mailman/listinfo/r-help">R-help</a></li>
+<li><a href="https://stat.ethz.ch/mailman/listinfo/r-sig-ecology">R-sig-ecology</a></li>
+</ul>
 
 <h1>Some useful links</h1>
 

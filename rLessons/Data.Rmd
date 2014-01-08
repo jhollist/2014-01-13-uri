@@ -5,7 +5,7 @@ Dealing with Data in R
 
 # Index
  - [R Data Structures](#r-data-structures)
- - [File I/O](#file-input-and-ouput)
+ - [File I/O](#file-io)
  - [Control Structures](#control-structures)
 
 # R Data Structures
@@ -454,7 +454,7 @@ is.nan(x) #shows 1 TRUE
 # File I/O
 
 
-# Control Stuctures
+# Control Structures
 
 
 
