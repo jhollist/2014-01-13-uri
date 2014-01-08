@@ -7,7 +7,7 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 
 ## Instructors
  - Patrick Fuller
- - Ivan Gonzales
+ - Ivan Gonzalez
  
 ## Helpers
  - Jeff Hollister
