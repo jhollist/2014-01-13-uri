@@ -5,8 +5,8 @@ Dealing with Data in R
 
 # Index
  - [R Data Structures](#r-data-structures)
- - [File I/O](#file-input-and-ouput)
- - [Control Structures](#control-structures)
+ - [File I/O](#file-io)
+ - [Data Subsetting and Manipulation](#data-subsetting-and-manipulation)
 
 # R Data Structures
 * To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.
@@ -502,8 +502,6 @@ In R lists act as containers. Unlike atomic vectors, its contents are not restri
 
 List is a special vector. Each element can be a different class.
 
-
-
 Create lists using `list` or coerce other objects using `as.list()`
 
 
@@ -649,16 +647,16 @@ df
 
 ```
 ##    id  x        y
-## 1   a  1  0.98345
-## 2   b  2  0.10342
-## 3   c  3  1.15444
-## 4   d  4  1.81763
-## 5   e  5  0.07442
-## 6   f  6 -1.15988
-## 7   g  7 -0.58382
-## 8   h  8  0.16550
-## 9   i  9 -1.18302
-## 10  j 10 -0.30984
+## 1   a  1 -0.26131
+## 2   b  2  1.45045
+## 3   c  3 -0.01588
+## 4   d  4  1.09468
+## 5   e  5  1.97097
+## 6   f  6 -2.26730
+## 7   g  7 -0.71520
+## 8   h  8 -0.70979
+## 9   i  9  0.42534
+## 10  j 10 -0.03409
 ```
 
 
@@ -814,15 +812,209 @@ is.nan(x)  #shows 1 TRUE
 
 ---
 
-# Refresher on data types
+## Refresher on data types
 
 ![](https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png)
-
 
 # File I/O
 
 
-# Control Stuctures
+## Input output operations
+
+### Inputting data
+
+
+```r
+x <- scan("data_file.txt")  #Example Data created by Jeff Hollister
+# add a separator
+x <- scan("messy_data.txt", what = " ", sep = "\n")  #Example Data created by Karthik Ram
+# or read data from the console
+x <- scan()
+# keep entering values and hit an empty return key to end Note the class of
+# the data
+class(x)
+```
+
+```
+## [1] "numeric"
+```
+
+Reading single lines (e.g. user input)
+
+
+```r
+variable <- readline()
+```
+
+```r
+class(variable)
+```
+
+```
+## [1] "character"
+```
+
+```r
+# or provide more information
+variable <- readline("Enter number of simulations: ")
+```
+
+```
+## Enter number of simulations:
+```
+
+
+
+### Reading files  
+Most plain text files can be read with `read.table` or variants thereof (such as `read.csv`).
+
+
+```r
+df <- read.table("data.dat", header = TRUE)  #Example Data created by Jeff Hollister
+# Note class of df
+class(df)
+```
+
+```
+## [1] "data.frame"
+```
+
+
+or using `readLines`
+
+
+```r
+dt <- readLines("messy_data.txt")
+```
+
+```
+## Warning: incomplete final line found on 'messy_data.txt'
+```
+
+
+### Files from the web
+
+```
+url <- "https://raw.github.com/karthikram/ggplot-lecture/master/climate.csv"
+my_data <- read.csv(url, header = TRUE)
+```
+
+### Local file operations
+
+One can list files from any local source as well.
+
+
+```r
+list.files()
+```
+
+```
+##  [1] "avgX.txt"       "data-types.png" "data.dat"       "Data.html"     
+##  [5] "Data.md"        "Data.Rmd"       "data_file.txt"  "DataViz.html"  
+##  [9] "DataViz.md"     "DataViz.Rmd"    "figure"         "Functions.html"
+## [13] "Functions.md"   "Functions.Rmd"  "Intro.html"     "Intro.md"      
+## [17] "Intro.Rmd"      "messy_data.txt" "myPlot.pdf"     "README.html"   
+## [21] "README.md"      "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+```
+
+```r
+file.info()
+```
+
+```
+## Error: invalid filename argument
+```
+
+```r
+dir()
+```
+
+```
+##  [1] "avgX.txt"       "data-types.png" "data.dat"       "Data.html"     
+##  [5] "Data.md"        "Data.Rmd"       "data_file.txt"  "DataViz.html"  
+##  [9] "DataViz.md"     "DataViz.Rmd"    "figure"         "Functions.html"
+## [13] "Functions.md"   "Functions.Rmd"  "Intro.html"     "Intro.md"      
+## [17] "Intro.Rmd"      "messy_data.txt" "myPlot.pdf"     "README.html"   
+## [21] "README.md"      "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
+```
+
+```r
+file.exists()
+```
+
+```
+## Error: invalid 'file' argument
+```
+
+```r
+getwd()
+```
+
+```
+## [1] "D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons"
+```
+
+```r
+setwd()
+```
+
+```
+## Error: argument "dir" is missing, with no default
+```
+
+
+---
+
+## Output
+
+### Writing files
+
+Saving files is easy in R. We have loaded the `iris` dataset into our memory, if not type `data(iris)` in the conosle. Can you save this back to a `csv` file to disk with the name `tgac_iris.csv`?
+
+What commands did you use?
+
+
+#### Short term storage
+
+
+```r
+saveRDS(iris, file = "tgac_iris.rds")
+iris_data <- readRDS("tgac_iris.rds")
+```
+
+This is great for short term storage. All factors and other modfications to the dataset will be preserved. However, only R can read these data back and not the best option if you want to keep the file stored in the easiest format.
+
+### Long-term storage
+
+
+```r
+write.csv(iris, file = "tgac_iris.csv", row.names = FALSE)
+```
+
+
+### Easy to store compressed files to save space:
+
+
+```r
+write.csv(diamonds, file = bzfile("diamonds.csv.bz2"), row.names = FALSE)
+```
+
+
+### Reading is even easier:
+
+
+```r
+diamonds5 <- read.csv("diamonds.csv.bz2")
+```
+
+
+Files stored with `saveRDS()` are automatically compressed.
+
+
+# Data Subsetting and Manipulation
+
+
+
 
 
 

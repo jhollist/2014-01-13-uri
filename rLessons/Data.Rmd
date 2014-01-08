@@ -6,7 +6,7 @@ Dealing with Data in R
 # Index
  - [R Data Structures](#r-data-structures)
  - [File I/O](#file-io)
- - [Control Structures](#control-structures)
+ - [Data Subsetting and Manipulation](#data-subsetting-and-manipulation)
 
 # R Data Structures
 * To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.
@@ -255,8 +255,6 @@ In R lists act as containers. Unlike atomic vectors, its contents are not restri
 
 List is a special vector. Each element can be a different class.
 
-
-
 Create lists using `list` or coerce other objects using `as.list()`
 
 
@@ -376,6 +374,7 @@ When you combine column wise, only row numbers need to match. If you are adding 
 `ncol()` - number of columns
 `str()` - structure of each column
 `names()` - will list column names for a data.frame (or any object really).
+`summary()` - summarizes each column in a data frame
 
 A data frame is a special type of list where every element of a list has same length.
 
@@ -446,15 +445,301 @@ is.nan(x) #shows 1 TRUE
 
 ---
 
-# Refresher on data types
+## Refresher on data types
 
 ![](https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png)
 
 
 # File I/O
 
+## Input output operations
 
-# Control Structures
+### Inputting data
+
+```{r}
+x <- scan("data_file.txt") #Example Data created by Jeff Hollister
+# add a separator
+x <- scan("messy_data.txt", what=" ", sep = "\n") #Example Data created by Karthik Ram
+# or read data from the console
+x <- scan()
+# keep entering values and hit an empty return key to end
+# Note the class of the data
+class(x)
+```
+Reading single lines (e.g. user input)
+
+```{r}
+variable <- readline()
+class(variable)
+# or provide more information
+variable <- readline("Enter number of simulations: ")
+```
+
+
+### Reading files  
+Most plain text files can be read with `read.table` or variants thereof (such as `read.csv`).
+
+```{r}
+df <- read.table("data.dat", header = TRUE) #Example Data created by Jeff Hollister
+#Note class of df
+class(df)
+```
+
+or using `readLines`
+
+```{r}
+dt <- readLines("messy_data.txt")
+```
+
+### Files from the web
+
+```
+url <- "https://raw.github.com/karthikram/ggplot-lecture/master/climate.csv"
+my_data <- read.csv(url, header = TRUE)
+```
+
+### Local file operations
+
+One can list files from any local source as well.  This is review from the first R lesson, but handy to repeat here.
+
+```{r}
+list.files()
+file.info()
+dir()
+file.exists()
+getwd()
+setwd()
+```
+
+---
+
+## Output
+
+### Writing files
+
+Saving files is easy in R. We have loaded the `iris` dataset into our memory, if not type `data(iris)` in the conosle. Can you save this back to a `csv` file to disk with the name `tgac_iris.csv`?
+
+What commands did you use?
+
+
+#### Short term storage
+
+```{r}
+saveRDS(iris, file = "tgac_iris.rds")
+iris_data <- readRDS("tgac_iris.rds")
+```
+This is great for short term storage. All factors and other modfications to the dataset will be preserved. However, only R can read these data back and not the best option if you want to keep the file stored in the easiest format.
+
+### Long-term storage
+
+```{r}
+write.csv(iris, file = "tgac_iris.csv", row.names = FALSE)
+```
+
+### Easy to store compressed files to save space:
+
+```{r}
+write.csv(diamonds, file = bzfile("diamonds.csv.bz2"),
+  row.names = FALSE)
+```
+
+### Reading is even easier:
+
+```{r}
+diamonds5 <- read.csv("diamonds.csv.bz2")
+```
+
+Files stored with `saveRDS()` are automatically compressed.
+
+### Now a database example (teaser for tomorrow)
+
+There are many options for using R to access data stored in a databse.  One simple and lightweight example is using `sqlite` and the R Package `RSQLite`.
+
+This is a bit more involved, but wanted to show this simply as an example of what is possible.  Skys the limit on what type of database you can use.
+
+```{r}
+# If not already installed
+# install.packages("RSQLite") 
+library(RSQLite)
+con<-dbConnect(dbDriver("SQLite"),dbname="diamonds.sqlite")
+dbWriteTable(con,"tDiamonds",diamonds5)
+list.files(pattern="^dia")
+# And to prove it did someting read the new table back in
+sqliteDiamonds<-dbReadTable(con,"tDiamonds")
+head(sqliteDiamonds)
+```
+
+## Data Structure and File I/O Exercise
+
+For this exercise we will practice what we have learned so far.  You will download three files, create data.frames, answer some questions about the data, and just for fun, output the data as an sqlite database.  Each of these steps must be done solely in R and saved as a script with simple comments
+
+1 Download the [2007 National Lakes Assessment Station Information](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_SampledLakeInformation_20091113.csv)
+2 Download the [2007 National Lakes Assessment Water Quality Data](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_WaterQuality_20091123.csv)
+3 Download the [2007 National Lakes Assessment Buffer Landuse](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Buffer_Landuse_Metrics_20091022.csv)
+5 Create a data frame for each file.
+6 How many rows are in the water quality data? How many columns?
+7 How many rows and columns are in the Landuse data?
+8 What is the name of the first column in each dataframe
+9 What class of data is this column?
+10 What are the max, min, and mean values for `PCT_DEVELOPED_BUFR` in the buffer landuse data?
+11 What are the max, min and mean values for `NTL` in the water quality data?
+
+
+# Data Subsetting and Manipulation
+
+## Subsetting data
+
+R has many powerful subset operators and mastering them will allow you to easily perform complex operation on any kind of dataset. Allows you to manipulate data very succinctly.
+
+As the last section for this topic we'll cover:
+
+* The three subsetting operators,
+* The six types of subsetting,
+* Important difference in subsetting behaviour for different objects 
+* Using subsetting in conjunction with assignment
+
+
+### Subsetting atomic vectors
+
+```{r}
+x <- c(5.4, 6.2, 7.1, 4.8)
+```
+
+**We can subset this in 5 ways**
+
+1. Using positive integers
+
+```{r}
+x[1]
+x[c(3,1)]
+# We can duplicate indices
+x[c(1, 1)]
+# Real numbers are silently truncated to integers
+x[c(2.1, 2.9)]
+```
+
+2. Using negative integers
+
+```{r}
+# skip the first element
+x[-1]
+# skip the first and the fifth
+x[-c(1,5)]
+```
+
+3. Using logical operators
+
+```{r}
+x[c(TRUE, TRUE, FALSE, FALSE)]
+# or based on a condition
+x[x > 3]
+x[which(x >3)]
+Also see `which.max()` and `which.min()`
+```
+
+4. with nothing
+
+```{r}
+x[]
+# useful when dealing with 2 or higher dimensional objects
+```
+
+5. with zero
+
+```{r}
+x[0]
+# helpful for generating test data or creating empty objects
+```
+
+
+6. Referencing objects by their names
+
+```{r}
+y <- setNames(x, letters[1:4])
+
+y[c("d", "c", "a")]
+
+# We can also repeat indices
+y[c("a", "a", "a")]
+
+# Names are always matched exactly, not partially
+z <- c(abc = 1, def = 2)
+z[c("a", "d")]
+```
+
+---
+
+### Subsetting lists
+
+Subsetting a list works in exactly the same way as subsetting an atomic vector. Subsetting a list with [ will always return a list: `[[`` and `$`, as described below, let you pull out the components of the list.
+
+```{r}
+x <- as.list(1:10)
+
+x[1:5]
+
+# What class is this object?
+```
+
+To extract individual elements inside a list, use the `[[` operator
+
+```{r}
+# to get element 5
+
+x[[5]]
+
+class(x[[5]])
+
+another_variable <- x[[5]]
+
+```
+
+Or using their names
+
+```{r}
+names(x) <- letters[1:5]
+
+x$a
+x[["a"]]
+```
+
+### Subsetting matrices
+
+```{r}
+a <- matrix(1:9, nrow = 3)
+colnames(a) <- c("A", "B", "C")
+a[1:2, ]
+a[c(T, F, T), c("B", "A")]
+a[0, -2]
+```
+
+### Subsetting data frames
+
+```{r}
+df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
+df[df$x == 2, ]
+df[c(1, 3), ]
+
+# There are two ways to select columns from a data frame
+# Like a list:
+df[c("x", "z")]
+
+# Like a matrix
+df[, c("x", "z")]
+
+
+# There's an important difference if you select a simple column:
+# matrix subsetting simplifies by default, list subsetting does not.
+df["x"]
+
+df[, "x"]
+```
+
+
+
+
+
+
 
 
 

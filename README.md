@@ -49,3 +49,4 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | [Intro to Data Viz in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/DataViz.md)| 01/15/2014 | 8:00 AM - 10:00 AM | Jeff Hollister |
 | _BREAK_ | 01/15/2014 | 10:00 AM - 10:45 AM | |
 | Wrap-up and next steps | 01/15/2014 |10:45 AM - 12:00 PM | |
+| _LUNCH_ |01/14/2014 | 12:00 PM - 12:45 PM | |

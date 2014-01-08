@@ -187,8 +187,8 @@ hljs.initHighlightingOnLoad();
 
 <ul>
 <li><a href="#r-data-structures">R Data Structures</a></li>
-<li><a href="#file-input-and-ouput">File I/O</a></li>
-<li><a href="#control-structures">Control Structures</a></li>
+<li><a href="#file-io">File I/O</a></li>
+<li><a href="#data-subsetting-and-manipulation">Data Subsetting and Manipulation</a></li>
 </ul>
 
 <h1>R Data Structures</h1>
@@ -708,16 +708,16 @@ df
 </code></pre>
 
 <pre><code>##    id  x        y
-## 1   a  1  0.98345
-## 2   b  2  0.10342
-## 3   c  3  1.15444
-## 4   d  4  1.81763
-## 5   e  5  0.07442
-## 6   f  6 -1.15988
-## 7   g  7 -0.58382
-## 8   h  8  0.16550
-## 9   i  9 -1.18302
-## 10  j 10 -0.30984
+## 1   a  1 -0.26131
+## 2   b  2  1.45045
+## 3   c  3 -0.01588
+## 4   d  4  1.09468
+## 5   e  5  1.97097
+## 6   f  6 -2.26730
+## 7   g  7 -0.71520
+## 8   h  8 -0.70979
+## 9   i  9  0.42534
+## 10  j 10 -0.03409
 </code></pre>
 
 <p><code>cbind(df, data.frame(z = 4))</code></p>
@@ -848,13 +848,159 @@ is.na(x)  #shows 2 TRUE.
 
 <hr/>
 
-<h1>Refresher on data types</h1>
+<h2>Refresher on data types</h2>
 
 <p><img src="https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png" alt=""/></p>
 
 <h1>File I/O</h1>
 
-<h1>Control Stuctures</h1>
+<h2>Input output operations</h2>
+
+<h3>Inputting data</h3>
+
+<pre><code class="r">x &lt;- scan(&quot;data_file.txt&quot;)  #Example Data created by Jeff Hollister
+# add a separator
+x &lt;- scan(&quot;messy_data.txt&quot;, what = &quot; &quot;, sep = &quot;\n&quot;)  #Example Data created by Karthik Ram
+# or read data from the console
+x &lt;- scan()
+# keep entering values and hit an empty return key to end Note the class of
+# the data
+class(x)
+</code></pre>
+
+<pre><code>## [1] &quot;numeric&quot;
+</code></pre>
+
+<p>Reading single lines (e.g. user input)</p>
+
+<pre><code class="r">variable &lt;- readline()
+</code></pre>
+
+<pre><code class="r">class(variable)
+</code></pre>
+
+<pre><code>## [1] &quot;character&quot;
+</code></pre>
+
+<pre><code class="r"># or provide more information
+variable &lt;- readline(&quot;Enter number of simulations: &quot;)
+</code></pre>
+
+<pre><code>## Enter number of simulations:
+</code></pre>
+
+<h3>Reading files</h3>
+
+<p>Most plain text files can be read with <code>read.table</code> or variants thereof (such as <code>read.csv</code>).</p>
+
+<pre><code class="r">df &lt;- read.table(&quot;data.dat&quot;, header = TRUE)  #Example Data created by Jeff Hollister
+# Note class of df
+class(df)
+</code></pre>
+
+<pre><code>## [1] &quot;data.frame&quot;
+</code></pre>
+
+<p>or using <code>readLines</code></p>
+
+<pre><code class="r">dt &lt;- readLines(&quot;messy_data.txt&quot;)
+</code></pre>
+
+<pre><code>## Warning: incomplete final line found on &#39;messy_data.txt&#39;
+</code></pre>
+
+<h3>Files from the web</h3>
+
+<pre><code>url &lt;- &quot;https://raw.github.com/karthikram/ggplot-lecture/master/climate.csv&quot;
+my_data &lt;- read.csv(url, header = TRUE)
+</code></pre>
+
+<h3>Local file operations</h3>
+
+<p>One can list files from any local source as well.</p>
+
+<pre><code class="r">list.files()
+</code></pre>
+
+<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
+##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
+##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
+## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
+## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
+## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot; &quot;uriBootcamp&quot;
+</code></pre>
+
+<pre><code class="r">file.info()
+</code></pre>
+
+<pre><code>## Error: invalid filename argument
+</code></pre>
+
+<pre><code class="r">dir()
+</code></pre>
+
+<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
+##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
+##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
+## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
+## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
+## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot; &quot;uriBootcamp&quot;
+</code></pre>
+
+<pre><code class="r">file.exists()
+</code></pre>
+
+<pre><code>## Error: invalid &#39;file&#39; argument
+</code></pre>
+
+<pre><code class="r">getwd()
+</code></pre>
+
+<pre><code>## [1] &quot;D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons&quot;
+</code></pre>
+
+<pre><code class="r">setwd()
+</code></pre>
+
+<pre><code>## Error: argument &quot;dir&quot; is missing, with no default
+</code></pre>
+
+<hr/>
+
+<h2>Output</h2>
+
+<h3>Writing files</h3>
+
+<p>Saving files is easy in R. We have loaded the <code>iris</code> dataset into our memory, if not type <code>data(iris)</code> in the conosle. Can you save this back to a <code>csv</code> file to disk with the name <code>tgac_iris.csv</code>?</p>
+
+<p>What commands did you use?</p>
+
+<h4>Short term storage</h4>
+
+<pre><code class="r">saveRDS(iris, file = &quot;tgac_iris.rds&quot;)
+iris_data &lt;- readRDS(&quot;tgac_iris.rds&quot;)
+</code></pre>
+
+<p>This is great for short term storage. All factors and other modfications to the dataset will be preserved. However, only R can read these data back and not the best option if you want to keep the file stored in the easiest format.</p>
+
+<h3>Long-term storage</h3>
+
+<pre><code class="r">write.csv(iris, file = &quot;tgac_iris.csv&quot;, row.names = FALSE)
+</code></pre>
+
+<h3>Easy to store compressed files to save space:</h3>
+
+<pre><code class="r">write.csv(diamonds, file = bzfile(&quot;diamonds.csv.bz2&quot;), row.names = FALSE)
+</code></pre>
+
+<h3>Reading is even easier:</h3>
+
+<pre><code class="r">diamonds5 &lt;- read.csv(&quot;diamonds.csv.bz2&quot;)
+</code></pre>
+
+<p>Files stored with <code>saveRDS()</code> are automatically compressed.</p>
+
+<h1>Data Subsetting and Manipulation</h1>
 
 </body>
 
