@@ -16,9 +16,10 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 
 ## Bootcamp Schedule
 
+### MONDAY JANUARY 13, 2014
+
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
-| **MONDAY JANUARY 13, 2014** |
 | Welcome and Introduction | Monday, January 13, 2014 | 8:00 AM - 8:10 AM | Jeff Hollister |
 | Software Tests | Monday, January 13, 2014 | 8:10 AM - 8:30 AM | Ivan Gonzalez |
 | [Using the Shell](#) |  Monday, January 13, 2014 | 8:30 AM - 10:00 AM | Patrick Fuller |
@@ -28,7 +29,11 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | [R Data Structures, File I/O, Data Manipulation] (https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/02DataFileControl.md) | Monday, January 13, 2014 | 12:45 PM - 2:30 PM | Jeff Hollister |
 | _BREAK_ | Monday, January 13, 2014 | 2:30 PM - 2:45 PM | |
 | [Functions, Documentation and Control Structures](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/03Functions.md)| Monday, January 13, 2014 | 2:45 PM - 4:00 PM | Jeff Hollister |
-| **TUESDAY JANUARY 14, 2014** |
+
+### TUESDAY JANUARY 14, 2014
+
+| Topic | Date | Time | Instructor |
+| ----- | ---- | ---- | ---------- |
 | [Git](#) |  Tuesday, January 14, 2014 | 8:00 AM - 10:00 AM | Ivan Gonzalez |
 | _BREAK_ | Tuesday, January 14, 2014 | 10:00 AM - 10:15 AM | |
 | [Git and GitHub](#) |  Tuesday, January 14, 2014 | 10:15 AM - 12:00 PM | Ivan Gonzalez |
@@ -36,7 +41,11 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | [Testing and Debugging with R](#) | Tuesday, January 14, 2014 | 12:45 PM - 2:30 PM | Ivan Gonzalez |
 | _BREAK_ | Tuesday, January 14, 2014 | 2:30 PM - 2:45 PM | |
 | [Introduction to Databases](#) | Tuesday, January 14, 2014 | 2:45 PM - 2:30 PM | Patrick Fuller |
-| **WEDNESDAY, JANUARY 15, 2014** |
+
+### WEDNESDAY, JANUARY 15, 2014
+
+| Topic | Date | Time | Instructor |
+| ----- | ---- | ---- | ---------- |
 | [Introduction to Data Visualization in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/04DataViz.md)| Wednesday, January 15, 2014 | 8:00 AM - 10:00 AM | Jeff Hollister |
 | _BREAK_ | Wednesday, January 15, 2014 | 10:00 AM - 10:45 AM | |
 | Bootcamp wrap-up and next steps | Wednesday, January 15, 2014 |10:45 AM - 12:00 PM | Jeff Hollister, Pete August and Judith Swift |
