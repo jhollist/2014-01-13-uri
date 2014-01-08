@@ -21,7 +21,7 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
 | Welcome and Introduction | 01/13/2014 | 8:00 AM - 8:10 AM | Jeff Hollister |
-| Software Tests | 01/13/2014 | 8:10 AM - 8:30 AM | Ivan Gonzalez |
+| Logistics and Software Test | 01/13/2014 | 8:10 AM - 8:30 AM | Ivan Gonzalez |
 | [Using the Shell](#) |  01/13/2014 | 8:30 AM - 10:00 AM | Patrick Fuller |
 | _BREAK_ | 01/13/2014 | 10:00 AM - 10:15 AM | |
 | [Introduction to R and RStudio](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/Intro.md)| 01/13/2014 | 10:15 AM - 12:00 PM | Patrick Fuller |
@@ -48,4 +48,4 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | ----- | ---- | ---- | ---------- |
 | [Intro to Data Viz in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/DataViz.md)| 01/15/2014 | 8:00 AM - 10:00 AM | Jeff Hollister |
 | _BREAK_ | 01/15/2014 | 10:00 AM - 10:45 AM | |
-| Wrap-up and next steps | 01/15/2014 |10:45 AM - 12:00 PM | Jeff Hollister, Pete August and Judith Swift |
+| Wrap-up and next steps | 01/15/2014 |10:45 AM - 12:00 PM | |
