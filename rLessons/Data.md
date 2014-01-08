@@ -1,7 +1,12 @@
-R Data Structures, File I/O, Control Structures
+Dealing with Data in R
 ========================================================
 
 *Note: This material is a mash-up from Jenny Bryan's [course materials on r] (http://www.stat.ubc.ca/~jenny/STAT545A/quick-index.html) and Karthik Ram's [material from the Canberra Software Carpentry R Bootcamp](https://github.com/swcarpentry/2013-10-09-canberra).  Anything good is there becuase of Jenny and Karthik.  Mistakes are all mine.*
+
+# Index
+ - [R Data Structures](#r-data-structures)
+ - [File I/O](#file-input-and-ouput)
+ - [Control Structures](#control-structures)
 
 # R Data Structures
 * To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.
@@ -611,6 +616,7 @@ This is the first factor but by default the ordering is determined by alphabetic
 x <- factor(c("yes", "no", "yes"), levels = c("yes", "no"))
 ```
 
+
 ## Data frame
 
 A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.
@@ -643,16 +649,16 @@ df
 
 ```
 ##    id  x        y
-## 1   a  1 -0.08973
-## 2   b  2  1.53369
-## 3   c  3  2.15292
-## 4   d  4 -1.52087
-## 5   e  5  3.45296
-## 6   f  6 -0.81601
-## 7   g  7  0.91758
-## 8   h  8 -0.04814
-## 9   i  9 -0.54419
-## 10  j 10  1.17063
+## 1   a  1  0.98345
+## 2   b  2  0.10342
+## 3   c  3  1.15444
+## 4   d  4  1.81763
+## 5   e  5  0.07442
+## 6   f  6 -1.15988
+## 7   g  7 -0.58382
+## 8   h  8  0.16550
+## 9   i  9 -1.18302
+## 10  j 10 -0.30984
 ```
 
 
@@ -810,10 +816,13 @@ is.nan(x)  #shows 1 TRUE
 
 # Refresher on data types
 
-![](data-types.png)
+![](https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png)
 
 
+# File I/O
 
+
+# Control Stuctures
 
 
 
