@@ -24,11 +24,11 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 | Software Tests | 01/13/2014 | 8:10 AM - 8:30 AM | Ivan Gonzalez |
 | [Using the Shell](#) |  01/13/2014 | 8:30 AM - 10:00 AM | Patrick Fuller |
 | _BREAK_ | 01/13/2014 | 10:00 AM - 10:15 AM | |
-| [Introduction to R and RStudio](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/01Intro.md)| 01/13/2014 | 10:15 AM - 12:00 PM | Patrick Fuller |
+| [Introduction to R and RStudio](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/Intro.md)| 01/13/2014 | 10:15 AM - 12:00 PM | Patrick Fuller |
 | _LUNCH_ | 01/13/2014 | 12:00 PM - 12:45 PM | |
-| [Data Structures, File I/O, and Manipulation in R] (https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/02DataFileControl.md) | 01/13/2014 | 12:45 PM - 2:30 PM | Jeff Hollister |
+| [Dealing with Data in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/Data.md) | 01/13/2014 | 12:45 PM - 2:30 PM | Jeff Hollister |
 | _BREAK_ | 01/13/2014 | 2:30 PM - 2:45 PM | |
-| [Functions, Documentation and Control Structures](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/03Functions.md)| 01/13/2014 | 2:45 PM - 4:00 PM | Jeff Hollister |
+| [R Functions](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/Functions.md)| 01/13/2014 | 2:45 PM - 4:00 PM | Jeff Hollister |
 
 #### TUESDAY JANUARY 14, 2014
 
@@ -46,6 +46,6 @@ This is the repo for the Software Carpentry R Bootcamp at the University of Rhod
 
 | Topic | Date | Time | Instructor |
 | ----- | ---- | ---- | ---------- |
-| [Intro to Data Visualization in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/04DataViz.md)| 01/15/2014 | 8:00 AM - 10:00 AM | Jeff Hollister |
+| [Intro to Data Visualization in R](https://github.com/jhollist/2014-01-13-uri/blob/gh-pages/rLessons/DataViz.md)| 01/15/2014 | 8:00 AM - 10:00 AM | Jeff Hollister |
 | _BREAK_ | 01/15/2014 | 10:00 AM - 10:45 AM | |
 | Wrap-up and next steps | 01/15/2014 |10:45 AM - 12:00 PM | Jeff Hollister, Pete August and Judith Swift |

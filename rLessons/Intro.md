@@ -144,7 +144,7 @@ date()
 ```
 
 ```
-## [1] "Tue Jan 07 16:19:57 2014"
+## [1] "Wed Jan 08 10:14:58 2014"
 ```
 
 ```r
@@ -153,14 +153,10 @@ dir()
 ```
 
 ```
-##  [1] "01Intro.html"          "01Intro.md"           
-##  [3] "01Intro.Rmd"           "02DataFileControl.Rmd"
-##  [5] "03Functions.Rmd"       "04DataViz.Rmd"        
-##  [7] "avgX.txt"              "data-types.png"       
-##  [9] "figure"                "myPlot.pdf"           
-## [11] "README.html"           "README.md"            
-## [13] "README.Rmd"            "rLessons.Rproj"       
-## [15] "uriBootcamp"
+##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
+##  [5] "Data.Rmd"       "DataViz.Rmd"    "figure"         "Functions.Rmd" 
+##  [9] "Intro.Rmd"      "myPlot.pdf"     "README.html"    "README.md"     
+## [13] "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
 ```
 
 ```r
@@ -169,14 +165,10 @@ list.files()
 ```
 
 ```
-##  [1] "01Intro.html"          "01Intro.md"           
-##  [3] "01Intro.Rmd"           "02DataFileControl.Rmd"
-##  [5] "03Functions.Rmd"       "04DataViz.Rmd"        
-##  [7] "avgX.txt"              "data-types.png"       
-##  [9] "figure"                "myPlot.pdf"           
-## [11] "README.html"           "README.md"            
-## [13] "README.Rmd"            "rLessons.Rproj"       
-## [15] "uriBootcamp"
+##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
+##  [5] "Data.Rmd"       "DataViz.Rmd"    "figure"         "Functions.Rmd" 
+##  [9] "Intro.Rmd"      "myPlot.pdf"     "README.html"    "README.md"     
+## [13] "README.Rmd"     "rLessons.Rproj" "uriBootcamp"
 ```
 
 
@@ -373,7 +365,7 @@ y <- a + b * x + rnorm(40, sd = sqrt(sigSq))
 ```
 
 ```
-## [1] 0.5404
+## [1] 0.4923
 ```
 
 ```r
