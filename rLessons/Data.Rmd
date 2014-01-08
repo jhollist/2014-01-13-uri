@@ -3,12 +3,12 @@ Dealing with Data in R
 
 *Note: This material is a mash-up from Jenny Bryan's [course materials on r] (http://www.stat.ubc.ca/~jenny/STAT545A/quick-index.html) and Karthik Ram's [material from the Canberra Software Carpentry R Bootcamp](https://github.com/swcarpentry/2013-10-09-canberra).  Anything good is there becuase of Jenny and Karthik.  Mistakes are all mine.*
 
-# Index
+## Index
  - [R Data Structures](#r-data-structures)
  - [File I/O](#file-io)
  - [Data Subsetting and Manipulation](#data-subsetting-and-manipulation)
 
-# R Data Structures
+## R Data Structures
 * To make the best of the R language, you'll need a strong understanding of the basic data types and data structures and how to operate on those.
 
 * **Very Important** to understand because these are the things you will manipulate on a day-to-day basis in R. Most common source of frustration among beginners.
@@ -209,7 +209,7 @@ as.logical(x)
 "1" > 2
 ```
 
-## Matrix
+### Matrix
 
 Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns. 
 
@@ -249,7 +249,7 @@ rbind(x,y)
 
 ---
 
-## List
+### List
 
 In R lists act as containers. Unlike atomic vectors, its contents are not restricted to a single mode and can encompass any data type. Lists are sometimes called recursive vectors, because a list can contain other lists. This makes them fundamentally different from atomic vectors. 
 
@@ -291,11 +291,9 @@ Lists are extremely useful inside functions. You can "staple" together lots of d
 It doesn't print out like a vector. Prints a new line for each element.
 
 Elements are indexed by double brackets. Single brackets will still return a(nother) list.
-
-
 ---
 
-## Factors
+### Factors
 
 Factors are special vectors that represent categorical data. Factors can be ordered or unordered and are important when for modelling functions such as `lm()` and `glm()` and also in plot methods.
 
@@ -333,7 +331,7 @@ This is the first factor but by default the ordering is determined by alphabetic
 x <- factor(c("yes", "no", "yes"), levels = c("yes", "no"))
 ```
 
-## Data frame
+### Data frame
 
 A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.
 
@@ -416,7 +414,7 @@ dimnames(m) <- list(c("a", "b"), c("c", "d"))
 ---
 
 
-## Missing values
+### Missing values
 
 dennoted by `NA` and/or `NaN` for undefined mathematical operations.
 
@@ -445,14 +443,14 @@ is.nan(x) #shows 1 TRUE
 
 ---
 
-## Refresher on data types
+### Refresher on data types
 
 ![](https://raw.github.com/swcarpentry/2013-10-09-canberra/master/01-R-basics/data-types.png)
 
 
-# File I/O
+## File I/O
 
-## Input output operations
+### Input output operations
 
 ### Inputting data
 
@@ -522,7 +520,7 @@ Saving files is easy in R. We have loaded the `iris` dataset into our memory, if
 What commands did you use?
 
 
-#### Short term storage
+### Short term storage
 
 ```{r}
 saveRDS(iris, file = "tgac_iris.rds")
@@ -557,6 +555,10 @@ There are many options for using R to access data stored in a databse.  One simp
 
 This is a bit more involved, but wanted to show this simply as an example of what is possible.  Skys the limit on what type of database you can use.
 
+```{r echo=FALSE}
+system("rm diamonds.sqlite")
+```
+
 ```{r}
 # If not already installed
 # install.packages("RSQLite") 
@@ -567,27 +569,28 @@ list.files(pattern="^dia")
 # And to prove it did someting read the new table back in
 sqliteDiamonds<-dbReadTable(con,"tDiamonds")
 head(sqliteDiamonds)
+dbDisconnect(con)
 ```
 
-## Data Structure and File I/O Exercise
+### Data Structure and File I/O Exercise
 
-For this exercise we will practice what we have learned so far.  You will download three files, create data.frames, answer some questions about the data, and just for fun, output the data as an sqlite database.  Each of these steps must be done solely in R and saved as a script with simple comments
+For this exercise we will practice what we have learned so far.  You will download three files, create data.frames, and answer some questions about the data.  Only use R for these steps and save everything as a script with simple comments.
 
-1 Download the [2007 National Lakes Assessment Station Information](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_SampledLakeInformation_20091113.csv)
-2 Download the [2007 National Lakes Assessment Water Quality Data](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_WaterQuality_20091123.csv)
-3 Download the [2007 National Lakes Assessment Buffer Landuse](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Buffer_Landuse_Metrics_20091022.csv)
-5 Create a data frame for each file.
-6 How many rows are in the water quality data? How many columns?
-7 How many rows and columns are in the Landuse data?
-8 What is the name of the first column in each dataframe
-9 What class of data is this column?
-10 What are the max, min, and mean values for `PCT_DEVELOPED_BUFR` in the buffer landuse data?
-11 What are the max, min and mean values for `NTL` in the water quality data?
+1. Download the [2007 National Lakes Assessment Station Information](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_SampledLakeInformation_20091113.csv)
+2. Download the [2007 National Lakes Assessment Water Quality Data](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_WaterQuality_20091123.csv)
+3. Download the [2007 National Lakes Assessment Buffer Landuse](http://water.epa.gov/type/lakes/assessmonitor/lakessurvey/upload/NLA2007_Buffer_Landuse_Metrics_20091022.csv)
+5. Create a data frame for each file.
+6. How many rows are in the water quality data? How many columns?
+7. How many rows and columns are in the Landuse data?
+8. What is the name of the first column in each dataframe
+9. What class of data is this column?
+10. What are the max, min, and mean values for `PCT_DEVELOPED_BUFR` in the buffer landuse data?
+11. What are the max, min and mean values for `NTL` in the water quality data?
 
 
-# Data Subsetting and Manipulation
+## Data Subsetting and Manipulation
 
-## Subsetting data
+### Subsetting data
 
 R has many powerful subset operators and mastering them will allow you to easily perform complex operation on any kind of dataset. Allows you to manipulate data very succinctly.
 
@@ -607,7 +610,7 @@ x <- c(5.4, 6.2, 7.1, 4.8)
 
 **We can subset this in 5 ways**
 
-1. Using positive integers
+1.) Using positive integers
 
 ```{r}
 x[1]
@@ -618,7 +621,7 @@ x[c(1, 1)]
 x[c(2.1, 2.9)]
 ```
 
-2. Using negative integers
+2.) Using negative integers
 
 ```{r}
 # skip the first element
@@ -627,24 +630,24 @@ x[-1]
 x[-c(1,5)]
 ```
 
-3. Using logical operators
+3.) Using logical operators
 
 ```{r}
 x[c(TRUE, TRUE, FALSE, FALSE)]
 # or based on a condition
 x[x > 3]
 x[which(x >3)]
-Also see `which.max()` and `which.min()`
+#Also see `which.max()` and `which.min()`
 ```
 
-4. with nothing
+4.) with nothing
 
 ```{r}
 x[]
 # useful when dealing with 2 or higher dimensional objects
 ```
 
-5. with zero
+5.) with zero
 
 ```{r}
 x[0]
@@ -652,7 +655,7 @@ x[0]
 ```
 
 
-6. Referencing objects by their names
+6.) Referencing objects by their names
 
 ```{r}
 y <- setNames(x, letters[1:4])
@@ -735,11 +738,144 @@ df["x"]
 df[, "x"]
 ```
 
+### Combining data frames
+We have already seen some ways to combine vectors together and create `data.frames` using `rbind` to add rows and `cbind` to combine columns.  You can accomplish in additional ways as well
+
+```{r}
+# Review of creating  data frame with rbind() and cbind()
+x<-c(1,2,3,4,5)
+y<-c(5,6,7,8,9)
+df<-rbind(x,y)
+#coerce to data.frame. rbind creates a matrix with row.names
+as.data.frame(df)
+df<-cbind(x,y)
+#coerce to data.frame. rbind creates a matrix with row.names
+as.data.frame(df)
+#you can also use data.frame(), similar results to cbind
+df<-data.frame(x,y)
+df
+```
+
+These methods work well if your vectors are of the same length, but that is not often the case.  A very common situation is two data frames that share an ID value and you need to merge these together.  In other words, a join.  That cna be accomplished with `merge`.
+
+```{r}
+#create test data.frame 1
+df1<-data.frame(id=c(1:10),data1=seq(1,20,2),data2=jitter(seq(1,20,2),10))
+
+#create test data.frame 2
+df2<-data.frame(id=c(1,1,2,2,3,4,7,8,8,9,10,11,12,12,4),data1=seq(1,30,2),
+                data2=jitter(seq(1,30,2),10))
+
+#now we can merge
+dfm<-merge(df1,df2,by="id")
+dfm
+dim(dfm)
+
+#often we want to make sure all of one df is preserved
+dfm<-merge(df1,df2,by="id",all.x=TRUE)
+dfm
+dim(dfm)
+```
 
 
+## Apply Functions
+
+One of the greatest joys of vectorized operations is being able to use the entire family of `apply` functions that are available in base `R`.
+
+These include:
+
+```{r, eval=FALSE}
+apply
+by
+lapply
+tapply
+sapply
+```
+
+### apply
+
+```{r}
+m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
+# 1 is the row index
+# 2 is the column index
+apply(m, 1, sum)
+apply(m, 2, sum)
+apply(m, 1, mean)
+apply(m, 2, mean)
+```
+
+### by
+
+```{r}
+head(iris)
+by(iris[, 1:2], iris[,"Species"], summary)
+by(iris[, 1:2], iris[,"Species"], sum)
+```
 
 
+### tapply
+Two examples
+
+```{r}
+df <- data.frame(names = sample(c("A","B","C"), 10, rep = T), length = rnorm(10))
+tapply(df$length, df$names, mean)
+
+# Now with a more familiar dataset
+tapply(iris$Petal.Length, iris$Species, mean)
+```
+
+### lapply (and llply)
+
+What it does: Returns a list of same length as the input. 
+Each element of the output is a result of applying a function to the corresponding element.
+
+```{r}
+my_list <- list(a = 1:10, b = 2:20)
+lapply(my_list, mean)
+```
+
+### sapply
+
+sapply is a more user friendly version of `lapply` and will return a list of matrix where appropriate.
 
 
+Let's work with the same list we just created.
+
+```{r}
+my_list
+x <- sapply(my_list, mean)
+class(x)
+```
+
+### replicate
+
+An extremely useful function to generate datasets for simulation purposes. 
+
+```{r}
+replicate(10, rnorm(10))
+replicate(10, rnorm(10), simplify = TRUE)
+# The final arguments turns the result into a vector or matrix if possible.
+```
+
+### mapply
+Its more or less a multivariate version of `sapply`. It applies a function to all corresponding elements of each argument. 
+
+example:
+
+```{r}
+list_1 <- list(a = c(1:10), b = c(11:20))
+list_2 <- list(c = c(21:30), d = c(31:40))
+mapply(sum, list_1$a, list_1$b, list_2$c, list_2$d)
+```
+
+
+### plyr and reshape
+
+Two packages that are very widely used for data manipulation are `plyr` and `reshape`  The argument for their use is that they simplify many of the common data manipulation tasks, althought they do require a slightly different way of thinking about manipulating data in R.  As such, they are a bit beyond the scope of what we are covering.  But they are widely used enough and powerful enough to bare mention.
+
+For more on these, see Karthik Ram's Canberra Bootcamp Materials on [`plyr` and `reshape`](https://github.com/swcarpentry/2013-10-09-canberra/blob/master/03-data-manipulation/03-split-apply.md)
+
+## Data Manipulation Exercise
+In our last exercise, we pulled in three datasets
 
 
