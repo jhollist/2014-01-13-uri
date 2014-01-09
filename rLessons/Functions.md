@@ -67,7 +67,7 @@ sd(dat)  # Matched positionally
 ```
 
 ```
-## [1] 0.9818
+## [1] 0.9652
 ```
 
 ```r
@@ -75,7 +75,7 @@ sd(x = dat)  # matched by name
 ```
 
 ```
-## [1] 0.9818
+## [1] 0.9652
 ```
 
 ```r
@@ -83,7 +83,7 @@ sd(x = dat, na.rm = FALSE)
 ```
 
 ```
-## [1] 0.9818
+## [1] 0.9652
 ```
 
 ```r
@@ -92,7 +92,7 @@ sd(na.rm = FALSE, dat)
 ```
 
 ```
-## [1] 0.9818
+## [1] 0.9652
 ```
 
 
@@ -333,6 +333,240 @@ f(15)
 ```
 
 # Control Structures
+
+These allow you to control the flow of execution of a script typically inside of a function.
+Common ones include:
+
+* if, else
+* for
+* while
+* repeat
+* break
+* next
+* return
+
+We don't use these while working with R interactively but rather inside functions. 
+
+## If/else
+
+
+```r
+if(condition) {
+    # do something 
+} else { 
+    # do something else
+    }
+}
+```
+
+e.g. 
+
+
+```r
+x <- 1:15
+if (sample(x, 1) <= 10) {
+    print("x is less than 10")
+} else {
+    print("x is greater than 10")
+}
+```
+
+```
+## [1] "x is less than 10"
+```
+
+
+**Shorthand for ifelse**
+
+`ifelse(sample(x, 1) <10, "x less than 10", "x greater than 10")`
+
+Other valid ways of writing if/else
+
+
+```r
+if (sample(x, 1) < 10) {
+    y <- 5
+} else {
+    y <- 0
+}
+```
+
+
+
+```r
+y <- if (sample(x, 1) < 10) {
+    5
+} else {
+    0
+}
+```
+
+
+## for
+
+For loops work on an iterable variable and assign successive values till the end of a sequence.
+
+
+```r
+for (i in 1:10) {
+    print(i)
+}
+```
+
+```
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+```
+
+
+
+```r
+x <- c("apples", "oranges", "bananas", "strawberries")
+
+for (i in x) {
+    print(x[i])
+}
+```
+
+```
+## [1] NA
+## [1] NA
+## [1] NA
+## [1] NA
+```
+
+```r
+
+for (i in 1:4) {
+    print(x[i])
+}
+```
+
+```
+## [1] "apples"
+## [1] "oranges"
+## [1] "bananas"
+## [1] "strawberries"
+```
+
+```r
+
+for (i in seq(x)) {
+    print(x[i])
+}
+```
+
+```
+## [1] "apples"
+## [1] "oranges"
+## [1] "bananas"
+## [1] "strawberries"
+```
+
+```r
+
+for (i in 1:4) print(x[i])
+```
+
+```
+## [1] "apples"
+## [1] "oranges"
+## [1] "bananas"
+## [1] "strawberries"
+```
+
+
+Nested loops
+
+
+```r
+m <- matrix(1:10, 2)
+for (i in seq(nrow(m))) {
+    for (j in seq(ncol(m))) {
+        print(m[i, j])
+    }
+}
+```
+
+```
+## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9
+## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+```
+
+
+## While
+
+```
+i <- 1
+while(i < 10) {
+    print(i)
+    i <- i + 1
+}
+```
+Be sure there is a way to exit out of a while loop.
+
+## Repeat and break
+
+
+```r
+repeat {
+    # simulations; generate some value have an expectation if within some range,
+    # then exit the loop
+    if ((value - expectation) <= threshold) {
+        break
+    }
+}
+```
+
+```
+## Error: object 'value' not found
+```
+
+
+## Next
+
+
+```r
+for (i in 1:20) {
+    if (i%%2 == 1) {
+        next
+    } else {
+        print(i)
+    }
+}
+```
+
+```
+## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+## [1] 12
+## [1] 14
+## [1] 16
+## [1] 18
+## [1] 20
+```
+
+
+This loop will only print even numbers and skip over odd numbers. In the afternoon we'll learn other functions that will help us avoid these types of slow control flows as much as possible (mostly the while and for loops).
 
 # Documentation
 

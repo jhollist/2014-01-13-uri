@@ -245,26 +245,26 @@ So you don&#39;t have to do anything.</p>
 sd(dat)  # Matched positionally
 </code></pre>
 
-<pre><code>## [1] 0.9818
+<pre><code>## [1] 0.9652
 </code></pre>
 
 <pre><code class="r">sd(x = dat)  # matched by name
 </code></pre>
 
-<pre><code>## [1] 0.9818
+<pre><code>## [1] 0.9652
 </code></pre>
 
 <pre><code class="r">sd(x = dat, na.rm = FALSE)
 </code></pre>
 
-<pre><code>## [1] 0.9818
+<pre><code>## [1] 0.9652
 </code></pre>
 
 <pre><code class="r"># When naming you can switch them but not recommended
 sd(na.rm = FALSE, dat)
 </code></pre>
 
-<pre><code>## [1] 0.9818
+<pre><code>## [1] 0.9652
 </code></pre>
 
 <p>Even though it&#39;s allowed, don&#39;t switch positions on names.</p>
@@ -461,6 +461,204 @@ f(15)
 </code></pre>
 
 <h1>Control Structures</h1>
+
+<p>These allow you to control the flow of execution of a script typically inside of a function.
+Common ones include:</p>
+
+<ul>
+<li>if, else</li>
+<li>for</li>
+<li>while</li>
+<li>repeat</li>
+<li>break</li>
+<li>next</li>
+<li>return</li>
+</ul>
+
+<p>We don&#39;t use these while working with R interactively but rather inside functions. </p>
+
+<h2>If/else</h2>
+
+<pre><code class="r">if(condition) {
+    # do something 
+} else { 
+    # do something else
+    }
+}
+</code></pre>
+
+<p>e.g. </p>
+
+<pre><code class="r">x &lt;- 1:15
+if (sample(x, 1) &lt;= 10) {
+    print(&quot;x is less than 10&quot;)
+} else {
+    print(&quot;x is greater than 10&quot;)
+}
+</code></pre>
+
+<pre><code>## [1] &quot;x is less than 10&quot;
+</code></pre>
+
+<p><strong>Shorthand for ifelse</strong></p>
+
+<p><code>ifelse(sample(x, 1) &lt;10, &quot;x less than 10&quot;, &quot;x greater than 10&quot;)</code></p>
+
+<p>Other valid ways of writing if/else</p>
+
+<pre><code class="r">if (sample(x, 1) &lt; 10) {
+    y &lt;- 5
+} else {
+    y &lt;- 0
+}
+</code></pre>
+
+<pre><code class="r">y &lt;- if (sample(x, 1) &lt; 10) {
+    5
+} else {
+    0
+}
+</code></pre>
+
+<h2>for</h2>
+
+<p>For loops work on an iterable variable and assign successive values till the end of a sequence.</p>
+
+<pre><code class="r">for (i in 1:10) {
+    print(i)
+}
+</code></pre>
+
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+</code></pre>
+
+<pre><code class="r">x &lt;- c(&quot;apples&quot;, &quot;oranges&quot;, &quot;bananas&quot;, &quot;strawberries&quot;)
+
+for (i in x) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] NA
+## [1] NA
+## [1] NA
+## [1] NA
+</code></pre>
+
+<pre><code class="r">
+for (i in 1:4) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<pre><code class="r">
+for (i in seq(x)) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<pre><code class="r">
+for (i in 1:4) print(x[i])
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<p>Nested loops</p>
+
+<pre><code class="r">m &lt;- matrix(1:10, 2)
+for (i in seq(nrow(m))) {
+    for (j in seq(ncol(m))) {
+        print(m[i, j])
+    }
+}
+</code></pre>
+
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9
+## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+</code></pre>
+
+<h2>While</h2>
+
+<pre><code>i &lt;- 1
+while(i &lt; 10) {
+    print(i)
+    i &lt;- i + 1
+}
+</code></pre>
+
+<p>Be sure there is a way to exit out of a while loop.</p>
+
+<h2>Repeat and break</h2>
+
+<pre><code class="r">repeat {
+    # simulations; generate some value have an expectation if within some range,
+    # then exit the loop
+    if ((value - expectation) &lt;= threshold) {
+        break
+    }
+}
+</code></pre>
+
+<pre><code>## Error: object &#39;value&#39; not found
+</code></pre>
+
+<h2>Next</h2>
+
+<pre><code class="r">for (i in 1:20) {
+    if (i%%2 == 1) {
+        next
+    } else {
+        print(i)
+    }
+}
+</code></pre>
+
+<pre><code>## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+## [1] 12
+## [1] 14
+## [1] 16
+## [1] 18
+## [1] 20
+</code></pre>
+
+<p>This loop will only print even numbers and skip over odd numbers. In the afternoon we&#39;ll learn other functions that will help us avoid these types of slow control flows as much as possible (mostly the while and for loops).</p>
 
 <h1>Documentation</h1>
 
