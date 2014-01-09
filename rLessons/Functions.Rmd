@@ -7,10 +7,12 @@ Functions, Control Structures and Documentation
 - [Functions](#functions)
 - [Control Structures](#control-strucutres)
 - [Documentation](#documentation)
-
+- [Exercise](#function-exercise)
 
 # Functions
 
 # Control Structures
 
 # Documentation
+
+# Function Exercise

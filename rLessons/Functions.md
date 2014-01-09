@@ -1,33 +1,18 @@
-Title
+Functions, Control Structures and Documentation
 ========================================================
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
+*Note: This material is a mash-up from Jenny Bryan's [course materials on r] (http://www.stat.ubc.ca/~jenny/STAT545A/quick-index.html) and Karthik Ram's [material from the Canberra Software Carpentry R Bootcamp](https://github.com/swcarpentry/2013-10-09-canberra).  Anything good is there becuase of Jenny and Karthik.  Mistakes are all mine.*
 
-When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Lesson Index:
+- [Functions](#functions)
+- [Control Structures](#control-strucutres)
+- [Documentation](#documentation)
+- [Exercise](#function-exercise)
 
+# Functions
 
-```r
-summary(cars)
-```
+# Control Structures
 
-```
-##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120
-```
+# Documentation
 
-
-You can also embed plots, for example:
-
-
-```r
-plot(cars)
-```
-
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2.png) 
-
-
+# Function Exercise
