@@ -21,7 +21,7 @@ Go into the Console, where we interact directly with the R kernel.
 
 Make an assignment and then inspect the object you just created.
 
-```{r}
+```{r eval=FALSE}
 x <- 3 * 4
 x
 ```
@@ -72,7 +72,7 @@ Type `se` and hit TAB. A pop up shows you possible completions. Specify `seq()` 
 return. RStudio also exits the parenthetical expression for you.  IDEs
 are great.
 
-```{r}
+```{r eval=FALSE}
 seq(1, 10)
 ```
 
@@ -89,14 +89,14 @@ value`.
 
 Make this assignment and notice similar help with quotation marks.
 
-```{r}
+```{r eval=FALSE}
 yo <- "hello world"
 ```
 
 If you just make an assignment, you don't get to see the value, so
 then you're tempted to immediately inspect.
 
-```{r}
+```{r eval=FALSE}
 y <- seq(1, 10)
 y
 ```
@@ -104,13 +104,13 @@ y
 This common action can be shortened by surrounding the assignment with
 parentheses, which causes assignment and "print to screen" to happen.
 
-```{r}
+```{r eval=FALSE}
 (y <- seq(1, 10))
 ```
 
 Not all functions have (or require) arguments:  
 
-```{r}
+```{r eval=FALSE}
 date()
 # see list of files in your current directory
 dir() 
@@ -122,20 +122,20 @@ Now look at your workspace -- in the upper right pane. The workspace is
 where user-defined objects accumulate. You can also get a listing of
 these objects with commands:
 
-```{r}
+```{r eval=FALSE}
 objects()
 ls()
 ```
 
 If you want to remove something you can do this
 
-```{r}
+```{r eval=FALSE}
 rm(y)
 ```
 
 To remove everything:
 
-```{r}
+```{r eval=FALSE}
 rm(list = ls())
 ```
 
@@ -201,7 +201,7 @@ indicating that your workspace has been restored. Look in the Workspace pane and
 Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It also where, by default, any files you write to disk will go. Chances are your current working directory is the directory we inspected above, i.e. the one where RStudio wanted to save the workspace.
 
 You can explicitly check your working directory with:
-```{r}
+```{r eval=FALSE}
 getwd()
 ```
 
@@ -229,7 +229,7 @@ More info: [http://www.rstudio.com/ide/docs/using/projects](http://www.rstudio.c
 
 Let's make one to use for the rest of this workshop. To do this you can use the `Projects menu` in the upper right corner or from the `File` menu. But let's use what we learned earlier when playing around with the shell first, but we will do it directly from RStudio.
 
-```{r}
+```{r eval=FALSE}
 #Check you present working directory
 getwd()
 
@@ -248,13 +248,13 @@ We still need to create an RStudio project, called `uriBootcamp`.  Use the dropd
 
 Now double check that the "home" directory for your project is the working directory of our current R process:
 
-```{r}
+```{r eval=FALSE}
 getwd()
 ```
 
 Let's enter a few commands in the Console, as if we are just beginning an analytical project:
 
-```{r}
+```{r eval=FALSE}
 a <- 2
 b <- -3
 sigSq <- 0.5
@@ -306,7 +306,7 @@ Many long-time users never save the workspace, never save `.RData` files (I'm on
 
 R is an extensible system and many people share useful code they have developed as a _package_ via CRAN and/or github. To install a package from CRAN, for example the [`ggplot2`](http://ggplot2.org) a very popular package for data visualization, here is one way to do it in the R console (there are others).
 
-```{r}
+```{r eval=FALSE}
   install.packages("ggplo2", dependencies = TRUE)
 ```
 We will use this package tomorrow, so go ahead and install it!
@@ -347,7 +347,7 @@ At some point you may want to stop using R (never!) To do so, type in `quit()` o
 
 `str` is short for structure. You can use it on any object. Try the following:
 
-```{r}
+```{r eval=FALSE}
 x <- 1:10
 class(x)
 mode(x)
@@ -383,7 +383,7 @@ Another recent package that's really useful in this context is called `Rdocument
 
 to install:
 
-```{r}
+```{r eval=FALSE}
 library("devtools"); 
 install_github("Rdocumentation","jonathancornelissen");
 library("Rdocumentation")
@@ -401,7 +401,7 @@ for example, the function `dput()` can help recreate R objects by simply pasting
 
 e.g.
 
-```{r}
+```{r eval=FALSE}
 dput(head(iris))
 
 structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
@@ -418,7 +418,7 @@ structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4),
 
 The `knitr` function `stitch()` automatically includes this information. Try it on any example R script.
 
-```{r}
+```{r eval=FALSE}
 stitch("my_script.R")
 ```
 

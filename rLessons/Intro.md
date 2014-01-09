@@ -27,10 +27,6 @@ x <- 3 * 4
 x
 ```
 
-```
-## [1] 12
-```
-
 
 All R statements where you create objects -- "assignments" -- have this
 form:
@@ -85,10 +81,6 @@ are great.
 seq(1, 10)
 ```
 
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
 
 The above also demonstrates something about how R resolves function
 arguments. You can always specify in `name = value` form. But if you
@@ -118,10 +110,6 @@ y <- seq(1, 10)
 y
 ```
 
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
 
 This common action can be shortened by surrounding the assignment with
 parentheses, which causes assignment and "print to screen" to happen.
@@ -131,48 +119,16 @@ parentheses, which causes assignment and "print to screen" to happen.
 (y <- seq(1, 10))
 ```
 
-```
-##  [1]  1  2  3  4  5  6  7  8  9 10
-```
-
 
 Not all functions have (or require) arguments:  
 
 
 ```r
 date()
-```
-
-```
-## [1] "Wed Jan 08 11:16:20 2014"
-```
-
-```r
 # see list of files in your current directory
 dir()
-```
-
-```
-##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
-##  [5] "Data.Rmd"       "DataViz.html"   "DataViz.md"     "DataViz.Rmd"   
-##  [9] "figure"         "Functions.html" "Functions.md"   "Functions.Rmd" 
-## [13] "Intro.html"     "Intro.md"       "Intro.Rmd"      "myPlot.pdf"    
-## [17] "README.html"    "README.md"      "README.Rmd"     "rLessons.Rproj"
-## [21] "uriBootcamp"
-```
-
-```r
 # or
 list.files()
-```
-
-```
-##  [1] "avgX.txt"       "data-types.png" "Data.html"      "Data.md"       
-##  [5] "Data.Rmd"       "DataViz.html"   "DataViz.md"     "DataViz.Rmd"   
-##  [9] "figure"         "Functions.html" "Functions.md"   "Functions.Rmd" 
-## [13] "Intro.html"     "Intro.md"       "Intro.Rmd"      "myPlot.pdf"    
-## [17] "README.html"    "README.md"      "README.Rmd"     "rLessons.Rproj"
-## [21] "uriBootcamp"
 ```
 
 
@@ -183,18 +139,7 @@ these objects with commands:
 
 ```r
 objects()
-```
-
-```
-## [1] "x"  "y"  "yo"
-```
-
-```r
 ls()
-```
-
-```
-## [1] "x"  "y"  "yo"
 ```
 
 
@@ -283,10 +228,6 @@ You can explicitly check your working directory with:
 getwd()
 ```
 
-```
-## [1] "D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons"
-```
-
 
 
 ```r
@@ -318,13 +259,6 @@ Let's make one to use for the rest of this workshop. To do this you can use the 
 ```r
 # Check you present working directory
 getwd()
-```
-
-```
-## [1] "D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons"
-```
-
-```r
 
 # Now lets use system()
 system("mkdir ./uriBootcamp")
@@ -332,10 +266,6 @@ system("mkdir ./uriBootcamp")
 # Now, in R move to your new directory
 setwd("/uriBootCamp")
 getwd()
-```
-
-```
-## [1] "D:/uriBootCamp"
 ```
 
 
@@ -351,10 +281,6 @@ Now double check that the "home" directory for your project is the working direc
 getwd()
 ```
 
-```
-## [1] "D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons"
-```
-
 
 Let's enter a few commands in the Console, as if we are just beginning an analytical project:
 
@@ -366,27 +292,10 @@ sigSq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sigSq))
 (avgX <- mean(x))
-```
-
-```
-## [1] 0.4786
-```
-
-```r
 write(avgX, "avgX.txt")
 plot(x, y, xlab = "myX", ylab = "myY", main = "My First Plot")
 abline(a, b, col = "purple")
-```
-
-![plot of chunk unnamed-chunk-16](figure/unnamed-chunk-16.png) 
-
-```r
 dev.print(pdf, "myPlot.pdf")
-```
-
-```
-## pdf 
-##   2
 ```
 
 
@@ -434,10 +343,6 @@ R is an extensible system and many people share useful code they have developed 
 install.packages("ggplo2", dependencies = TRUE)
 ```
 
-```
-## Error: trying to use CRAN without setting a mirror
-```
-
 We will use this package tomorrow, so go ahead and install it!
 
 Another package we won't have time to cover in this bootcamp [`knitr`](http://yihui.name/knitr/), which facilitates the creation of dynamic reports. You can install it in the same way.
@@ -482,26 +387,8 @@ At some point you may want to stop using R (never!) To do so, type in `quit()` o
 ```r
 x <- 1:10
 class(x)
-```
-
-```
-## [1] "integer"
-```
-
-```r
 mode(x)
-```
-
-```
-## [1] "numeric"
-```
-
-```r
 str(x)
-```
-
-```
-##  int [1:10] 1 2 3 4 5 6 7 8 9 10
 ```
 
 
@@ -538,39 +425,10 @@ to install:
 ```r
 library("devtools")
 install_github("Rdocumentation", "jonathancornelissen")
-```
-
-```
-## Installing github repo Rdocumentation/master from jonathancornelissen
-## Downloading Rdocumentation.zip from https://github.com/jonathancornelissen/Rdocumentation/archive/master.zip
-## Installing package from C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8/Rdocumentation.zip
-## Installing Rdocumentation
-## "C:/PROGRA~1/R/R-30~1.2/bin/x64/R" --vanilla CMD INSTALL  \
-##   "C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8\devtools228c8f66bf3\Rdocumentation_package-master"  \
-##   --library="C:/Program Files/R/R-3.0.2/library" --install-tests
-```
-
-```r
 library("Rdocumentation")
-```
-
-```
-## 
-## Attaching package: 'Rdocumentation'
-## 
-## The following objects are masked from 'package:utils':
-## 
-##     ?, help
-```
-
-```r
 # then all ?function searches go through the web If you do load this package
 # and want to remove it because of lack of internet, use
 detach("Rdocumentation")
-```
-
-```
-## Error: invalid 'name' argument
 ```
 
 
@@ -586,19 +444,6 @@ e.g.
 
 ```r
 dput(head(iris))
-```
-
-```
-## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
-##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
-##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
-##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-##     1L), .Label = c("setosa", "versicolor", "virginica"), class = "factor")), .Names = c("Sepal.Length", 
-## "Sepal.Width", "Petal.Length", "Petal.Width", "Species"), row.names = c(NA, 
-## 6L), class = "data.frame")
-```
-
-```r
 
 structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5, 
     3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7), 
@@ -606,16 +451,6 @@ structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5
         1L, 1L, 1L, 1L, 1L), .Label = c("setosa", "versicolor", "virginica"), 
         class = "factor")), .Names = c("Sepal.Length", "Sepal.Width", "Petal.Length", 
     "Petal.Width", "Species"), row.names = c(NA, 6L), class = "data.frame")
-```
-
-```
-##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
 ```
 
 
@@ -627,14 +462,6 @@ The `knitr` function `stitch()` automatically includes this information. Try it 
 
 ```r
 stitch("my_script.R")
-```
-
-```
-## Warning: cannot open file 'my_script.R': No such file or directory
-```
-
-```
-## Error: cannot open the connection
 ```
 
 

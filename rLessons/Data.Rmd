@@ -60,7 +60,7 @@ A vector can be a vector of characters, logical, integers or numeric.
 
 Create an empty vector with `vector()`
 
-```{r}
+```{r eval=FALSE}
 x <- vector()
 x
 # with a pre-defined length
@@ -76,30 +76,30 @@ The general pattern is `vector(class of object, length)`.  You can also create v
 
 Various examples:
 
-```{r}
+```{r eval=FALSE}
 x <- c(1, 2, 3)
 ```
 x is a numeric vector. These are the most common kind. They are numeric objects and are treated as double precision real numbers. To explicitly create integers, add a `L` at the end.
 
-```{r}
+```{r eval=FALSE}
 x1 <- c(1L, 2L, 3L)
 ```
 
 You can also have logical vectors. 
 
-```{r}
+```{r eval=FALSE}
 y <- c(TRUE, TRUE, FALSE, FALSE)
 ```
 
 Finally you can have character vectors:
 
-```{r}
+```{r eval=FALSE}
 z <- c("Alec", "Dan", "Rob", "Karthik")
 ```
 
 **Examine your vector**  
 
-```{r}
+```{r eval=FALSE}
 typeof(z)
 length(z)
 class(z)
@@ -110,14 +110,14 @@ Question: Do you see a property that's common to all these vectors above?
 
 **Add elements**
 
-```{r}
+```{r eval=FALSE}
 z <- c(z, "Annette")
 z
 ```
 
 More examples of vectors
 
-```{r}
+```{r eval=FALSE}
 x <- c(0.5, 0.7)
 x <-c (TRUE, FALSE)
 x <- c(T,F)
@@ -128,7 +128,7 @@ x <- c(i+0i, 2+4i)
 
 You can also create vectors as sequence of numbers
 
-```{r}
+```{r eval=FALSE}
 series <- 1:10
 seq(10)
 seq(1, 10, by = 0.1)
@@ -138,7 +138,7 @@ seq(1, 10, by = 0.1)
 
 `Inf` is infinity. You can have positive or negative infinity.
 
-```{r}
+```{r eval=FALSE}
  1/0
 # [1] Inf
  1/Inf
@@ -148,7 +148,7 @@ seq(1, 10, by = 0.1)
 
 `NaN` means Not a number. it's an undefined value.
 
-```{r}
+```{r eval=FALSE}
 0/0
 NaN.
 ```
@@ -170,7 +170,7 @@ R will create a resulting vector that is the least common denominator. The coerc
 
 **Guess what the following do without running them first**
 
-```{r}
+```{r eval=FALSE}
 xx <- c(1.7, "a") 
 xx <- c(TRUE, 2) 
 xx <- c("a", TRUE) 
@@ -186,7 +186,7 @@ as.character()
 
 When you coerce an existing numeric vector with `as.numeric()`, it does nothing.
 
-```{r}
+```{r eval=FALSE}
 x <- 0:6
 as.numeric(x)
 as.logical(x) 
@@ -196,7 +196,7 @@ as.complex(x)
 
 Sometimes coercions, especially nonsensical ones won’t work.
 
-```{r}
+```{r eval=FALSE}
 x <- c("a", "b", "c")
 as.numeric(x)
 as.logical(x)
@@ -204,7 +204,7 @@ as.logical(x)
 ```
 
 **Sometimes there is implicit conversion**
-```{r}
+```{r eval=FALSE}
 1 < "2"
 "1" > 2
 ```
@@ -213,7 +213,7 @@ as.logical(x)
 
 Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns. 
 
-```{r}
+```{r eval=FALSE}
 m <- matrix(nrow = 2, ncol = 2)
 m
 dim(m)
@@ -223,13 +223,13 @@ attributes(m)
 
 Matrices are constructed columnwise. 
 
-```{r}
+```{r eval=FALSE}
 m <- matrix(1:6, nrow=2, ncol =3)
 ```
 
 Other ways to construct a matrix
 
-```{r}
+```{r eval=FALSE}
 m <- 1:10
 dim(m) <- c(2,5)
 ```
@@ -239,7 +239,7 @@ This takes a vector and transform into a matrix with 2 rows and 5 columns.
 
 Another way is to bind columns or rows using `cbind()` and `rbind()`.
 
-```{r}
+```{r eval=FALSE}
 x <- 1:3
 y <- 10:12
 cbind(x,y)
@@ -258,11 +258,11 @@ List is a special vector. Each element can be a different class.
 Create lists using `list` or coerce other objects using `as.list()`
 
 
-```{r}
+```{r eval=FALSE}
 x <- list(1, "a", TRUE, 1+4i)
 ```
 
-```{r}
+```{r eval=FALSE}
 x <- 1:10
 x <- as.list(x)
 length(x)
@@ -271,7 +271,7 @@ length(x)
 What is the class of `x[1]`?  
 how about `x[[1]]`?
 
-```{r}
+```{r eval=FALSE}
 xlist <- list(a = "Karthik Ram", b = 1:10, data = head(iris))
 ```
 
@@ -280,7 +280,7 @@ what about its structure?
 
 List can contain as many lists nested inside.
 
-```{r}
+```{r eval=FALSE}
 temp <- list(list(list(list())))
 temp
 is.recursive(temp)
@@ -316,7 +316,7 @@ Which is male? 1 or 2? You wouldn't be able to tell with just integer data. Fact
 
 Factors can be created with `factor()`. Input is a character vector.
 
-```{r}
+```{r eval=FALSE}
 x <- factor(c("yes", "no", "no", "yes", "yes"))
 x
 ```
@@ -328,7 +328,7 @@ x
 In modeling functions, importnat to know whta baseline levels is.
 This is the first factor but by default the ordering is determined by alphabetical order of words entered. You can change this by speciying the levels.
 
-```{r}
+```{r eval=FALSE}
 x <- factor(c("yes", "no", "yes"), levels = c("yes", "no"))
 ```
 
@@ -356,7 +356,7 @@ rownames are usually 1..n.
 
 **Combining data frames**
 
-```{r}
+```{r eval=FALSE}
 df <- data.frame(id = letters[1:10], x = 1:10, y = rnorm(10))
 df
 ```
@@ -390,7 +390,7 @@ See that it is actually a special list:
 
 Other R objects can also have names not just true for data.frames. Adding names is helpful since it's useful for readable code and self describing objects.
 
-```{r}
+```{r eval=FALSE}
 x <- 1:3
 names(x) <- c("karthik", "ram", "rocks")
 x
@@ -398,7 +398,7 @@ x
 
 Lists can also have names.
 
-```{r}
+```{r eval=FALSE}
 x <- as.list(1:10)
 names(x) <- letters[seq(x)]
 x
@@ -406,7 +406,7 @@ x
 
 Finally matrices can have names and these are called `dimnames`
 
-```{r}
+```{r eval=FALSE}
 m <- matrix(1:4, nrow = 2)
 dimnames(m) <- list(c("a", "b"), c("c", "d"))
 # first element = rownames
@@ -430,13 +430,13 @@ NA values have a class. So you can have both an integer NA and a missing charact
 
 Nan is also NA. But not the other way around.
 
-```{r}
+```{r eval=FALSE}
 x <- c(1,2, NA, 4, 5)
 is.na(x)  #returns logical. shows third
 is.nan(x) #none are NaN.
 ```
 
-```{r}
+```{r eval=FALSE}
 x <- c(1,2, NA, NaN, 4, 5)
 is.na(x)  #shows 2 TRUE.
 is.nan(x) #shows 1 TRUE
@@ -455,7 +455,7 @@ is.nan(x) #shows 1 TRUE
 
 ### Inputting data
 
-```{r}
+```{r eval=FALSE}
 x <- scan("data_file.txt") #Example Data created by Jeff Hollister
 # add a separator
 x <- scan("messy_data.txt", what=" ", sep = "\n") #Example Data created by Karthik Ram
@@ -467,7 +467,7 @@ class(x)
 ```
 Reading single lines (e.g. user input)
 
-```{r}
+```{r eval=FALSE}
 variable <- readline()
 class(variable)
 # or provide more information
@@ -478,7 +478,7 @@ variable <- readline("Enter number of simulations: ")
 ### Reading files  
 Most plain text files can be read with `read.table` or variants thereof (such as `read.csv`).
 
-```{r}
+```{r eval=FALSE}
 df <- read.table("data.dat", header = TRUE) #Example Data created by Jeff Hollister
 #Note class of df
 class(df)
@@ -486,7 +486,7 @@ class(df)
 
 or using `readLines`
 
-```{r}
+```{r eval=FALSE}
 dt <- readLines("messy_data.txt")
 ```
 
@@ -501,7 +501,7 @@ my_data <- read.csv(url, header = TRUE)
 
 One can list files from any local source as well.  This is review from the first R lesson, but handy to repeat here.
 
-```{r}
+```{r eval=FALSE}
 list.files()
 file.info()
 dir()
@@ -523,7 +523,7 @@ What commands did you use?
 
 ### Short term storage
 
-```{r}
+```{r eval=FALSE}
 saveRDS(iris, file = "tgac_iris.rds")
 iris_data <- readRDS("tgac_iris.rds")
 ```
@@ -531,20 +531,20 @@ This is great for short term storage. All factors and other modfications to the 
 
 ### Long-term storage
 
-```{r}
+```{r eval=FALSE}
 write.csv(iris, file = "tgac_iris.csv", row.names = FALSE)
 ```
 
 ### Easy to store compressed files to save space:
 
-```{r}
+```{r eval=FALSE}
 write.csv(diamonds, file = bzfile("diamonds.csv.bz2"),
   row.names = FALSE)
 ```
 
 ### Reading is even easier:
 
-```{r}
+```{r eval=FALSE}
 diamonds5 <- read.csv("diamonds.csv.bz2")
 ```
 
@@ -560,7 +560,7 @@ This is a bit more involved, but wanted to show this simply as an example of wha
 system("rm diamonds.sqlite")
 ```
 
-```{r}
+```{r eval=FALSE}
 # If not already installed
 # install.packages("RSQLite") 
 library(RSQLite)
@@ -605,7 +605,7 @@ As the last section for this topic we'll cover:
 
 ### Subsetting atomic vectors
 
-```{r}
+```{r eval=FALSE}
 x <- c(5.4, 6.2, 7.1, 4.8)
 ```
 
@@ -613,7 +613,7 @@ x <- c(5.4, 6.2, 7.1, 4.8)
 
 1.) Using positive integers
 
-```{r}
+```{r eval=FALSE}
 x[1]
 x[c(3,1)]
 # We can duplicate indices
@@ -624,7 +624,7 @@ x[c(2.1, 2.9)]
 
 2.) Using negative integers
 
-```{r}
+```{r eval=FALSE}
 # skip the first element
 x[-1]
 # skip the first and the fifth
@@ -633,7 +633,7 @@ x[-c(1,5)]
 
 3.) Using logical operators
 
-```{r}
+```{r eval=FALSE}
 x[c(TRUE, TRUE, FALSE, FALSE)]
 # or based on a condition
 x[x > 3]
@@ -643,14 +643,14 @@ x[which(x >3)]
 
 4.) with nothing
 
-```{r}
+```{r eval=FALSE}
 x[]
 # useful when dealing with 2 or higher dimensional objects
 ```
 
 5.) with zero
 
-```{r}
+```{r eval=FALSE}
 x[0]
 # helpful for generating test data or creating empty objects
 ```
@@ -658,7 +658,7 @@ x[0]
 
 6.) Referencing objects by their names
 
-```{r}
+```{r eval=FALSE}
 y <- setNames(x, letters[1:4])
 
 y[c("d", "c", "a")]
@@ -677,7 +677,7 @@ z[c("a", "d")]
 
 Subsetting a list works in exactly the same way as subsetting an atomic vector. Subsetting a list with [ will always return a list: `[[`` and `$`, as described below, let you pull out the components of the list.
 
-```{r}
+```{r eval=FALSE}
 x <- as.list(1:10)
 
 x[1:5]
@@ -687,7 +687,7 @@ x[1:5]
 
 To extract individual elements inside a list, use the `[[` operator
 
-```{r}
+```{r eval=FALSE}
 # to get element 5
 
 x[[5]]
@@ -700,7 +700,7 @@ another_variable <- x[[5]]
 
 Or using their names
 
-```{r}
+```{r eval=FALSE}
 names(x) <- letters[1:5]
 
 x$a
@@ -709,7 +709,7 @@ x[["a"]]
 
 ### Subsetting matrices
 
-```{r}
+```{r eval=FALSE}
 a <- matrix(1:9, nrow = 3)
 colnames(a) <- c("A", "B", "C")
 a[1:2, ]
@@ -719,7 +719,7 @@ a[0, -2]
 
 ### Subsetting data frames
 
-```{r}
+```{r eval=FALSE}
 df <- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
 df[df$x == 2, ]
 df[c(1, 3), ]
@@ -742,7 +742,7 @@ df[, "x"]
 ### Combining data frames
 We have already seen some ways to combine vectors together and create `data.frames` using `rbind` to add rows and `cbind` to combine columns.  You can accomplish in additional ways as well
 
-```{r}
+```{r eval=FALSE}
 # Review of creating  data frame with rbind() and cbind()
 x<-c(1,2,3,4,5)
 y<-c(5,6,7,8,9)
@@ -759,7 +759,7 @@ df
 
 These methods work well if your vectors are of the same length, but that is not often the case.  A very common situation is two data frames that share an ID value and you need to merge these together.  In other words, a join.  That cna be accomplished with `merge`.
 
-```{r}
+```{r eval=FALSE}
 #create test data.frame 1
 df1<-data.frame(id=c(1:10),data1=seq(1,20,2),data2=jitter(seq(1,20,2),10))
 
@@ -795,7 +795,7 @@ sapply
 
 ### apply
 
-```{r}
+```{r eval=FALSE}
 m <- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
 # 1 is the row index
 # 2 is the column index
@@ -807,7 +807,7 @@ apply(m, 2, mean)
 
 ### by
 
-```{r}
+```{r eval=FALSE}
 head(iris)
 by(iris[, 1:2], iris[,"Species"], summary)
 by(iris[, 1:2], iris[,"Species"], sum)
@@ -817,7 +817,7 @@ by(iris[, 1:2], iris[,"Species"], sum)
 ### tapply
 Two examples
 
-```{r}
+```{r eval=FALSE}
 df <- data.frame(names = sample(c("A","B","C"), 10, rep = T), length = rnorm(10))
 tapply(df$length, df$names, mean)
 
@@ -830,7 +830,7 @@ tapply(iris$Petal.Length, iris$Species, mean)
 What it does: Returns a list of same length as the input. 
 Each element of the output is a result of applying a function to the corresponding element.
 
-```{r}
+```{r eval=FALSE}
 my_list <- list(a = 1:10, b = 2:20)
 lapply(my_list, mean)
 ```
@@ -842,7 +842,7 @@ sapply is a more user friendly version of `lapply` and will return a list of mat
 
 Let's work with the same list we just created.
 
-```{r}
+```{r eval=FALSE}
 my_list
 x <- sapply(my_list, mean)
 class(x)
@@ -852,7 +852,7 @@ class(x)
 
 An extremely useful function to generate datasets for simulation purposes. 
 
-```{r}
+```{r eval=FALSE}
 replicate(10, rnorm(10))
 replicate(10, rnorm(10), simplify = TRUE)
 # The final arguments turns the result into a vector or matrix if possible.
@@ -863,7 +863,7 @@ Its more or less a multivariate version of `sapply`. It applies a function to al
 
 example:
 
-```{r}
+```{r eval=FALSE}
 list_1 <- list(a = c(1:10), b = c(11:20))
 list_2 <- list(c = c(21:30), d = c(31:40))
 mapply(sum, list_1$a, list_1$b, list_2$c, list_2$d)

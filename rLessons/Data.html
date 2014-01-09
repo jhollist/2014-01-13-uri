@@ -269,42 +269,14 @@ A vector can be a vector of characters, logical, integers or numeric.</p>
 
 <pre><code class="r">x &lt;- vector()
 x
-</code></pre>
-
-<pre><code>## logical(0)
-</code></pre>
-
-<pre><code class="r"># with a pre-defined length
+# with a pre-defined length
 x &lt;- vector(length = 10)
 x
-</code></pre>
-
-<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
-</code></pre>
-
-<pre><code class="r"># with a length and type
+# with a length and type
 vector(&quot;character&quot;, length = 10)
-</code></pre>
-
-<pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;
-</code></pre>
-
-<pre><code class="r">vector(&quot;numeric&quot;, length = 10)
-</code></pre>
-
-<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0
-</code></pre>
-
-<pre><code class="r">vector(&quot;integer&quot;, length = 10)
-</code></pre>
-
-<pre><code>##  [1] 0 0 0 0 0 0 0 0 0 0
-</code></pre>
-
-<pre><code class="r">vector(&quot;logical&quot;, length = 10)
-</code></pre>
-
-<pre><code>##  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+vector(&quot;numeric&quot;, length = 10)
+vector(&quot;integer&quot;, length = 10)
+vector(&quot;logical&quot;, length = 10)
 </code></pre>
 
 <p>The general pattern is <code>vector(class of object, length)</code>.  You can also create vectors by concactenating them using the <code>c()</code> function.</p>
@@ -332,27 +304,9 @@ vector(&quot;character&quot;, length = 10)
 <p><strong>Examine your vector</strong>  </p>
 
 <pre><code class="r">typeof(z)
-</code></pre>
-
-<pre><code>## [1] &quot;character&quot;
-</code></pre>
-
-<pre><code class="r">length(z)
-</code></pre>
-
-<pre><code>## [1] 4
-</code></pre>
-
-<pre><code class="r">class(z)
-</code></pre>
-
-<pre><code>## [1] &quot;character&quot;
-</code></pre>
-
-<pre><code class="r">str(z)
-</code></pre>
-
-<pre><code>##  chr [1:4] &quot;Alec&quot; &quot;Dan&quot; &quot;Rob&quot; &quot;Karthik&quot;
+length(z)
+class(z)
+str(z)
 </code></pre>
 
 <p>Question: Do you see a property that&#39;s common to all these vectors above?</p>
@@ -361,9 +315,6 @@ vector(&quot;character&quot;, length = 10)
 
 <pre><code class="r">z &lt;- c(z, &quot;Annette&quot;)
 z
-</code></pre>
-
-<pre><code>## [1] &quot;Alec&quot;    &quot;Dan&quot;     &quot;Rob&quot;     &quot;Karthik&quot; &quot;Annette&quot;
 </code></pre>
 
 <p>More examples of vectors</p>
@@ -376,28 +327,11 @@ x &lt;- 9:100
 x &lt;- c(i + 0, 2 + 4)
 </code></pre>
 
-<pre><code>## Error: object &#39;i&#39; not found
-</code></pre>
-
 <p>You can also create vectors as sequence of numbers</p>
 
 <pre><code class="r">series &lt;- 1:10
 seq(10)
-</code></pre>
-
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
-</code></pre>
-
-<pre><code class="r">seq(1, 10, by = 0.1)
-</code></pre>
-
-<pre><code>##  [1]  1.0  1.1  1.2  1.3  1.4  1.5  1.6  1.7  1.8  1.9  2.0  2.1  2.2  2.3
-## [15]  2.4  2.5  2.6  2.7  2.8  2.9  3.0  3.1  3.2  3.3  3.4  3.5  3.6  3.7
-## [29]  3.8  3.9  4.0  4.1  4.2  4.3  4.4  4.5  4.6  4.7  4.8  4.9  5.0  5.1
-## [43]  5.2  5.3  5.4  5.5  5.6  5.7  5.8  5.9  6.0  6.1  6.2  6.3  6.4  6.5
-## [57]  6.6  6.7  6.8  6.9  7.0  7.1  7.2  7.3  7.4  7.5  7.6  7.7  7.8  7.9
-## [71]  8.0  8.1  8.2  8.3  8.4  8.5  8.6  8.7  8.8  8.9  9.0  9.1  9.2  9.3
-## [85]  9.4  9.5  9.6  9.7  9.8  9.9 10.0
+seq(1, 10, by = 0.1)
 </code></pre>
 
 <p><strong>Other objects</strong></p>
@@ -405,33 +339,15 @@ seq(10)
 <p><code>Inf</code> is infinity. You can have positive or negative infinity.</p>
 
 <pre><code class="r">1/0
-</code></pre>
-
-<pre><code>## [1] Inf
-</code></pre>
-
-<pre><code class="r"># [1] Inf
+# [1] Inf
 1/Inf
-</code></pre>
-
-<pre><code>## [1] 0
-</code></pre>
-
-<pre><code class="r"># [1] 0
+# [1] 0
 </code></pre>
 
 <p><code>NaN</code> means Not a number. it&#39;s an undefined value.</p>
 
 <pre><code class="r">0/0
-</code></pre>
-
-<pre><code>## [1] NaN
-</code></pre>
-
-<pre><code class="r">NaN.
-</code></pre>
-
-<pre><code>## Error: object &#39;NaN.&#39; not found
+NaN.
 </code></pre>
 
 <p>Each object has an attribute. Attribues can be part of an object of R. These include </p>
@@ -467,62 +383,23 @@ as.character()
 
 <pre><code class="r">x &lt;- 0:6
 as.numeric(x)
-</code></pre>
-
-<pre><code>## [1] 0 1 2 3 4 5 6
-</code></pre>
-
-<pre><code class="r">as.logical(x)
-</code></pre>
-
-<pre><code>## [1] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
-</code></pre>
-
-<pre><code class="r">as.character(x)
-</code></pre>
-
-<pre><code>## [1] &quot;0&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; &quot;6&quot;
-</code></pre>
-
-<pre><code class="r">as.complex(x)
-</code></pre>
-
-<pre><code>## [1] 0+0i 1+0i 2+0i 3+0i 4+0i 5+0i 6+0i
+as.logical(x)
+as.character(x)
+as.complex(x)
 </code></pre>
 
 <p>Sometimes coercions, especially nonsensical ones wont work.</p>
 
 <pre><code class="r">x &lt;- c(&quot;a&quot;, &quot;b&quot;, &quot;c&quot;)
 as.numeric(x)
-</code></pre>
-
-<pre><code>## Warning: NAs introduced by coercion
-</code></pre>
-
-<pre><code>## [1] NA NA NA
-</code></pre>
-
-<pre><code class="r">as.logical(x)
-</code></pre>
-
-<pre><code>## [1] NA NA NA
-</code></pre>
-
-<pre><code class="r"># both don&#39;t work
+as.logical(x)
+# both don&#39;t work
 </code></pre>
 
 <p><strong>Sometimes there is implicit conversion</strong></p>
 
 <pre><code class="r">1 &lt; &quot;2&quot;
-</code></pre>
-
-<pre><code>## [1] TRUE
-</code></pre>
-
-<pre><code class="r">&quot;1&quot; &gt; 2
-</code></pre>
-
-<pre><code>## [1] FALSE
+&quot;1&quot; &gt; 2
 </code></pre>
 
 <h3>Matrix</h3>
@@ -531,25 +408,9 @@ as.numeric(x)
 
 <pre><code class="r">m &lt;- matrix(nrow = 2, ncol = 2)
 m
-</code></pre>
-
-<pre><code>##      [,1] [,2]
-## [1,]   NA   NA
-## [2,]   NA   NA
-</code></pre>
-
-<pre><code class="r">dim(m)
-</code></pre>
-
-<pre><code>## [1] 2 2
-</code></pre>
-
-<pre><code class="r"># same as
+dim(m)
+# same as
 attributes(m)
-</code></pre>
-
-<pre><code>## $dim
-## [1] 2 2
 </code></pre>
 
 <p>Matrices are constructed columnwise. </p>
@@ -570,21 +431,8 @@ dim(m) &lt;- c(2, 5)
 <pre><code class="r">x &lt;- 1:3
 y &lt;- 10:12
 cbind(x, y)
-</code></pre>
-
-<pre><code>##      x  y
-## [1,] 1 10
-## [2,] 2 11
-## [3,] 3 12
-</code></pre>
-
-<pre><code class="r"># or
+# or
 rbind(x, y)
-</code></pre>
-
-<pre><code>##   [,1] [,2] [,3]
-## x    1    2    3
-## y   10   11   12
 </code></pre>
 
 <hr/>
@@ -605,9 +453,6 @@ x &lt;- as.list(x)
 length(x)
 </code></pre>
 
-<pre><code>## [1] 10
-</code></pre>
-
 <p>What is the class of <code>x[1]</code>?<br/>
 how about <code>x[[1]]</code>?</p>
 
@@ -621,18 +466,7 @@ what about its structure?</p>
 
 <pre><code class="r">temp &lt;- list(list(list(list())))
 temp
-</code></pre>
-
-<pre><code>## [[1]]
-## [[1]][[1]]
-## [[1]][[1]][[1]]
-## list()
-</code></pre>
-
-<pre><code class="r">is.recursive(temp)
-</code></pre>
-
-<pre><code>## [1] TRUE
+is.recursive(temp)
 </code></pre>
 
 <p>Lists are extremely useful inside functions. You can &ldquo;staple&rdquo; together lots of different kinds of results into a single object that a function can return.</p>
@@ -665,10 +499,6 @@ temp
 
 <pre><code class="r">x &lt;- factor(c(&quot;yes&quot;, &quot;no&quot;, &quot;no&quot;, &quot;yes&quot;, &quot;yes&quot;))
 x
-</code></pre>
-
-<pre><code>## [1] yes no  no  yes yes
-## Levels: no yes
 </code></pre>
 
 <p><code>table(x)</code> will return a frequency table.</p>
@@ -707,19 +537,6 @@ rownames are usually 1..n.</p>
 df
 </code></pre>
 
-<pre><code>##    id  x        y
-## 1   a  1  0.17806
-## 2   b  2 -0.18527
-## 3   c  3  0.17601
-## 4   d  4  0.04711
-## 5   e  5 -0.43921
-## 6   f  6 -1.17539
-## 7   g  7  0.16760
-## 8   h  8 -1.48294
-## 9   i  9  0.71051
-## 10  j 10  1.05606
-</code></pre>
-
 <p><code>cbind(df, data.frame(z = 4))</code></p>
 
 <p>When you combine column wise, only row numbers need to match. If you are adding a vector, it will get repeated.</p>
@@ -756,46 +573,11 @@ names(x) &lt;- c(&quot;karthik&quot;, &quot;ram&quot;, &quot;rocks&quot;)
 x
 </code></pre>
 
-<pre><code>## karthik     ram   rocks 
-##       1       2       3
-</code></pre>
-
 <p>Lists can also have names.</p>
 
 <pre><code class="r">x &lt;- as.list(1:10)
 names(x) &lt;- letters[seq(x)]
 x
-</code></pre>
-
-<pre><code>## $a
-## [1] 1
-## 
-## $b
-## [1] 2
-## 
-## $c
-## [1] 3
-## 
-## $d
-## [1] 4
-## 
-## $e
-## [1] 5
-## 
-## $f
-## [1] 6
-## 
-## $g
-## [1] 7
-## 
-## $h
-## [1] 8
-## 
-## $i
-## [1] 9
-## 
-## $j
-## [1] 10
 </code></pre>
 
 <p>Finally matrices can have names and these are called <code>dimnames</code></p>
@@ -823,28 +605,12 @@ is.nan()
 
 <pre><code class="r">x &lt;- c(1, 2, NA, 4, 5)
 is.na(x)  #returns logical. shows third
-</code></pre>
-
-<pre><code>## [1] FALSE FALSE  TRUE FALSE FALSE
-</code></pre>
-
-<pre><code class="r">is.nan(x)  #none are NaN.
-</code></pre>
-
-<pre><code>## [1] FALSE FALSE FALSE FALSE FALSE
+is.nan(x)  #none are NaN.
 </code></pre>
 
 <pre><code class="r">x &lt;- c(1, 2, NA, NaN, 4, 5)
 is.na(x)  #shows 2 TRUE.
-</code></pre>
-
-<pre><code>## [1] FALSE FALSE  TRUE  TRUE FALSE FALSE
-</code></pre>
-
-<pre><code class="r">is.nan(x)  #shows 1 TRUE
-</code></pre>
-
-<pre><code>## [1] FALSE FALSE FALSE  TRUE FALSE FALSE
+is.nan(x)  #shows 1 TRUE
 </code></pre>
 
 <hr/>
@@ -869,25 +635,12 @@ x &lt;- scan()
 class(x)
 </code></pre>
 
-<pre><code>## [1] &quot;numeric&quot;
-</code></pre>
-
 <p>Reading single lines (e.g. user input)</p>
 
 <pre><code class="r">variable &lt;- readline()
-</code></pre>
-
-<pre><code class="r">class(variable)
-</code></pre>
-
-<pre><code>## [1] &quot;character&quot;
-</code></pre>
-
-<pre><code class="r"># or provide more information
+class(variable)
+# or provide more information
 variable &lt;- readline(&quot;Enter number of simulations: &quot;)
-</code></pre>
-
-<pre><code>## Enter number of simulations:
 </code></pre>
 
 <h3>Reading files</h3>
@@ -899,15 +652,9 @@ variable &lt;- readline(&quot;Enter number of simulations: &quot;)
 class(df)
 </code></pre>
 
-<pre><code>## [1] &quot;data.frame&quot;
-</code></pre>
-
 <p>or using <code>readLines</code></p>
 
 <pre><code class="r">dt &lt;- readLines(&quot;messy_data.txt&quot;)
-</code></pre>
-
-<pre><code>## Warning: incomplete final line found on &#39;messy_data.txt&#39;
 </code></pre>
 
 <h3>Files from the web</h3>
@@ -921,49 +668,11 @@ my_data &lt;- read.csv(url, header = TRUE)
 <p>One can list files from any local source as well.  This is review from the first R lesson, but handy to repeat here.</p>
 
 <pre><code class="r">list.files()
-</code></pre>
-
-<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
-##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
-##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
-## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
-## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
-## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
-</code></pre>
-
-<pre><code class="r">file.info()
-</code></pre>
-
-<pre><code>## Error: invalid filename argument
-</code></pre>
-
-<pre><code class="r">dir()
-</code></pre>
-
-<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
-##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
-##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
-## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
-## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
-## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
-</code></pre>
-
-<pre><code class="r">file.exists()
-</code></pre>
-
-<pre><code>## Error: invalid &#39;file&#39; argument
-</code></pre>
-
-<pre><code class="r">getwd()
-</code></pre>
-
-<pre><code>## [1] &quot;D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons&quot;
-</code></pre>
-
-<pre><code class="r">setwd()
-</code></pre>
-
-<pre><code>## Error: argument &quot;dir&quot; is missing, with no default
+file.info()
+dir()
+file.exists()
+getwd()
+setwd()
 </code></pre>
 
 <hr/>
@@ -1009,42 +718,13 @@ iris_data &lt;- readRDS(&quot;tgac_iris.rds&quot;)
 
 <pre><code class="r"># If not already installed install.packages(&#39;RSQLite&#39;)
 library(RSQLite)
-</code></pre>
-
-<pre><code>## Loading required package: DBI
-</code></pre>
-
-<pre><code class="r">con &lt;- dbConnect(dbDriver(&quot;SQLite&quot;), dbname = &quot;diamonds.sqlite&quot;)
+con &lt;- dbConnect(dbDriver(&quot;SQLite&quot;), dbname = &quot;diamonds.sqlite&quot;)
 dbWriteTable(con, &quot;tDiamonds&quot;, diamonds5)
-</code></pre>
-
-<pre><code>## [1] TRUE
-</code></pre>
-
-<pre><code class="r">list.files(pattern = &quot;^dia&quot;)
-</code></pre>
-
-<pre><code>## [1] &quot;diamonds.csv.bz2&quot; &quot;diamonds.sqlite&quot;
-</code></pre>
-
-<pre><code class="r"># And to prove it did someting read the new table back in
+list.files(pattern = &quot;^dia&quot;)
+# And to prove it did someting read the new table back in
 sqliteDiamonds &lt;- dbReadTable(con, &quot;tDiamonds&quot;)
 head(sqliteDiamonds)
-</code></pre>
-
-<pre><code>##   carat       cut color clarity depth table price    x    y    z
-## 1  0.23     Ideal     E     SI2  61.5    55   326 3.95 3.98 2.43
-## 2  0.21   Premium     E     SI1  59.8    61   326 3.89 3.84 2.31
-## 3  0.23      Good     E     VS1  56.9    65   327 4.05 4.07 2.31
-## 4  0.29   Premium     I     VS2  62.4    58   334 4.20 4.23 2.63
-## 5  0.31      Good     J     SI2  63.3    58   335 4.34 4.35 2.75
-## 6  0.24 Very Good     J    VVS2  62.8    57   336 3.94 3.96 2.48
-</code></pre>
-
-<pre><code class="r">dbDisconnect(con)
-</code></pre>
-
-<pre><code>## [1] TRUE
+dbDisconnect(con)
 </code></pre>
 
 <h3>Data Structure and File I/O Exercise</h3>
@@ -1089,91 +769,40 @@ head(sqliteDiamonds)
 <p>1.) Using positive integers</p>
 
 <pre><code class="r">x[1]
-</code></pre>
-
-<pre><code>## [1] 5.4
-</code></pre>
-
-<pre><code class="r">x[c(3, 1)]
-</code></pre>
-
-<pre><code>## [1] 7.1 5.4
-</code></pre>
-
-<pre><code class="r"># We can duplicate indices
+x[c(3, 1)]
+# We can duplicate indices
 x[c(1, 1)]
-</code></pre>
-
-<pre><code>## [1] 5.4 5.4
-</code></pre>
-
-<pre><code class="r"># Real numbers are silently truncated to integers
+# Real numbers are silently truncated to integers
 x[c(2.1, 2.9)]
-</code></pre>
-
-<pre><code>## [1] 6.2 6.2
 </code></pre>
 
 <p>2.) Using negative integers</p>
 
 <pre><code class="r"># skip the first element
 x[-1]
-</code></pre>
-
-<pre><code>## [1] 6.2 7.1 4.8
-</code></pre>
-
-<pre><code class="r"># skip the first and the fifth
+# skip the first and the fifth
 x[-c(1, 5)]
-</code></pre>
-
-<pre><code>## [1] 6.2 7.1 4.8
 </code></pre>
 
 <p>3.) Using logical operators</p>
 
 <pre><code class="r">x[c(TRUE, TRUE, FALSE, FALSE)]
-</code></pre>
-
-<pre><code>## [1] 5.4 6.2
-</code></pre>
-
-<pre><code class="r"># or based on a condition
+# or based on a condition
 x[x &gt; 3]
-</code></pre>
-
-<pre><code>## [1] 5.4 6.2 7.1 4.8
-</code></pre>
-
-<pre><code class="r">x[which(x &gt; 3)]
-</code></pre>
-
-<pre><code>## [1] 5.4 6.2 7.1 4.8
-</code></pre>
-
-<pre><code class="r"># Also see `which.max()` and `which.min()`
+x[which(x &gt; 3)]
+# Also see `which.max()` and `which.min()`
 </code></pre>
 
 <p>4.) with nothing</p>
 
 <pre><code class="r">x[]
-</code></pre>
-
-<pre><code>## [1] 5.4 6.2 7.1 4.8
-</code></pre>
-
-<pre><code class="r"># useful when dealing with 2 or higher dimensional objects
+# useful when dealing with 2 or higher dimensional objects
 </code></pre>
 
 <p>5.) with zero</p>
 
 <pre><code class="r">x[0]
-</code></pre>
-
-<pre><code>## numeric(0)
-</code></pre>
-
-<pre><code class="r"># helpful for generating test data or creating empty objects
+# helpful for generating test data or creating empty objects
 </code></pre>
 
 <p>6.) Referencing objects by their names</p>
@@ -1181,29 +810,13 @@ x[x &gt; 3]
 <pre><code class="r">y &lt;- setNames(x, letters[1:4])
 
 y[c(&quot;d&quot;, &quot;c&quot;, &quot;a&quot;)]
-</code></pre>
 
-<pre><code>##   d   c   a 
-## 4.8 7.1 5.4
-</code></pre>
-
-<pre><code class="r">
 # We can also repeat indices
 y[c(&quot;a&quot;, &quot;a&quot;, &quot;a&quot;)]
-</code></pre>
 
-<pre><code>##   a   a   a 
-## 5.4 5.4 5.4
-</code></pre>
-
-<pre><code class="r">
 # Names are always matched exactly, not partially
 z &lt;- c(abc = 1, def = 2)
 z[c(&quot;a&quot;, &quot;d&quot;)]
-</code></pre>
-
-<pre><code>## &lt;NA&gt; &lt;NA&gt; 
-##   NA   NA
 </code></pre>
 
 <hr/>
@@ -1215,25 +828,7 @@ z[c(&quot;a&quot;, &quot;d&quot;)]
 <pre><code class="r">x &lt;- as.list(1:10)
 
 x[1:5]
-</code></pre>
 
-<pre><code>## [[1]]
-## [1] 1
-## 
-## [[2]]
-## [1] 2
-## 
-## [[3]]
-## [1] 3
-## 
-## [[4]]
-## [1] 4
-## 
-## [[5]]
-## [1] 5
-</code></pre>
-
-<pre><code class="r">
 # What class is this object?
 </code></pre>
 
@@ -1242,20 +837,11 @@ x[1:5]
 <pre><code class="r"># to get element 5
 
 x[[5]]
-</code></pre>
 
-<pre><code>## [1] 5
-</code></pre>
-
-<pre><code class="r">
 class(x[[5]])
-</code></pre>
 
-<pre><code>## [1] &quot;integer&quot;
-</code></pre>
-
-<pre><code class="r">
 another_variable &lt;- x[[5]]
+
 </code></pre>
 
 <p>Or using their names</p>
@@ -1263,15 +849,7 @@ another_variable &lt;- x[[5]]
 <pre><code class="r">names(x) &lt;- letters[1:5]
 
 x$a
-</code></pre>
-
-<pre><code>## [1] 1
-</code></pre>
-
-<pre><code class="r">x[[&quot;a&quot;]]
-</code></pre>
-
-<pre><code>## [1] 1
+x[[&quot;a&quot;]]
 </code></pre>
 
 <h3>Subsetting matrices</h3>
@@ -1279,85 +857,28 @@ x$a
 <pre><code class="r">a &lt;- matrix(1:9, nrow = 3)
 colnames(a) &lt;- c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;)
 a[1:2, ]
-</code></pre>
-
-<pre><code>##      A B C
-## [1,] 1 4 7
-## [2,] 2 5 8
-</code></pre>
-
-<pre><code class="r">a[c(T, F, T), c(&quot;B&quot;, &quot;A&quot;)]
-</code></pre>
-
-<pre><code>##      B A
-## [1,] 4 1
-## [2,] 6 3
-</code></pre>
-
-<pre><code class="r">a[0, -2]
-</code></pre>
-
-<pre><code>##      A C
+a[c(T, F, T), c(&quot;B&quot;, &quot;A&quot;)]
+a[0, -2]
 </code></pre>
 
 <h3>Subsetting data frames</h3>
 
 <pre><code class="r">df &lt;- data.frame(x = 1:3, y = 3:1, z = letters[1:3])
 df[df$x == 2, ]
-</code></pre>
+df[c(1, 3), ]
 
-<pre><code>##   x y z
-## 2 2 2 b
-</code></pre>
-
-<pre><code class="r">df[c(1, 3), ]
-</code></pre>
-
-<pre><code>##   x y z
-## 1 1 3 a
-## 3 3 1 c
-</code></pre>
-
-<pre><code class="r">
 # There are two ways to select columns from a data frame Like a list:
 df[c(&quot;x&quot;, &quot;z&quot;)]
-</code></pre>
 
-<pre><code>##   x z
-## 1 1 a
-## 2 2 b
-## 3 3 c
-</code></pre>
-
-<pre><code class="r">
 # Like a matrix
 df[, c(&quot;x&quot;, &quot;z&quot;)]
-</code></pre>
 
-<pre><code>##   x z
-## 1 1 a
-## 2 2 b
-## 3 3 c
-</code></pre>
-
-<pre><code class="r">
 
 # There&#39;s an important difference if you select a simple column: matrix
 # subsetting simplifies by default, list subsetting does not.
 df[&quot;x&quot;]
-</code></pre>
 
-<pre><code>##   x
-## 1 1
-## 2 2
-## 3 3
-</code></pre>
-
-<pre><code class="r">
 df[, &quot;x&quot;]
-</code></pre>
-
-<pre><code>## [1] 1 2 3
 </code></pre>
 
 <h3>Combining data frames</h3>
@@ -1370,37 +891,12 @@ y &lt;- c(5, 6, 7, 8, 9)
 df &lt;- rbind(x, y)
 # coerce to data.frame. rbind creates a matrix with row.names
 as.data.frame(df)
-</code></pre>
-
-<pre><code>##   V1 V2 V3 V4 V5
-## x  1  2  3  4  5
-## y  5  6  7  8  9
-</code></pre>
-
-<pre><code class="r">df &lt;- cbind(x, y)
+df &lt;- cbind(x, y)
 # coerce to data.frame. rbind creates a matrix with row.names
 as.data.frame(df)
-</code></pre>
-
-<pre><code>##   x y
-## 1 1 5
-## 2 2 6
-## 3 3 7
-## 4 4 8
-## 5 5 9
-</code></pre>
-
-<pre><code class="r"># you can also use data.frame(), similar results to cbind
+# you can also use data.frame(), similar results to cbind
 df &lt;- data.frame(x, y)
 df
-</code></pre>
-
-<pre><code>##   x y
-## 1 1 5
-## 2 2 6
-## 3 3 7
-## 4 4 8
-## 5 5 9
 </code></pre>
 
 <p>These methods work well if your vectors are of the same length, but that is not often the case.  A very common situation is two data frames that share an ID value and you need to merge these together.  In other words, a join.  That cna be accomplished with <code>merge</code>.</p>
@@ -1416,56 +912,12 @@ df2 &lt;- data.frame(id = c(1, 1, 2, 2, 3, 4, 7, 8, 8, 9, 10, 11, 12, 12, 4), da
 # now we can merge
 dfm &lt;- merge(df1, df2, by = &quot;id&quot;)
 dfm
-</code></pre>
+dim(dfm)
 
-<pre><code>##    id data1.x data2.x data1.y data2.y
-## 1   1       1  4.3670       1  -1.088
-## 2   1       1  4.3670       3   0.805
-## 3   2       3 -0.2672       5   1.809
-## 4   2       3 -0.2672       7   3.058
-## 5   3       5  8.7069       9   5.896
-## 6   4       7  5.7604      29  29.393
-## 7   4       7  5.7604      11   8.310
-## 8   7      13 14.4657      13  11.157
-## 9   8      15 15.8341      15  18.961
-## 10  8      15 15.8341      17  13.692
-## 11  9      17 13.5309      19  21.236
-## 12 10      19 15.6919      21  23.216
-</code></pre>
-
-<pre><code class="r">dim(dfm)
-</code></pre>
-
-<pre><code>## [1] 12  5
-</code></pre>
-
-<pre><code class="r">
 # often we want to make sure all of one df is preserved
 dfm &lt;- merge(df1, df2, by = &quot;id&quot;, all.x = TRUE)
 dfm
-</code></pre>
-
-<pre><code>##    id data1.x data2.x data1.y data2.y
-## 1   1       1  4.3670       1  -1.088
-## 2   1       1  4.3670       3   0.805
-## 3   2       3 -0.2672       5   1.809
-## 4   2       3 -0.2672       7   3.058
-## 5   3       5  8.7069       9   5.896
-## 6   4       7  5.7604      29  29.393
-## 7   4       7  5.7604      11   8.310
-## 8   5       9  7.7518      NA      NA
-## 9   6      11 14.5120      NA      NA
-## 10  7      13 14.4657      13  11.157
-## 11  8      15 15.8341      15  18.961
-## 12  8      15 15.8341      17  13.692
-## 13  9      17 13.5309      19  21.236
-## 14 10      19 15.6919      21  23.216
-</code></pre>
-
-<pre><code class="r">dim(dfm)
-</code></pre>
-
-<pre><code>## [1] 14  5
+dim(dfm)
 </code></pre>
 
 <h2>Apply Functions</h2>
@@ -1486,85 +938,16 @@ sapply
 <pre><code class="r">m &lt;- matrix(c(1:10, 11:20), nrow = 10, ncol = 2)
 # 1 is the row index 2 is the column index
 apply(m, 1, sum)
-</code></pre>
-
-<pre><code>##  [1] 12 14 16 18 20 22 24 26 28 30
-</code></pre>
-
-<pre><code class="r">apply(m, 2, sum)
-</code></pre>
-
-<pre><code>## [1]  55 155
-</code></pre>
-
-<pre><code class="r">apply(m, 1, mean)
-</code></pre>
-
-<pre><code>##  [1]  6  7  8  9 10 11 12 13 14 15
-</code></pre>
-
-<pre><code class="r">apply(m, 2, mean)
-</code></pre>
-
-<pre><code>## [1]  5.5 15.5
+apply(m, 2, sum)
+apply(m, 1, mean)
+apply(m, 2, mean)
 </code></pre>
 
 <h3>by</h3>
 
 <pre><code class="r">head(iris)
-</code></pre>
-
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
-</code></pre>
-
-<pre><code class="r">by(iris[, 1:2], iris[, &quot;Species&quot;], summary)
-</code></pre>
-
-<pre><code>## iris[, &quot;Species&quot;]: setosa
-##   Sepal.Length   Sepal.Width  
-##  Min.   :4.30   Min.   :2.30  
-##  1st Qu.:4.80   1st Qu.:3.20  
-##  Median :5.00   Median :3.40  
-##  Mean   :5.01   Mean   :3.43  
-##  3rd Qu.:5.20   3rd Qu.:3.67  
-##  Max.   :5.80   Max.   :4.40  
-## -------------------------------------------------------- 
-## iris[, &quot;Species&quot;]: versicolor
-##   Sepal.Length   Sepal.Width  
-##  Min.   :4.90   Min.   :2.00  
-##  1st Qu.:5.60   1st Qu.:2.52  
-##  Median :5.90   Median :2.80  
-##  Mean   :5.94   Mean   :2.77  
-##  3rd Qu.:6.30   3rd Qu.:3.00  
-##  Max.   :7.00   Max.   :3.40  
-## -------------------------------------------------------- 
-## iris[, &quot;Species&quot;]: virginica
-##   Sepal.Length   Sepal.Width  
-##  Min.   :4.90   Min.   :2.20  
-##  1st Qu.:6.22   1st Qu.:2.80  
-##  Median :6.50   Median :3.00  
-##  Mean   :6.59   Mean   :2.97  
-##  3rd Qu.:6.90   3rd Qu.:3.17  
-##  Max.   :7.90   Max.   :3.80
-</code></pre>
-
-<pre><code class="r">by(iris[, 1:2], iris[, &quot;Species&quot;], sum)
-</code></pre>
-
-<pre><code>## iris[, &quot;Species&quot;]: setosa
-## [1] 421.7
-## -------------------------------------------------------- 
-## iris[, &quot;Species&quot;]: versicolor
-## [1] 435.3
-## -------------------------------------------------------- 
-## iris[, &quot;Species&quot;]: virginica
-## [1] 478.1
+by(iris[, 1:2], iris[, &quot;Species&quot;], summary)
+by(iris[, 1:2], iris[, &quot;Species&quot;], sum)
 </code></pre>
 
 <h3>tapply</h3>
@@ -1573,19 +956,9 @@ apply(m, 1, sum)
 
 <pre><code class="r">df &lt;- data.frame(names = sample(c(&quot;A&quot;, &quot;B&quot;, &quot;C&quot;), 10, rep = T), length = rnorm(10))
 tapply(df$length, df$names, mean)
-</code></pre>
 
-<pre><code>##      A      C 
-## 0.4885 0.3941
-</code></pre>
-
-<pre><code class="r">
 # Now with a more familiar dataset
 tapply(iris$Petal.Length, iris$Species, mean)
-</code></pre>
-
-<pre><code>##     setosa versicolor  virginica 
-##      1.462      4.260      5.552
 </code></pre>
 
 <h3>lapply (and llply)</h3>
@@ -1597,13 +970,6 @@ Each element of the output is a result of applying a function to the correspondi
 lapply(my_list, mean)
 </code></pre>
 
-<pre><code>## $a
-## [1] 5.5
-## 
-## $b
-## [1] 11
-</code></pre>
-
 <h3>sapply</h3>
 
 <p>sapply is a more user friendly version of <code>lapply</code> and will return a list of matrix where appropriate.</p>
@@ -1611,20 +977,8 @@ lapply(my_list, mean)
 <p>Let&#39;s work with the same list we just created.</p>
 
 <pre><code class="r">my_list
-</code></pre>
-
-<pre><code>## $a
-##  [1]  1  2  3  4  5  6  7  8  9 10
-## 
-## $b
-##  [1]  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
-</code></pre>
-
-<pre><code class="r">x &lt;- sapply(my_list, mean)
+x &lt;- sapply(my_list, mean)
 class(x)
-</code></pre>
-
-<pre><code>## [1] &quot;numeric&quot;
 </code></pre>
 
 <h3>replicate</h3>
@@ -1632,60 +986,8 @@ class(x)
 <p>An extremely useful function to generate datasets for simulation purposes. </p>
 
 <pre><code class="r">replicate(10, rnorm(10))
-</code></pre>
-
-<pre><code>##           [,1]      [,2]    [,3]     [,4]     [,5]     [,6]    [,7]
-##  [1,]  1.66308  0.044509  1.2416  2.37673 -0.82670  0.44726  0.1814
-##  [2,]  0.29835 -0.903444  0.6392  0.02934  1.03842 -1.06205 -0.4398
-##  [3,]  2.17281 -0.453990  0.4601 -1.13494 -0.13733 -0.06475 -0.2644
-##  [4,]  1.36323  1.068193  1.0089 -0.97083  0.32675 -0.27380 -0.6187
-##  [5,] -1.07731  0.446741 -0.2572  1.32514 -0.52586  0.49821 -1.2644
-##  [6,]  0.95766  1.028948 -1.6641 -0.91528 -0.09342  0.21262  0.5120
-##  [7,] -1.44977  0.420626 -0.4329  1.72711  1.28575 -3.10033 -0.3574
-##  [8,]  0.06528  0.005283 -0.3899 -0.74244  0.21826  0.26756  0.4636
-##  [9,]  0.72390 -0.276455  0.7795 -1.16906 -2.22665  1.82559 -0.4305
-## [10,]  2.13020 -0.919585  1.4928 -0.84508 -0.55438  0.49618  1.4325
-##          [,8]    [,9]   [,10]
-##  [1,]  0.0564  1.8128 -1.1035
-##  [2,] -1.5429  0.4975  1.0418
-##  [3,] -1.6458  1.1148 -1.5454
-##  [4,]  0.2788  0.3825  2.4103
-##  [5,]  1.4706 -0.1871 -0.5678
-##  [6,]  0.3102  0.2379 -0.2963
-##  [7,]  0.5849 -1.2737 -1.4094
-##  [8,] -0.9493 -1.1133 -0.4185
-##  [9,]  1.2911 -0.6562 -0.2928
-## [10,]  1.8656 -0.3348  0.9275
-</code></pre>
-
-<pre><code class="r">replicate(10, rnorm(10), simplify = TRUE)
-</code></pre>
-
-<pre><code>##           [,1]     [,2]    [,3]    [,4]     [,5]     [,6]     [,7]
-##  [1,] -0.05062  0.76605  0.4129 -1.3031 -0.63892  0.06684  1.09651
-##  [2,] -0.41684 -1.30624 -0.1016  0.8928 -0.07010  0.35660 -0.16446
-##  [3,] -2.39829  1.43396  0.7677  0.8303 -0.33554 -1.39478 -0.65685
-##  [4,]  0.27723  0.27061 -0.2465  0.3409  0.08316 -0.80134 -0.21248
-##  [5,] -1.02388 -0.42223  0.4120  0.9072  0.08739 -0.26016 -0.17814
-##  [6,] -0.78666 -0.40045 -0.1169 -0.3124 -0.22550  0.20390  0.07874
-##  [7,] -0.80293 -1.31422  1.1578  0.8897 -1.15955 -1.13035 -1.25889
-##  [8,] -1.49918 -1.75651 -1.6756  0.5012 -1.76292  0.75512  0.72316
-##  [9,] -0.74667 -0.06388  0.8673  0.9095  0.88111 -1.35123 -0.11749
-## [10,] -1.74170 -1.07805  0.8819  2.3620  2.06898  0.40648  0.67020
-##           [,8]     [,9]   [,10]
-##  [1,]  0.35951  0.86754  1.0343
-##  [2,]  0.82352  0.60903  0.5952
-##  [3,] -1.78886  0.74012 -0.1712
-##  [4,] -0.37177  0.49831  1.2945
-##  [5,] -0.50439 -0.02069 -1.5190
-##  [6,]  3.20718  0.38943 -0.1524
-##  [7,]  0.08045  0.45820 -0.7806
-##  [8,]  0.19905  0.53624 -2.3006
-##  [9,]  1.10417 -1.46239 -0.6767
-## [10,] -3.74021  0.93200 -0.1351
-</code></pre>
-
-<pre><code class="r"># The final arguments turns the result into a vector or matrix if possible.
+replicate(10, rnorm(10), simplify = TRUE)
+# The final arguments turns the result into a vector or matrix if possible.
 </code></pre>
 
 <h3>mapply</h3>
@@ -1697,9 +999,6 @@ class(x)
 <pre><code class="r">list_1 &lt;- list(a = c(1:10), b = c(11:20))
 list_2 &lt;- list(c = c(21:30), d = c(31:40))
 mapply(sum, list_1$a, list_1$b, list_2$c, list_2$d)
-</code></pre>
-
-<pre><code>##  [1]  64  68  72  76  80  84  88  92  96 100
 </code></pre>
 
 <h3>plyr and reshape</h3>

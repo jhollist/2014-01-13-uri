@@ -46,14 +46,14 @@ If a function has 10 arguments, you don't have to specify all of them.
 
 R function arguments can be matched positionally or by name.
 
-```{r}
+```{r eval=FALSE}
 args(sd)
 ```
 Takes x, a vector of data. 
 Default is `na.rm` is false.
 So you don't have to do anything.
 
-```{r}
+```{r eval=FALSE}
 dat <- rnorm(1000)
 sd(dat) # Matched positionally
 sd(x = dat) # matched by name
@@ -66,13 +66,13 @@ Even though it's allowed, don't switch positions on names.
 
 See 
 
-```{r}
+```{r eval=FALSE}
 args(lm)
 ```
 
 It's good to name arguments when you have a long list to work through. Arguments can also be partially matched.
 
-```{r}
+```{r eval=FALSE}
 add <- function(x = 1, y =2) {
 x + y
 }
@@ -80,7 +80,7 @@ x + y
 
 R does what's known as lazy evaluation. Arguments to functions are lazily evaluated. Common model in many languages. Only evaluated as they are needed.
 
-```{r}
+```{r eval=FALSE}
 add <- function(a, b) {
 a^2
 }
@@ -91,7 +91,7 @@ The function call never uses b. So calling `f(10)` will not produce an error bec
 Another example of lazy evaluation
 
 
-```{r}
+```{r eval=FALSE}
 add <- function(a, b) {
 print(a^2)
 print(b^2)
@@ -122,7 +122,7 @@ If you have to repeat the same few lines of code more than once, then you really
 * The `environment()`` which determines how variables referred to inside the function are found.
 * `args()` to list arguments.
 
-```{r}
+```{r eval=FALSE}
 f <- function(x) x
 f
 
@@ -152,14 +152,14 @@ Same rule applies for nested functions.
 
 A first useful function.
 
-```{r}
+```{r eval=FALSE}
 first <- function(x, y) {
     z <- x + y
     return(z)
 }
 ```
 
-```{r}
+```{r eval=FALSE}
 add <- function(a, b) {
   return (a + b)
 }
@@ -169,7 +169,7 @@ add(c(1,2,3,4),1)
 
 ## What does this function return?
 
-```{r}
+```{r eval=FALSE}
 x <- 5
 f <- function() {
 y <- 10
@@ -179,7 +179,7 @@ f()
 
 ## What does this function return?
 
-```{r}
+```{r eval=FALSE}
 x <- 5
 g <- function() {
   x <- 20
@@ -191,7 +191,7 @@ g()
 
 ## What does this function return??
 
-```{r}
+```{r eval=FALSE}
 x <- 5
 h <- function() {
   y <- 10
@@ -207,7 +207,7 @@ h()
 
 ## Functions with pre defined values
 
-```{r}
+```{r eval=FALSE}
 temp <- function(a = 1, b = 2) {
     return(a + b)
 }
@@ -254,7 +254,7 @@ if(condition) {
 ```
 e.g. 
 
-```{r}
+```{r eval=FALSE}
 x <- 1:15
 if(sample(x, 1) <= 10) {
     print("x is less than 10") 
@@ -269,7 +269,7 @@ if(sample(x, 1) <= 10) {
 
 Other valid ways of writing if/else
 
-```{r}
+```{r eval=FALSE}
 if(sample(x,1) < 10) {
     y <- 5
 } else {
@@ -277,7 +277,7 @@ if(sample(x,1) < 10) {
 }
 ```
 
-```{r}
+```{r eval=FALSE}
 y <- if(sample(x,1) < 10) {
  5
 } else {
@@ -289,13 +289,13 @@ y <- if(sample(x,1) < 10) {
 
 For loops work on an iterable variable and assign successive values till the end of a sequence.
 
-```{r}
+```{r eval=FALSE}
 for(i in 1:10) {
     print(i)
 }
 ```
 
-```{r}
+```{r eval=FALSE}
 x <- c("apples", "oranges", "bananas", "strawberries")
 
 for(i in x) {
@@ -315,7 +315,7 @@ for(i in 1:4) print(x[i])
 
 Nested loops
 
-```{r}
+```{r eval=FALSE}
 m <- matrix(1:10, 2)
 for(i in seq(nrow(m))) {
     for(j in seq(ncol(m))) {
@@ -337,7 +337,7 @@ Be sure there is a way to exit out of a while loop.
 
 ## Repeat and break
 
-```{r}
+```{r eval=FALSE}
 repeat {
     # simulations; generate some value
     # have an expectation
@@ -350,7 +350,7 @@ repeat {
 
 ## Next
 
-```{r} 
+```{r eval=FALSE} 
 for(i in 1:20) {
     if(i %% 2 == 1) {
         next
@@ -372,7 +372,7 @@ These are simple to implement, can be placed anywhere in your code.
 
 For instance:
 
-```{r}
+```{r eval=FALSE}
 # Here is an example of a simple comment
 # This function, takes and argment and prints it to the screen
 x<-function(arg){
@@ -432,7 +432,7 @@ To find out more, Hadley Wickham's [Advanced R Programming](http://adv-r.had.co.
 # Function Exercise
 Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.
 
-1. Create a function (with proper documentation) that takes a vector as input and returns it's mean.
+1. Create a function (with proper documentation, but no need to inclue `@export` or `@examples`) that takes a vector as input and returns it's mean.
 
 2. Create another function (again with good documentation), that allows us to deal with `NA` values (hint: think `mean()' and `...`).
 

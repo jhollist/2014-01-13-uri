@@ -51,11 +51,6 @@ R function arguments can be matched positionally or by name.
 args(sd)
 ```
 
-```
-## function (x, na.rm = FALSE) 
-## NULL
-```
-
 Takes x, a vector of data. 
 Default is `na.rm` is false.
 So you don't have to do anything.
@@ -64,35 +59,10 @@ So you don't have to do anything.
 ```r
 dat <- rnorm(1000)
 sd(dat)  # Matched positionally
-```
-
-```
-## [1] 0.9827
-```
-
-```r
 sd(x = dat)  # matched by name
-```
-
-```
-## [1] 0.9827
-```
-
-```r
 sd(x = dat, na.rm = FALSE)
-```
-
-```
-## [1] 0.9827
-```
-
-```r
 # When naming you can switch them but not recommended
 sd(na.rm = FALSE, dat)
-```
-
-```
-## [1] 0.9827
 ```
 
 
@@ -103,13 +73,6 @@ See
 
 ```r
 args(lm)
-```
-
-```
-## function (formula, data, subset, weights, na.action, method = "qr", 
-##     model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, 
-##     contrasts = NULL, offset, ...) 
-## NULL
 ```
 
 
@@ -175,28 +138,10 @@ If you have to repeat the same few lines of code more than once, then you really
 ```r
 f <- function(x) x
 f
-```
-
-```
-## function(x) x
-```
-
-```r
 
 formals(f)
-```
-
-```
-## $x
-```
-
-```r
 
 environment(f)
-```
-
-```
-## <environment: R_GlobalEnv>
 ```
 
 
@@ -239,10 +184,6 @@ add <- function(a, b) {
 add(c(1, 2, 3, 4), 1)
 ```
 
-```
-## [1] 2 3 4 5
-```
-
 
 ## What does this function return?
 
@@ -254,11 +195,6 @@ f <- function() {
     c(x = x, y = y)
 }
 f()
-```
-
-```
-##  x  y 
-##  5 10
 ```
 
 
@@ -273,11 +209,6 @@ g <- function() {
     c(x = x, y = y)
 }
 g()
-```
-
-```
-##  x  y 
-## 20 10
 ```
 
 
@@ -295,11 +226,6 @@ h <- function() {
     i()
 }
 h()
-```
-
-```
-##  x  y  z 
-##  5 10 20
 ```
 
 
@@ -367,10 +293,6 @@ if (sample(x, 1) <= 10) {
 }
 ```
 
-```
-## [1] "x is less than 10"
-```
-
 
 **Shorthand for ifelse**
 
@@ -409,19 +331,6 @@ for (i in 1:10) {
 }
 ```
 
-```
-## [1] 1
-## [1] 2
-## [1] 3
-## [1] 4
-## [1] 5
-## [1] 6
-## [1] 7
-## [1] 8
-## [1] 9
-## [1] 10
-```
-
 
 
 ```r
@@ -430,53 +339,16 @@ x <- c("apples", "oranges", "bananas", "strawberries")
 for (i in x) {
     print(x[i])
 }
-```
-
-```
-## [1] NA
-## [1] NA
-## [1] NA
-## [1] NA
-```
-
-```r
 
 for (i in 1:4) {
     print(x[i])
 }
-```
-
-```
-## [1] "apples"
-## [1] "oranges"
-## [1] "bananas"
-## [1] "strawberries"
-```
-
-```r
 
 for (i in seq(x)) {
     print(x[i])
 }
-```
-
-```
-## [1] "apples"
-## [1] "oranges"
-## [1] "bananas"
-## [1] "strawberries"
-```
-
-```r
 
 for (i in 1:4) print(x[i])
-```
-
-```
-## [1] "apples"
-## [1] "oranges"
-## [1] "bananas"
-## [1] "strawberries"
 ```
 
 
@@ -490,19 +362,6 @@ for (i in seq(nrow(m))) {
         print(m[i, j])
     }
 }
-```
-
-```
-## [1] 1
-## [1] 3
-## [1] 5
-## [1] 7
-## [1] 9
-## [1] 2
-## [1] 4
-## [1] 6
-## [1] 8
-## [1] 10
 ```
 
 
@@ -530,10 +389,6 @@ repeat {
 }
 ```
 
-```
-## Error: object 'value' not found
-```
-
 
 ## Next
 
@@ -546,19 +401,6 @@ for (i in 1:20) {
         print(i)
     }
 }
-```
-
-```
-## [1] 2
-## [1] 4
-## [1] 6
-## [1] 8
-## [1] 10
-## [1] 12
-## [1] 14
-## [1] 16
-## [1] 18
-## [1] 20
 ```
 
 
@@ -583,10 +425,7 @@ x <- function(arg) {
 }
 
 x("Documentation is cool!")
-```
 
-```
-## [1] "Documentation is cool!"
 ```
 
 
@@ -643,7 +482,7 @@ To find out more, Hadley Wickham's [Advanced R Programming](http://adv-r.had.co.
 # Function Exercise
 Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.
 
-1. Create a function (with proper documentation) that takes a vector as input and returns it's mean.
+1. Create a function (with proper documentation, but no need to inclue `@export` or `@examples`) that takes a vector as input and returns it's mean.
 
 2. Create another function (again with good documentation), that allows us to deal with `NA` values (hint: think `mean()' and `...`).
 

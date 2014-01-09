@@ -206,9 +206,6 @@ hljs.initHighlightingOnLoad();
 x
 </code></pre>
 
-<pre><code>## [1] 12
-</code></pre>
-
 <p>All R statements where you create objects &ndash; &ldquo;assignments&rdquo; &ndash; have this
 form:</p>
 
@@ -257,9 +254,6 @@ are great.</p>
 <pre><code class="r">seq(1, 10)
 </code></pre>
 
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
-</code></pre>
-
 <p>The above also demonstrates something about how R resolves function
 arguments. You can always specify in <code>name = value</code> form. But if you
 do not, R attempts to resolve by position. So above, it is assumed
@@ -282,48 +276,19 @@ then you&#39;re tempted to immediately inspect.</p>
 y
 </code></pre>
 
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
-</code></pre>
-
 <p>This common action can be shortened by surrounding the assignment with
 parentheses, which causes assignment and &ldquo;print to screen&rdquo; to happen.</p>
 
 <pre><code class="r">(y &lt;- seq(1, 10))
 </code></pre>
 
-<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10
-</code></pre>
-
 <p>Not all functions have (or require) arguments:  </p>
 
 <pre><code class="r">date()
-</code></pre>
-
-<pre><code>## [1] &quot;Wed Jan 08 11:16:20 2014&quot;
-</code></pre>
-
-<pre><code class="r"># see list of files in your current directory
+# see list of files in your current directory
 dir()
-</code></pre>
-
-<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;Data.html&quot;      &quot;Data.md&quot;       
-##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.html&quot;   &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;   
-##  [9] &quot;figure&quot;         &quot;Functions.html&quot; &quot;Functions.md&quot;   &quot;Functions.Rmd&quot; 
-## [13] &quot;Intro.html&quot;     &quot;Intro.md&quot;       &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;    
-## [17] &quot;README.html&quot;    &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
-## [21] &quot;uriBootcamp&quot;
-</code></pre>
-
-<pre><code class="r"># or
+# or
 list.files()
-</code></pre>
-
-<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;Data.html&quot;      &quot;Data.md&quot;       
-##  [5] &quot;Data.Rmd&quot;       &quot;DataViz.html&quot;   &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;   
-##  [9] &quot;figure&quot;         &quot;Functions.html&quot; &quot;Functions.md&quot;   &quot;Functions.Rmd&quot; 
-## [13] &quot;Intro.html&quot;     &quot;Intro.md&quot;       &quot;Intro.Rmd&quot;      &quot;myPlot.pdf&quot;    
-## [17] &quot;README.html&quot;    &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
-## [21] &quot;uriBootcamp&quot;
 </code></pre>
 
 <p>Now look at your workspace &ndash; in the upper right pane. The workspace is
@@ -331,15 +296,7 @@ where user-defined objects accumulate. You can also get a listing of
 these objects with commands:</p>
 
 <pre><code class="r">objects()
-</code></pre>
-
-<pre><code>## [1] &quot;x&quot;  &quot;y&quot;  &quot;yo&quot;
-</code></pre>
-
-<pre><code class="r">ls()
-</code></pre>
-
-<pre><code>## [1] &quot;x&quot;  &quot;y&quot;  &quot;yo&quot;
+ls()
 </code></pre>
 
 <p>If you want to remove something you can do this</p>
@@ -420,9 +377,6 @@ and verify there is a file named <code>.RData</code>. You will also see a file
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons&quot;
-</code></pre>
-
 <pre><code class="r"># then you can change it with:
 setwd(&quot;~/Documents/project-name/&quot;)
 </code></pre>
@@ -447,21 +401,13 @@ setwd(&quot;~/Documents/project-name/&quot;)
 
 <pre><code class="r"># Check you present working directory
 getwd()
-</code></pre>
 
-<pre><code>## [1] &quot;D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons&quot;
-</code></pre>
-
-<pre><code class="r">
 # Now lets use system()
 system(&quot;mkdir ./uriBootcamp&quot;)
 
 # Now, in R move to your new directory
 setwd(&quot;/uriBootCamp&quot;)
 getwd()
-</code></pre>
-
-<pre><code>## [1] &quot;D:/uriBootCamp&quot;
 </code></pre>
 
 <p>The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).</p>
@@ -473,9 +419,6 @@ getwd()
 <pre><code class="r">getwd()
 </code></pre>
 
-<pre><code>## [1] &quot;D:/DATA/DataInformatics/SoftwareCarpentry/2014-01-13-uri/rLessons&quot;
-</code></pre>
-
 <p>Let&#39;s enter a few commands in the Console, as if we are just beginning an analytical project:</p>
 
 <pre><code class="r">a &lt;- 2
@@ -484,23 +427,10 @@ sigSq &lt;- 0.5
 x &lt;- runif(40)
 y &lt;- a + b * x + rnorm(40, sd = sqrt(sigSq))
 (avgX &lt;- mean(x))
-</code></pre>
-
-<pre><code>## [1] 0.4786
-</code></pre>
-
-<pre><code class="r">write(avgX, &quot;avgX.txt&quot;)
+write(avgX, &quot;avgX.txt&quot;)
 plot(x, y, xlab = &quot;myX&quot;, ylab = &quot;myY&quot;, main = &quot;My First Plot&quot;)
 abline(a, b, col = &quot;purple&quot;)
-</code></pre>
-
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAH4CAMAAACR9g9NAAAAllBMVEX9/v0AAAAAADkAAGUAOTkAOY8AZrU5AAA5ADk5AGU5OQA5OWU5OY85ZmU5ZrU5j9plAABlADllAGVlOQBlOY9lZjllZmVlj49ltf2POQCPOTmPOWWPZgCPj2WPtY+P27WP29qP2/2gIPC1ZgC1Zjm124+1/rW1/v3ajzna24/a/rXa/tra/v39tWX924/9/rX9/tr9/v2efZFZAAAAMnRSTlP/////////////////////////////////////////////////////////////////AA1QmO8AAAAJcEhZcwAACxIAAAsSAdLdfvwAAA3iSURBVHic7d2LeuLGAYbhyI6hadOCt9vU3rabYtqaNuag+7+5SoiTMIgRM6M5/N/3JFlnbc/CvoxGSAL/UJJkP4S+ARQm4EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA160zOE3r0UxqX5dFMXTx9nv172sp4/v5980f9n+sp42X1Kefc3u04mXPfzD7yvx2vky/IXvmRct+IdZG35+8ZuSK3/4v1Rq6+kfx0+/vVYfLbcbgOr3d5Y1av1Fle9qXBT1/1TYo+ZT9WNlXkwa+GqjUX3v8dOJlz/89/FLxf3X8dPHopqr84dZ8/st+Arz6X/bCV49PC7Dz7fTfwR8GlXwv04n5eLx3xX8ajzag+829aM9fEW5Gu8Wg4ub+tW4esSsp9V/2NSnUAU/m1ez+Om/FevmtZrWo93vt+DrzcDWuX5YtOG33o/vy+00324zgE+g2nTx+J/pZDufF9V2f7L7/fYaX2//6zW+OJnSzaZ+9zXAp1Vtuhr/Uv+nUqxomyX+Inzd/ES2Bc+mPq1q02qTXcM1z+p2lhfgtxO+aHbjTnbudl+z37krD59OPAH4imq023Wb782ubep3j4CteBt+93Tu+OnEyxz+rEUem2kXScEf5jlJwS8uH6LVTAmeTgJeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNOBFA1404EUDXjTgRQNeNBv4gmLOI7zF95LvgBcNeNGAFw140YAXDXjRgBcNeNGAF20w+JsHCWnQhoIvbv9ZNGTAiwa8aKzxorFX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" alt="plot of chunk unnamed-chunk-16"/> </p>
-
-<pre><code class="r">dev.print(pdf, &quot;myPlot.pdf&quot;)
-</code></pre>
-
-<pre><code>## pdf 
-##   2
+dev.print(pdf, &quot;myPlot.pdf&quot;)
 </code></pre>
 
 <p>Let&#39;s say this is a good start of an analysis and your ready to start preserving the logic and code. Visit the History tab of the upper right pane. Select these commands. Click &ldquo;To Source&rdquo;. Now you have a new pane containing a nascent R script. Click on the floppy disk to save. Give it a name ending in <code>.R</code>, I used <code>projectStartDemo.R</code> and note that, by default, it will go in the directory associated with your project.</p>
@@ -550,9 +480,6 @@ there</li>
 <pre><code class="r">install.packages(&quot;ggplo2&quot;, dependencies = TRUE)
 </code></pre>
 
-<pre><code>## Error: trying to use CRAN without setting a mirror
-</code></pre>
-
 <p>We will use this package tomorrow, so go ahead and install it!</p>
 
 <p>Another package we won&#39;t have time to cover in this bootcamp <a href="http://yihui.name/knitr/"><code>knitr</code></a>, which facilitates the creation of dynamic reports. You can install it in the same way.</p>
@@ -594,21 +521,8 @@ there</li>
 
 <pre><code class="r">x &lt;- 1:10
 class(x)
-</code></pre>
-
-<pre><code>## [1] &quot;integer&quot;
-</code></pre>
-
-<pre><code class="r">mode(x)
-</code></pre>
-
-<pre><code>## [1] &quot;numeric&quot;
-</code></pre>
-
-<pre><code class="r">str(x)
-</code></pre>
-
-<pre><code>##  int [1:10] 1 2 3 4 5 6 7 8 9 10
+mode(x)
+str(x)
 </code></pre>
 
 <hr/>
@@ -637,34 +551,10 @@ class(x)
 
 <pre><code class="r">library(&quot;devtools&quot;)
 install_github(&quot;Rdocumentation&quot;, &quot;jonathancornelissen&quot;)
-</code></pre>
-
-<pre><code>## Installing github repo Rdocumentation/master from jonathancornelissen
-## Downloading Rdocumentation.zip from https://github.com/jonathancornelissen/Rdocumentation/archive/master.zip
-## Installing package from C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8/Rdocumentation.zip
-## Installing Rdocumentation
-## &quot;C:/PROGRA~1/R/R-30~1.2/bin/x64/R&quot; --vanilla CMD INSTALL  \
-##   &quot;C:\Users\jhollist\AppData\Local\Temp\2\RtmpyOlBh8\devtools228c8f66bf3\Rdocumentation_package-master&quot;  \
-##   --library=&quot;C:/Program Files/R/R-3.0.2/library&quot; --install-tests
-</code></pre>
-
-<pre><code class="r">library(&quot;Rdocumentation&quot;)
-</code></pre>
-
-<pre><code>## 
-## Attaching package: &#39;Rdocumentation&#39;
-## 
-## The following objects are masked from &#39;package:utils&#39;:
-## 
-##     ?, help
-</code></pre>
-
-<pre><code class="r"># then all ?function searches go through the web If you do load this package
+library(&quot;Rdocumentation&quot;)
+# then all ?function searches go through the web If you do load this package
 # and want to remove it because of lack of internet, use
 detach(&quot;Rdocumentation&quot;)
-</code></pre>
-
-<pre><code>## Error: invalid &#39;name&#39; argument
 </code></pre>
 
 <h2>Seeking help from peers</h2>
@@ -678,33 +568,13 @@ detach(&quot;Rdocumentation&quot;)
 <p>e.g.</p>
 
 <pre><code class="r">dput(head(iris))
-</code></pre>
 
-<pre><code>## structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), 
-##     Sepal.Width = c(3.5, 3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 
-##     1.4, 1.3, 1.5, 1.4, 1.7), Petal.Width = c(0.2, 0.2, 0.2, 
-##     0.2, 0.2, 0.4), Species = structure(c(1L, 1L, 1L, 1L, 1L, 
-##     1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, 
-## &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 
-## 6L), class = &quot;data.frame&quot;)
-</code></pre>
-
-<pre><code class="r">
 structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5, 
     3, 3.2, 3.1, 3.6, 3.9), Petal.Length = c(1.4, 1.4, 1.3, 1.5, 1.4, 1.7), 
     Petal.Width = c(0.2, 0.2, 0.2, 0.2, 0.2, 0.4), Species = structure(c(1L, 
         1L, 1L, 1L, 1L, 1L), .Label = c(&quot;setosa&quot;, &quot;versicolor&quot;, &quot;virginica&quot;), 
         class = &quot;factor&quot;)), .Names = c(&quot;Sepal.Length&quot;, &quot;Sepal.Width&quot;, &quot;Petal.Length&quot;, 
     &quot;Petal.Width&quot;, &quot;Species&quot;), row.names = c(NA, 6L), class = &quot;data.frame&quot;)
-</code></pre>
-
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-## 1          5.1         3.5          1.4         0.2  setosa
-## 2          4.9         3.0          1.4         0.2  setosa
-## 3          4.7         3.2          1.3         0.2  setosa
-## 4          4.6         3.1          1.5         0.2  setosa
-## 5          5.0         3.6          1.4         0.2  setosa
-## 6          5.4         3.9          1.7         0.4  setosa
 </code></pre>
 
 <ul>
@@ -714,12 +584,6 @@ structure(list(Sepal.Length = c(5.1, 4.9, 4.7, 4.6, 5, 5.4), Sepal.Width = c(3.5
 <p>The <code>knitr</code> function <code>stitch()</code> automatically includes this information. Try it on any example R script.</p>
 
 <pre><code class="r">stitch(&quot;my_script.R&quot;)
-</code></pre>
-
-<pre><code>## Warning: cannot open file &#39;my_script.R&#39;: No such file or directory
-</code></pre>
-
-<pre><code>## Error: cannot open the connection
 </code></pre>
 
 <h2>search StackOverflow</h2>
