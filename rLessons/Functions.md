@@ -67,7 +67,7 @@ sd(dat)  # Matched positionally
 ```
 
 ```
-## [1] 0.9652
+## [1] 0.9946
 ```
 
 ```r
@@ -75,7 +75,7 @@ sd(x = dat)  # matched by name
 ```
 
 ```
-## [1] 0.9652
+## [1] 0.9946
 ```
 
 ```r
@@ -83,7 +83,7 @@ sd(x = dat, na.rm = FALSE)
 ```
 
 ```
-## [1] 0.9652
+## [1] 0.9946
 ```
 
 ```r
@@ -92,7 +92,7 @@ sd(na.rm = FALSE, dat)
 ```
 
 ```
-## [1] 0.9652
+## [1] 0.9946
 ```
 
 
@@ -571,3 +571,8 @@ This loop will only print even numbers and skip over odd numbers. In the afterno
 # Documentation
 
 # Function Exercise
+Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.
+
+1. Create a function (with proper documentation) that takes as input a data frame and a column name and returns the mean for that column
+
+2. 

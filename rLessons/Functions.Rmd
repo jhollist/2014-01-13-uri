@@ -369,3 +369,8 @@ This loop will only print even numbers and skip over odd numbers. In the afterno
 # Documentation
 
 # Function Exercise
+Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.
+
+1. Create a function (with proper documentation) that takes as input a data frame and a column name and returns the mean for that column
+
+2. 
