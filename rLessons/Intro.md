@@ -484,8 +484,6 @@ R mailing lists:
  - [R-sig-ecology](https://stat.ethz.ch/mailman/listinfo/r-sig-ecology)
  
 
-
-
 # Some useful links
 
 [Working in the console (RStudio)](http://www.rstudio.com/ide/docs/using/console)

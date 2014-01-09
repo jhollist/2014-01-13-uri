@@ -1,17 +1,22 @@
-Title
+Data Visualization in R
 ========================================================
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the **Help** toolbar button for more details on using R Markdown).
+# Lesson Index
+- [Base](#base-grahics-in-R)
+- [ggplot2](#ggplot2)
+- [R Data Viz Examples](#r-data-viz-examples)
 
-When you click the **Knit HTML** button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Although visualizing data isn't programming, per se, it is quite often the end result of much of your programming efforts.  Additionally, if you write functions to create your visualizations then recreating them, editting them, and sharing them becomes trivial.  
 
-```{r}
-summary(cars)
-```
+R has multiple options available for creating visualizations and include `base` graphics, `lattice`, and `ggplot2`.  The great thing about these tools are that they are infinetely customizable.  The bad thing about these tools are that they are infinetely customizable.  As such their can be a significant learning curve, especially for `base`.  `lattice` has a less steep learning curve (debatable), but is not as widely used. `ggplot2` is a more recent development, is seeing very wide use, and is easier to learn, especially for more complex visualizations.
 
-You can also embed plots, for example:
+For this lesson the focus is going to be on `base` (25%) and `ggplot2` (75%)
 
-```{r fig.width=7, fig.height=6}
-plot(cars)
-```
+# Base Graphics in R
 
+Base graphics have been a part of R since its inception and can provide very good visualizations, but in order to do this it requires climbing a very steep learning curve.  The creation of packges like `ggplot2` argue against spending too much time on `base`.  That being said simple data vizualisations that are part of an exploratory data analysis are very simple with `base`.  
+
+# ggplot2
+
+
+# R Data Viz Examples
