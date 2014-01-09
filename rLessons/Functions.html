@@ -245,26 +245,26 @@ So you don&#39;t have to do anything.</p>
 sd(dat)  # Matched positionally
 </code></pre>
 
-<pre><code>## [1] 0.9946
+<pre><code>## [1] 0.9827
 </code></pre>
 
 <pre><code class="r">sd(x = dat)  # matched by name
 </code></pre>
 
-<pre><code>## [1] 0.9946
+<pre><code>## [1] 0.9827
 </code></pre>
 
 <pre><code class="r">sd(x = dat, na.rm = FALSE)
 </code></pre>
 
-<pre><code>## [1] 0.9946
+<pre><code>## [1] 0.9827
 </code></pre>
 
 <pre><code class="r"># When naming you can switch them but not recommended
 sd(na.rm = FALSE, dat)
 </code></pre>
 
-<pre><code>## [1] 0.9946
+<pre><code>## [1] 0.9827
 </code></pre>
 
 <p>Even though it&#39;s allowed, don&#39;t switch positions on names.</p>
@@ -310,11 +310,7 @@ sd(na.rm = FALSE, dat)
 
 <p><code>...</code> are used when extending another function and you don&#39;t want to copy the entire list of arguments from the original function.</p>
 
-<p>Also useful when the number of arguments cannot be known in advance.</p>
-
-<p>e.g. <code>paste()</code></p>
-
-<p>takes variable number of arguments. Function does not know how many things it&#39;s going to paste together.</p>
+<p>Also useful when the number of arguments cannot be known in advance. For example <code>paste()</code> takes a variable number of arguments. Function does not know how many things it&#39;s going to paste together.</p>
 
 <h2>Writing functions in R</h2>
 
@@ -662,13 +658,81 @@ while(i &lt; 10) {
 
 <h1>Documentation</h1>
 
+<p>Anyone who has worked with computers at any level for any period of time will attest to the fact that keeping track of your workflow and understanding what was done and why gets problematic quickly.  Tomorrow we will introduce a solution of this that deals with managing multiple versions.  </p>
+
+<p>But, at an even more basic level than versioning, is the issue of being able to read a piece of code and understand what it is doing.  The primary solution for creating understandable code is documentation and you already have been doing some of this if you have been using comment tags (<code>#</code>).  </p>
+
+<p>These are simple to implement, can be placed anywhere in your code.  </p>
+
+<p>For instance:</p>
+
+<pre><code class="r"># Here is an example of a simple comment This function, takes and argment
+# and prints it to the screen
+x &lt;- function(arg) {
+    print(arg)  # Printing the arg
+}
+
+x(&quot;Documentation is cool!&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;Documentation is cool!&quot;
+</code></pre>
+
+<p>These simple comments are likely enought just for scripts, but as you begin to use functions it better to follow a more standard format.  One such format that is widely used in package development is <a href="http://roxygen.org">Roxygen</a>, a literate programming .  Its current implementation in R is with <code>roxygen2</code>.  It allows for simple documenting of code and easily converting that code into manual pages.  We won&#39;t go that far, but learning to document the basics with Roxygen style comments (<code>#&#39;</code>) and tags (<code>@</code>) will put you much closer to being able to develop packages.</p>
+
+<p>Roxygen Comment and Tags</p>
+
+<pre><code class="r">#&#39; This is an Roxygen comment!  Pretty difficult, eh?
+#&#39; @param This is an Roxygen tag
+</code></pre>
+
+<p>So to use these to document a function would look like:</p>
+
+<pre><code class="r">#&#39; My Simple Function
+#&#39;
+#&#39; This function takes an argument and prints it to the screen
+#&#39; 
+#&#39; @param args This is an input argument.  May be of any type
+#&#39; 
+#&#39; @return returns an object of the same type as the input.
+#&#39;
+#&#39; @export 
+#&#39;
+#&#39; @examples
+#&#39; x(&#39;Roxygen style documentation is cooler&#39;)
+#&#39; x(&#39;#&#39;&#39;&gt;&#39;#&#39;)
+
+x &lt;- function(arg) {
+    # You can still use regular comments, if you like.  This is probably a good
+    # idea, too.
+    return(arg)
+}
+
+x(&quot;Roxygen style documentation is cooler&quot;)
+x(&quot;#&#39;&quot; &gt; &quot;#&quot;)
+</code></pre>
+
+<p>** note: <code>@export</code> and <code>@examples</code> are important for package development.  I only include them here to let you know there are many tags you can use **</p>
+
+<p>So, while it takes a bit more time to document as you write, it will pay dividends in the future as your properly documented code will be</p>
+
+<ul>
+<li>Easier for you to understand when you come back to it later</li>
+<li>Easier for others to understand</li>
+<li><em>MUCH</em> easier to convert a collection of functions into a package</li>
+</ul>
+
+<p>To find out more, Hadley Wickham&#39;s <a href="http://adv-r.had.co.nz/Documenting-functions.html">Advanced R Programming</a> is a great resource.</p>
+
 <h1>Function Exercise</h1>
 
 <p>Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.</p>
 
 <ol>
-<li><p>Create a function (with proper documentation) that takes as input a data frame and a column name and returns the mean for that column</p></li>
-<li></li>
+<li><p>Create a function (with proper documentation) that takes a vector as input and returns it&#39;s mean.</p></li>
+<li><p>Create another function (again with good documentation), that allows us to deal with <code>NA</code> values (hint: think <code>mean()&#39; and</code>&hellip;).</p></li>
+<li><p>Create another function (do I have to say it?) that allows you to calculate the mean and standard deviation (hint: <code>sd()</code>) of the input and still deals with <code>NA</code>.  You will probably want to have a third argument in your function and will need to use a control structure from above.</p></li>
+<li><p>Now use this function you have created to get mean and standard deviation of  two of the data columns in your NLA data frame you created earlier.  If you no longer have that in memory, you can use <code>read.csv()</code> and the .csv file you wrote to disk.</p></li>
 </ol>
 
 </body>

@@ -67,7 +67,7 @@ sd(dat)  # Matched positionally
 ```
 
 ```
-## [1] 0.9946
+## [1] 0.9827
 ```
 
 ```r
@@ -75,7 +75,7 @@ sd(x = dat)  # matched by name
 ```
 
 ```
-## [1] 0.9946
+## [1] 0.9827
 ```
 
 ```r
@@ -83,7 +83,7 @@ sd(x = dat, na.rm = FALSE)
 ```
 
 ```
-## [1] 0.9946
+## [1] 0.9827
 ```
 
 ```r
@@ -92,7 +92,7 @@ sd(na.rm = FALSE, dat)
 ```
 
 ```
-## [1] 0.9946
+## [1] 0.9827
 ```
 
 
@@ -153,11 +153,7 @@ add <- function(a, b) {
 
 `...` are used when extending another function and you don't want to copy the entire list of arguments from the original function.
 
-Also useful when the number of arguments cannot be known in advance.
-
-e.g. `paste()`
-
-takes variable number of arguments. Function does not know how many things it's going to paste together.
+Also useful when the number of arguments cannot be known in advance. For example `paste()` takes a variable number of arguments. Function does not know how many things it's going to paste together.
 
 
 ## Writing functions in R
@@ -570,9 +566,89 @@ This loop will only print even numbers and skip over odd numbers. In the afterno
 
 # Documentation
 
+Anyone who has worked with computers at any level for any period of time will attest to the fact that keeping track of your workflow and understanding what was done and why gets problematic quickly.  Tomorrow we will introduce a solution of this that deals with managing multiple versions.  
+
+But, at an even more basic level than versioning, is the issue of being able to read a piece of code and understand what it is doing.  The primary solution for creating understandable code is documentation and you already have been doing some of this if you have been using comment tags (`#`).  
+
+These are simple to implement, can be placed anywhere in your code.  
+
+For instance:
+
+
+```r
+# Here is an example of a simple comment This function, takes and argment
+# and prints it to the screen
+x <- function(arg) {
+    print(arg)  # Printing the arg
+}
+
+x("Documentation is cool!")
+```
+
+```
+## [1] "Documentation is cool!"
+```
+
+
+These simple comments are likely enought just for scripts, but as you begin to use functions it better to follow a more standard format.  One such format that is widely used in package development is [Roxygen](http://roxygen.org), a literate programming .  Its current implementation in R is with `roxygen2`.  It allows for simple documenting of code and easily converting that code into manual pages.  We won't go that far, but learning to document the basics with Roxygen style comments (`#'`) and tags (`@`) will put you much closer to being able to develop packages.
+
+Roxygen Comment and Tags
+
+
+```r
+#' This is an Roxygen comment!  Pretty difficult, eh?
+#' @param This is an Roxygen tag
+```
+
+
+So to use these to document a function would look like:
+
+
+```r
+#' My Simple Function
+#'
+#' This function takes an argument and prints it to the screen
+#' 
+#' @param args This is an input argument.  May be of any type
+#' 
+#' @return returns an object of the same type as the input.
+#'
+#' @export 
+#'
+#' @examples
+#' x('Roxygen style documentation is cooler')
+#' x('#''>'#')
+
+x <- function(arg) {
+    # You can still use regular comments, if you like.  This is probably a good
+    # idea, too.
+    return(arg)
+}
+
+x("Roxygen style documentation is cooler")
+x("#'" > "#")
+```
+
+
+** note: `@export` and `@examples` are important for package development.  I only include them here to let you know there are many tags you can use **
+
+So, while it takes a bit more time to document as you write, it will pay dividends in the future as your properly documented code will be
+
+- Easier for you to understand when you come back to it later
+- Easier for others to understand
+- _MUCH_ easier to convert a collection of functions into a package
+
+To find out more, Hadley Wickham's [Advanced R Programming](http://adv-r.had.co.nz/Documenting-functions.html) is a great resource.
+
 # Function Exercise
 Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.
 
-1. Create a function (with proper documentation) that takes as input a data frame and a column name and returns the mean for that column
+1. Create a function (with proper documentation) that takes a vector as input and returns it's mean.
 
-2. 
+2. Create another function (again with good documentation), that allows us to deal with `NA` values (hint: think `mean()' and `...`).
+
+3. Create another function (do I have to say it?) that allows you to calculate the mean and standard deviation (hint: `sd()`) of the input and still deals with `NA`.  You will probably want to have a third argument in your function and will need to use a control structure from above.
+
+4. Now use this function you have created to get mean and standard deviation of  two of the data columns in your NLA data frame you created earlier.  If you no longer have that in memory, you can use `read.csv()` and the .csv file you wrote to disk.
+
+
