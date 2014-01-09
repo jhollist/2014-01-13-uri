@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=9" >
 
-<title>Title</title>
+<title>Functions, Control Structures and Documentation</title>
 
 <style type="text/css">
 body, td {
@@ -179,30 +179,497 @@ hljs.initHighlightingOnLoad();
 </head>
 
 <body>
-<h1>Title</h1>
+<h1>Functions, Control Structures and Documentation</h1>
 
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring web pages (click the <strong>Help</strong> toolbar button for more details on using R Markdown).</p>
+<p><em>Note: This lesson is mostly from Karthik Ram&#39;s <a href="https://github.com/swcarpentry/2013-10-09-canberra">material from the Canberra Software Carpentry R Bootcamp</a>.  Anything good is there becuase of Karthik.  Mistakes are all mine.</em></p>
 
-<p>When you click the <strong>Knit HTML</strong> button a web page will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<h1>Lesson Index:</h1>
 
-<pre><code class="r">summary(cars)
+<ul>
+<li><a href="#functions">Functions</a></li>
+<li><a href="#control-strucutres">Control Structures</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#function-exercise">Exercise</a></li>
+</ul>
+
+<h1>Functions</h1>
+
+<p>Functions represent one of the most powerful features of the R language. By creating functions, you can go past just using what others have written and create your own.</p>
+
+<p>After a while operations at the interactive prompt are not enough. You have special operations that need to be grouped together. That&#39;s when you&#39;ll need to write functions.</p>
+
+<ul>
+<li>Basic of how to write functions</li>
+<li>Lexical scoping and scoping rules</li>
+<li>Example</li>
+</ul>
+
+<p>Functions are created using the <code>function()</code> directive.
+They are stored as any other R object.  They are of class &ldquo;function&rdquo;</p>
+
+<p><strong>Basic syntax</strong></p>
+
+<pre><code>func &lt;- function(&lt;take some input&gt;)  {
+    # run a whole bunch of your code
+}
 </code></pre>
 
-<pre><code>##      speed           dist    
-##  Min.   : 4.0   Min.   :  2  
-##  1st Qu.:12.0   1st Qu.: 26  
-##  Median :15.0   Median : 36  
-##  Mean   :15.4   Mean   : 43  
-##  3rd Qu.:19.0   3rd Qu.: 56  
-##  Max.   :25.0   Max.   :120
+<p>Functions are first class objects. Treat them the same way as any other objects. This means you can pass them to other functions (as you would do with say vectors). Very useful feature for statistical analyses. We can also nest functions inside each other.</p>
+
+<p>Return value is the very last R expression to be evaluated. No special expression for returning although you can use return()</p>
+
+<p>Functions have named arguments and these can have default values. Arguments used inside a function definition are called formal arguments.</p>
+
+<p>use <code>formals()</code> to see what they are.</p>
+
+<p>Not every function makes use of all formal arguments.</p>
+
+<p>Function arguments can be missing or might just use default values. Formal arguments are included in the function definition.</p>
+
+<p>If a function has 10 arguments, you don&#39;t have to specify all of them. </p>
+
+<p>R function arguments can be matched positionally or by name.</p>
+
+<pre><code class="r">args(sd)
 </code></pre>
 
-<p>You can also embed plots, for example:</p>
-
-<pre><code class="r">plot(cars)
+<pre><code>## function (x, na.rm = FALSE) 
+## NULL
 </code></pre>
 
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAGwCAMAAABy/YdMAAAAbFBMVEX9/v0AAAAAADkAAGUAOTkAOWUAOY8AZrU5AAA5ADk5AGU5OY85j9plAABlADllAGVlOQBlZjlltf2POQCPOTmPOWWPjzmPtY+P2/21ZgC1/rW1/v3ajzna24/a/v39tWX924/9/rX9/tr9/v0hhXJqAAAAJHRSTlP//////////////////////////////////////////////wBYLA0NAAAACXBIWXMAAAsSAAALEgHS3X78AAAJjElEQVR4nO3di3LbuBlA4bW7jd2snLTyXqSNGl38/u9YkVbqRKIVUsRPAjjnm061bSYIN8ckCF2gX16E9MvcB6B5GB7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeakz4O+UsMPyI36too8PvHtufn398GTq0ZjU2/OF52T5uP3wdOLRmNTb8/vOXHx77D61ZecZDjZ7j90/O8SXyrh7K8FAplnP3K2/uMvPTJ2iS3NwdnheGz8rdy0//+tMs59YP34Xv+aSg4kwQ/rSc2/z60TM+HxOEPy7nFs3D5nI9Z/j5xM/xtw+tWRkeyvBQhocavZx7Oq3dvLkry+gzvnn25qahNavxl/r9p9VNQ2tWzvFQhocyPJThoQwPZXgow0MZHsrwUIaHMjyU4aEMD2V4KMNDGR7K8FCGhzI8lOGhDA9leCjDQxkeyvBQhocyPJThody2HMpNjKHcthzKMx7KbcuhvKuHMjyUyzkob+6gApZzblteAs94KJdzUN7VQxkeyvBQhody23Ioty2HcttyKOd4KMNDGR7K8FCGr5JfMco0xZcK3zy04vR4O4Tha+QZD+UZD+UZT+Vdvd5heCjDQxkeyvBQhocyPJThoQwPZXgow0MZHsrwEOcv2xie4eKFWsNPZOatYQw/kx5vjZj2zzf8NOYO7xw/k9nDnzP8RHLb/s3wUG5pCuUGh1B+QwWUZzyUW5pel9vNeDLe1V+V3fI7mYDwNW1bbvh3HZdzD5tqL/WGf8/h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" alt="plot of chunk unnamed-chunk-2"/> </p>
+<p>Takes x, a vector of data. 
+Default is <code>na.rm</code> is false.
+So you don&#39;t have to do anything.</p>
+
+<pre><code class="r">dat &lt;- rnorm(1000)
+sd(dat)  # Matched positionally
+</code></pre>
+
+<pre><code>## [1] 0.9946
+</code></pre>
+
+<pre><code class="r">sd(x = dat)  # matched by name
+</code></pre>
+
+<pre><code>## [1] 0.9946
+</code></pre>
+
+<pre><code class="r">sd(x = dat, na.rm = FALSE)
+</code></pre>
+
+<pre><code>## [1] 0.9946
+</code></pre>
+
+<pre><code class="r"># When naming you can switch them but not recommended
+sd(na.rm = FALSE, dat)
+</code></pre>
+
+<pre><code>## [1] 0.9946
+</code></pre>
+
+<p>Even though it&#39;s allowed, don&#39;t switch positions on names.</p>
+
+<p>See </p>
+
+<pre><code class="r">args(lm)
+</code></pre>
+
+<pre><code>## function (formula, data, subset, weights, na.action, method = &quot;qr&quot;, 
+##     model = TRUE, x = FALSE, y = FALSE, qr = TRUE, singular.ok = TRUE, 
+##     contrasts = NULL, offset, ...) 
+## NULL
+</code></pre>
+
+<p>It&#39;s good to name arguments when you have a long list to work through. Arguments can also be partially matched.</p>
+
+<pre><code class="r">add &lt;- function(x = 1, y = 2) {
+    x + y
+}
+</code></pre>
+
+<p>R does what&#39;s known as lazy evaluation. Arguments to functions are lazily evaluated. Common model in many languages. Only evaluated as they are needed.</p>
+
+<pre><code class="r">add &lt;- function(a, b) {
+    a^2
+}
+</code></pre>
+
+<p>The function call never uses b. So calling <code>f(10)</code> will not produce an error because <code>a</code> got positionally matched.</p>
+
+<p>Another example of lazy evaluation</p>
+
+<pre><code class="r">add &lt;- function(a, b) {
+    print(a^2)
+    print(b^2)
+}
+</code></pre>
+
+<p><code>add(10)</code> will work until it reaches a point where the function will break.</p>
+
+<p><strong>The three dot operator.</strong></p>
+
+<p><code>...</code> are used when extending another function and you don&#39;t want to copy the entire list of arguments from the original function.</p>
+
+<p>Also useful when the number of arguments cannot be known in advance.</p>
+
+<p>e.g. <code>paste()</code></p>
+
+<p>takes variable number of arguments. Function does not know how many things it&#39;s going to paste together.</p>
+
+<h2>Writing functions in R</h2>
+
+<p>If you have to repeat the same few lines of code more than once, then you really need to write a function. Functions are a fundamental building block of R. You use them all the time in R and it&#39;s not that much harder to string functions together (or write entirely new ones from scratch) to do more.</p>
+
+<ul>
+<li>R functions are objects just like anything else. </li>
+<li>By default, R function arguments are lazy - they&#39;re only evaluated if they&#39;re actually used:</li>
+<li>Every call on a R object is almost always a function call.</li>
+</ul>
+
+<h3>Basic components of a function</h3>
+
+<ul>
+<li>The <code>body()</code>, the code inside the function.</li>
+<li>The <code>formals()</code>, the &ldquo;formal&rdquo; argument list, which controls how you can call the function.</li>
+<li>The <code>environment()</code> which determines how variables referred to inside the function are found.</li>
+<li><code>args()</code> to list arguments.</li>
+</ul>
+
+<pre><code class="r">f &lt;- function(x) x
+f
+</code></pre>
+
+<pre><code>## function(x) x
+</code></pre>
+
+<pre><code class="r">
+formals(f)
+</code></pre>
+
+<pre><code>## $x
+</code></pre>
+
+<pre><code class="r">
+environment(f)
+</code></pre>
+
+<pre><code>## &lt;environment: R_GlobalEnv&gt;
+</code></pre>
+
+<p><strong>Question: How do we delete this function from our environment?</strong></p>
+
+<h2>More on environments</h2>
+
+<p>Variables defined inside functions exist in a different environment than the global environment. However, if a function is not defined inside one, it will look one level above.</p>
+
+<p>For example.</p>
+
+<pre><code>x &lt;- 2
+g &lt;- function() { 
+  y &lt;- 1
+  c(x, y)
+}  
+g()
+rm(x, g)
+</code></pre>
+
+<p>Same rule applies for nested functions.</p>
+
+<p>A first useful function.</p>
+
+<pre><code class="r">first &lt;- function(x, y) {
+    z &lt;- x + y
+    return(z)
+}
+</code></pre>
+
+<pre><code class="r">add &lt;- function(a, b) {
+    return(a + b)
+}
+
+add(c(1, 2, 3, 4), 1)
+</code></pre>
+
+<pre><code>## [1] 2 3 4 5
+</code></pre>
+
+<h2>What does this function return?</h2>
+
+<pre><code class="r">x &lt;- 5
+f &lt;- function() {
+    y &lt;- 10
+    c(x = x, y = y)
+}
+f()
+</code></pre>
+
+<pre><code>##  x  y 
+##  5 10
+</code></pre>
+
+<h2>What does this function return?</h2>
+
+<pre><code class="r">x &lt;- 5
+g &lt;- function() {
+    x &lt;- 20
+    y &lt;- 10
+    c(x = x, y = y)
+}
+g()
+</code></pre>
+
+<pre><code>##  x  y 
+## 20 10
+</code></pre>
+
+<h2>What does this function return??</h2>
+
+<pre><code class="r">x &lt;- 5
+h &lt;- function() {
+    y &lt;- 10
+    i &lt;- function() {
+        z &lt;- 20
+        c(x = x, y = y, z = z)
+    }
+    i()
+}
+h()
+</code></pre>
+
+<pre><code>##  x  y  z 
+##  5 10 20
+</code></pre>
+
+<h2>Functions with pre defined values</h2>
+
+<pre><code class="r">temp &lt;- function(a = 1, b = 2) {
+    return(a + b)
+}
+</code></pre>
+
+<h2>Functions usually return the last value it computed</h2>
+
+<pre><code>f &lt;- function(x) {
+  if (x &lt; 10) {
+    0
+  } else {
+    10
+  }
+}
+f(5)
+f(15)
+</code></pre>
+
+<h1>Control Structures</h1>
+
+<p>These allow you to control the flow of execution of a script typically inside of a function.
+Common ones include:</p>
+
+<ul>
+<li>if, else</li>
+<li>for</li>
+<li>while</li>
+<li>repeat</li>
+<li>break</li>
+<li>next</li>
+<li>return</li>
+</ul>
+
+<p>We don&#39;t use these while working with R interactively but rather inside functions. </p>
+
+<h2>If/else</h2>
+
+<pre><code class="r">if(condition) {
+    # do something 
+} else { 
+    # do something else
+    }
+}
+</code></pre>
+
+<p>e.g. </p>
+
+<pre><code class="r">x &lt;- 1:15
+if (sample(x, 1) &lt;= 10) {
+    print(&quot;x is less than 10&quot;)
+} else {
+    print(&quot;x is greater than 10&quot;)
+}
+</code></pre>
+
+<pre><code>## [1] &quot;x is less than 10&quot;
+</code></pre>
+
+<p><strong>Shorthand for ifelse</strong></p>
+
+<p><code>ifelse(sample(x, 1) &lt;10, &quot;x less than 10&quot;, &quot;x greater than 10&quot;)</code></p>
+
+<p>Other valid ways of writing if/else</p>
+
+<pre><code class="r">if (sample(x, 1) &lt; 10) {
+    y &lt;- 5
+} else {
+    y &lt;- 0
+}
+</code></pre>
+
+<pre><code class="r">y &lt;- if (sample(x, 1) &lt; 10) {
+    5
+} else {
+    0
+}
+</code></pre>
+
+<h2>for</h2>
+
+<p>For loops work on an iterable variable and assign successive values till the end of a sequence.</p>
+
+<pre><code class="r">for (i in 1:10) {
+    print(i)
+}
+</code></pre>
+
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+</code></pre>
+
+<pre><code class="r">x &lt;- c(&quot;apples&quot;, &quot;oranges&quot;, &quot;bananas&quot;, &quot;strawberries&quot;)
+
+for (i in x) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] NA
+## [1] NA
+## [1] NA
+## [1] NA
+</code></pre>
+
+<pre><code class="r">
+for (i in 1:4) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<pre><code class="r">
+for (i in seq(x)) {
+    print(x[i])
+}
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<pre><code class="r">
+for (i in 1:4) print(x[i])
+</code></pre>
+
+<pre><code>## [1] &quot;apples&quot;
+## [1] &quot;oranges&quot;
+## [1] &quot;bananas&quot;
+## [1] &quot;strawberries&quot;
+</code></pre>
+
+<p>Nested loops</p>
+
+<pre><code class="r">m &lt;- matrix(1:10, 2)
+for (i in seq(nrow(m))) {
+    for (j in seq(ncol(m))) {
+        print(m[i, j])
+    }
+}
+</code></pre>
+
+<pre><code>## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9
+## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+</code></pre>
+
+<h2>While</h2>
+
+<pre><code>i &lt;- 1
+while(i &lt; 10) {
+    print(i)
+    i &lt;- i + 1
+}
+</code></pre>
+
+<p>Be sure there is a way to exit out of a while loop.</p>
+
+<h2>Repeat and break</h2>
+
+<pre><code class="r">repeat {
+    # simulations; generate some value have an expectation if within some range,
+    # then exit the loop
+    if ((value - expectation) &lt;= threshold) {
+        break
+    }
+}
+</code></pre>
+
+<pre><code>## Error: object &#39;value&#39; not found
+</code></pre>
+
+<h2>Next</h2>
+
+<pre><code class="r">for (i in 1:20) {
+    if (i%%2 == 1) {
+        next
+    } else {
+        print(i)
+    }
+}
+</code></pre>
+
+<pre><code>## [1] 2
+## [1] 4
+## [1] 6
+## [1] 8
+## [1] 10
+## [1] 12
+## [1] 14
+## [1] 16
+## [1] 18
+## [1] 20
+</code></pre>
+
+<p>This loop will only print even numbers and skip over odd numbers. In the afternoon we&#39;ll learn other functions that will help us avoid these types of slow control flows as much as possible (mostly the while and for loops).</p>
+
+<h1>Documentation</h1>
+
+<h1>Function Exercise</h1>
+
+<p>Continuing with our NLA example, this exercise will have you create several functions that work on that dataset.</p>
+
+<ol>
+<li><p>Create a function (with proper documentation) that takes as input a data frame and a column name and returns the mean for that column</p></li>
+<li></li>
+</ol>
 
 </body>
 
