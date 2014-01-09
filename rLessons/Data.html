@@ -639,7 +639,9 @@ temp
 
 <p>It doesn&#39;t print out like a vector. Prints a new line for each element.</p>
 
-<h2>Elements are indexed by double brackets. Single brackets will still return a(nother) list.</h2>
+<p>Elements are indexed by double brackets. Single brackets will still return a(nother) list.</p>
+
+<hr/>
 
 <h3>Factors</h3>
 
@@ -706,16 +708,16 @@ df
 </code></pre>
 
 <pre><code>##    id  x        y
-## 1   a  1  1.17914
-## 2   b  2  0.04528
-## 3   c  3 -0.65555
-## 4   d  4 -1.06117
-## 5   e  5 -0.71980
-## 6   f  6  0.46822
-## 7   g  7  0.93255
-## 8   h  8 -0.74593
-## 9   i  9  1.34625
-## 10  j 10 -1.26679
+## 1   a  1  0.17806
+## 2   b  2 -0.18527
+## 3   c  3  0.17601
+## 4   d  4  0.04711
+## 5   e  5 -0.43921
+## 6   f  6 -1.17539
+## 7   g  7  0.16760
+## 8   h  8 -1.48294
+## 9   i  9  0.71051
+## 10  j 10  1.05606
 </code></pre>
 
 <p><code>cbind(df, data.frame(z = 4))</code></p>
@@ -921,16 +923,12 @@ my_data &lt;- read.csv(url, header = TRUE)
 <pre><code class="r">list.files()
 </code></pre>
 
-<pre><code>##  [1] &quot;avgX.txt&quot;         &quot;data-types.png&quot;   &quot;data.dat&quot;        
-##  [4] &quot;Data.html&quot;        &quot;Data.md&quot;          &quot;Data.Rmd&quot;        
-##  [7] &quot;data_file.txt&quot;    &quot;DataViz.html&quot;     &quot;DataViz.md&quot;      
-## [10] &quot;DataViz.Rmd&quot;      &quot;diamonds.csv.bz2&quot; &quot;diamonds.sqlite&quot; 
-## [13] &quot;figure&quot;           &quot;Functions.html&quot;   &quot;Functions.md&quot;    
-## [16] &quot;Functions.Rmd&quot;    &quot;Intro.html&quot;       &quot;Intro.md&quot;        
-## [19] &quot;Intro.Rmd&quot;        &quot;messy_data.txt&quot;   &quot;myPlot.pdf&quot;      
-## [22] &quot;README.html&quot;      &quot;README.md&quot;        &quot;README.Rmd&quot;      
-## [25] &quot;rLessons.Rproj&quot;   &quot;tgac_iris.csv&quot;    &quot;tgac_iris.rds&quot;   
-## [28] &quot;uriBootcamp&quot;
+<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
+##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
+##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
+## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
+## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
+## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
 </code></pre>
 
 <pre><code class="r">file.info()
@@ -942,16 +940,12 @@ my_data &lt;- read.csv(url, header = TRUE)
 <pre><code class="r">dir()
 </code></pre>
 
-<pre><code>##  [1] &quot;avgX.txt&quot;         &quot;data-types.png&quot;   &quot;data.dat&quot;        
-##  [4] &quot;Data.html&quot;        &quot;Data.md&quot;          &quot;Data.Rmd&quot;        
-##  [7] &quot;data_file.txt&quot;    &quot;DataViz.html&quot;     &quot;DataViz.md&quot;      
-## [10] &quot;DataViz.Rmd&quot;      &quot;diamonds.csv.bz2&quot; &quot;diamonds.sqlite&quot; 
-## [13] &quot;figure&quot;           &quot;Functions.html&quot;   &quot;Functions.md&quot;    
-## [16] &quot;Functions.Rmd&quot;    &quot;Intro.html&quot;       &quot;Intro.md&quot;        
-## [19] &quot;Intro.Rmd&quot;        &quot;messy_data.txt&quot;   &quot;myPlot.pdf&quot;      
-## [22] &quot;README.html&quot;      &quot;README.md&quot;        &quot;README.Rmd&quot;      
-## [25] &quot;rLessons.Rproj&quot;   &quot;tgac_iris.csv&quot;    &quot;tgac_iris.rds&quot;   
-## [28] &quot;uriBootcamp&quot;
+<pre><code>##  [1] &quot;avgX.txt&quot;       &quot;data-types.png&quot; &quot;data.dat&quot;       &quot;Data.html&quot;     
+##  [5] &quot;Data.md&quot;        &quot;Data.Rmd&quot;       &quot;data_file.txt&quot;  &quot;DataViz.html&quot;  
+##  [9] &quot;DataViz.md&quot;     &quot;DataViz.Rmd&quot;    &quot;figure&quot;         &quot;Functions.html&quot;
+## [13] &quot;Functions.md&quot;   &quot;Functions.Rmd&quot;  &quot;Intro.html&quot;     &quot;Intro.md&quot;      
+## [17] &quot;Intro.Rmd&quot;      &quot;messy_data.txt&quot; &quot;myPlot.pdf&quot;     &quot;README.html&quot;   
+## [21] &quot;README.md&quot;      &quot;README.Rmd&quot;     &quot;rLessons.Rproj&quot;
 </code></pre>
 
 <pre><code class="r">file.exists()
@@ -1425,18 +1419,18 @@ dfm
 </code></pre>
 
 <pre><code>##    id data1.x data2.x data1.y data2.y
-## 1   1       1  -2.167       1   3.822
-## 2   1       1  -2.167       3   1.031
-## 3   2       3   5.462       5   3.455
-## 4   2       3   5.462       7   8.403
-## 5   3       5   6.504       9  10.303
-## 6   4       7  10.936      29  32.902
-## 7   4       7  10.936      11   7.494
-## 8   7      13  16.551      13  14.102
-## 9   8      15  16.095      15  13.874
-## 10  8      15  16.095      17  17.745
-## 11  9      17  15.291      19  21.324
-## 12 10      19  16.659      21  18.799
+## 1   1       1  4.3670       1  -1.088
+## 2   1       1  4.3670       3   0.805
+## 3   2       3 -0.2672       5   1.809
+## 4   2       3 -0.2672       7   3.058
+## 5   3       5  8.7069       9   5.896
+## 6   4       7  5.7604      29  29.393
+## 7   4       7  5.7604      11   8.310
+## 8   7      13 14.4657      13  11.157
+## 9   8      15 15.8341      15  18.961
+## 10  8      15 15.8341      17  13.692
+## 11  9      17 13.5309      19  21.236
+## 12 10      19 15.6919      21  23.216
 </code></pre>
 
 <pre><code class="r">dim(dfm)
@@ -1452,20 +1446,20 @@ dfm
 </code></pre>
 
 <pre><code>##    id data1.x data2.x data1.y data2.y
-## 1   1       1  -2.167       1   3.822
-## 2   1       1  -2.167       3   1.031
-## 3   2       3   5.462       5   3.455
-## 4   2       3   5.462       7   8.403
-## 5   3       5   6.504       9  10.303
-## 6   4       7  10.936      29  32.902
-## 7   4       7  10.936      11   7.494
-## 8   5       9   7.887      NA      NA
-## 9   6      11  11.869      NA      NA
-## 10  7      13  16.551      13  14.102
-## 11  8      15  16.095      15  13.874
-## 12  8      15  16.095      17  17.745
-## 13  9      17  15.291      19  21.324
-## 14 10      19  16.659      21  18.799
+## 1   1       1  4.3670       1  -1.088
+## 2   1       1  4.3670       3   0.805
+## 3   2       3 -0.2672       5   1.809
+## 4   2       3 -0.2672       7   3.058
+## 5   3       5  8.7069       9   5.896
+## 6   4       7  5.7604      29  29.393
+## 7   4       7  5.7604      11   8.310
+## 8   5       9  7.7518      NA      NA
+## 9   6      11 14.5120      NA      NA
+## 10  7      13 14.4657      13  11.157
+## 11  8      15 15.8341      15  18.961
+## 12  8      15 15.8341      17  13.692
+## 13  9      17 13.5309      19  21.236
+## 14 10      19 15.6919      21  23.216
 </code></pre>
 
 <pre><code class="r">dim(dfm)
@@ -1581,8 +1575,8 @@ apply(m, 1, sum)
 tapply(df$length, df$names, mean)
 </code></pre>
 
-<pre><code>##        A        B        C 
-## -0.02731  0.64248 -0.28332
+<pre><code>##      A      C 
+## 0.4885 0.3941
 </code></pre>
 
 <pre><code class="r">
@@ -1640,55 +1634,55 @@ class(x)
 <pre><code class="r">replicate(10, rnorm(10))
 </code></pre>
 
-<pre><code>##          [,1]    [,2]      [,3]     [,4]      [,5]    [,6]     [,7]
-##  [1,] -0.1026  0.2001 -1.413759  0.37018  0.505775 -0.5599  1.28756
-##  [2,] -0.4325  1.2924  0.992182 -1.22716  1.373308  0.4774  0.87812
-##  [3,]  0.6467  1.0590 -0.839296  0.32317  0.987309 -0.1429  0.20644
-##  [4,] -2.2917  0.9177 -0.135667  0.67533 -0.005567  0.4725 -0.12443
-##  [5,]  1.3080  1.2313  1.092155 -0.52823 -0.534473 -0.3455  0.80413
-##  [6,] -0.4700  0.4203 -0.019988  1.64240 -1.498959 -0.0222 -0.07605
-##  [7,] -1.0076 -0.9746 -0.006654 -2.30342  0.648450  0.5140 -0.58593
-##  [8,] -0.3931  0.5940  0.513156  0.01884  0.371678  1.2188 -1.99755
-##  [9,] -0.4673 -0.8772 -0.197791  1.06463  0.400484 -1.3376  0.79309
-## [10,]  0.4513 -1.4209  1.364079  0.89862  0.252495 -1.0880 -0.89547
+<pre><code>##           [,1]      [,2]    [,3]     [,4]     [,5]     [,6]    [,7]
+##  [1,]  1.66308  0.044509  1.2416  2.37673 -0.82670  0.44726  0.1814
+##  [2,]  0.29835 -0.903444  0.6392  0.02934  1.03842 -1.06205 -0.4398
+##  [3,]  2.17281 -0.453990  0.4601 -1.13494 -0.13733 -0.06475 -0.2644
+##  [4,]  1.36323  1.068193  1.0089 -0.97083  0.32675 -0.27380 -0.6187
+##  [5,] -1.07731  0.446741 -0.2572  1.32514 -0.52586  0.49821 -1.2644
+##  [6,]  0.95766  1.028948 -1.6641 -0.91528 -0.09342  0.21262  0.5120
+##  [7,] -1.44977  0.420626 -0.4329  1.72711  1.28575 -3.10033 -0.3574
+##  [8,]  0.06528  0.005283 -0.3899 -0.74244  0.21826  0.26756  0.4636
+##  [9,]  0.72390 -0.276455  0.7795 -1.16906 -2.22665  1.82559 -0.4305
+## [10,]  2.13020 -0.919585  1.4928 -0.84508 -0.55438  0.49618  1.4325
 ##          [,8]    [,9]   [,10]
-##  [1,] -0.8043  0.6665 -1.1753
-##  [2,]  0.5984 -0.8321 -1.5095
-##  [3,] -1.3198  0.3973 -1.7332
-##  [4,] -1.2900 -0.5096  0.5722
-##  [5,] -0.2128 -0.1033 -0.7673
-##  [6,]  0.4132  0.6235 -0.4651
-##  [7,] -2.2168  0.6857 -1.4640
-##  [8,] -0.6046  2.5243  0.6682
-##  [9,] -1.4958 -1.6489 -0.6342
-## [10,]  1.1823 -1.2618  0.8284
+##  [1,]  0.0564  1.8128 -1.1035
+##  [2,] -1.5429  0.4975  1.0418
+##  [3,] -1.6458  1.1148 -1.5454
+##  [4,]  0.2788  0.3825  2.4103
+##  [5,]  1.4706 -0.1871 -0.5678
+##  [6,]  0.3102  0.2379 -0.2963
+##  [7,]  0.5849 -1.2737 -1.4094
+##  [8,] -0.9493 -1.1133 -0.4185
+##  [9,]  1.2911 -0.6562 -0.2928
+## [10,]  1.8656 -0.3348  0.9275
 </code></pre>
 
 <pre><code class="r">replicate(10, rnorm(10), simplify = TRUE)
 </code></pre>
 
-<pre><code>##          [,1]     [,2]    [,3]     [,4]      [,5]    [,6]      [,7]
-##  [1,]  1.4620 -1.62384  1.5899  0.64012  0.196527  1.4865 -0.849285
-##  [2,] -0.1230 -0.11393  1.5467 -0.37911 -1.110566  0.1826 -0.354433
-##  [3,]  0.7536 -0.73179  1.4564 -0.02629  0.743665  0.1730  0.415893
-##  [4,]  1.5478  0.03425 -0.6060  2.15397  0.149478  1.7289  0.200981
-##  [5,] -1.9332 -1.00817 -2.1020  0.70669 -1.299713 -0.8883  0.005725
-##  [6,] -0.6973  1.79124 -0.5457  1.19169  0.305933 -1.9568  0.876888
-##  [7,]  0.9520  2.22344 -0.3423 -0.19964  1.904855  0.6121  0.613195
-##  [8,]  0.3756  0.94896 -1.7196  0.13687 -0.002033 -0.1201 -0.097172
-##  [9,] -0.5041 -0.88006  2.8630 -0.05089 -1.038738  0.1278  0.819125
-## [10,]  0.5689 -0.81738 -0.4436  0.86894  0.062603  0.5855  1.044066
-##            [,8]     [,9]    [,10]
-##  [1,]  0.147540 -0.89278 -1.10196
-##  [2,] -0.332216 -0.96075  0.26668
-##  [3,]  0.731452 -1.26579  0.09829
-##  [4,]  0.250384  0.09712 -0.69220
-##  [5,]  1.566361  1.49733  0.10138
-##  [6,]  0.205134  1.13250 -0.28333
-##  [7,]  1.584845  1.09835  0.02966
-##  [8,] -1.648586 -1.15430  0.51162
-##  [9,]  0.005063  0.11727 -0.12201
-## [10,]  0.861135 -0.55958  0.63169
+<pre><code>##           [,1]     [,2]    [,3]    [,4]     [,5]     [,6]     [,7]
+##  [1,] -0.05062  0.76605  0.4129 -1.3031 -0.63892  0.06684  1.09651
+##  [2,] -0.41684 -1.30624 -0.1016  0.8928 -0.07010  0.35660 -0.16446
+##  [3,] -2.39829  1.43396  0.7677  0.8303 -0.33554 -1.39478 -0.65685
+##  [4,]  0.27723  0.27061 -0.2465  0.3409  0.08316 -0.80134 -0.21248
+##  [5,] -1.02388 -0.42223  0.4120  0.9072  0.08739 -0.26016 -0.17814
+##  [6,] -0.78666 -0.40045 -0.1169 -0.3124 -0.22550  0.20390  0.07874
+##  [7,] -0.80293 -1.31422  1.1578  0.8897 -1.15955 -1.13035 -1.25889
+##  [8,] -1.49918 -1.75651 -1.6756  0.5012 -1.76292  0.75512  0.72316
+##  [9,] -0.74667 -0.06388  0.8673  0.9095  0.88111 -1.35123 -0.11749
+## [10,] -1.74170 -1.07805  0.8819  2.3620  2.06898  0.40648  0.67020
+##           [,8]     [,9]   [,10]
+##  [1,]  0.35951  0.86754  1.0343
+##  [2,]  0.82352  0.60903  0.5952
+##  [3,] -1.78886  0.74012 -0.1712
+##  [4,] -0.37177  0.49831  1.2945
+##  [5,] -0.50439 -0.02069 -1.5190
+##  [6,]  3.20718  0.38943 -0.1524
+##  [7,]  0.08045  0.45820 -0.7806
+##  [8,]  0.19905  0.53624 -2.3006
+##  [9,]  1.10417 -1.46239 -0.6767
+## [10,] -3.74021  0.93200 -0.1351
 </code></pre>
 
 <pre><code class="r"># The final arguments turns the result into a vector or matrix if possible.
@@ -1716,7 +1710,18 @@ mapply(sum, list_1$a, list_1$b, list_2$c, list_2$d)
 
 <h2>Data Manipulation Exercise</h2>
 
-<p>In our last exercise, we pulled in three datasets</p>
+<p>In our last exercise, we pulled in three datasets, created data frames from them and answered some basic questions about those data frames.  One of the first things you will notice is that EPA is very fond of large, verbose data structures.  There is a lot more informaiton in these three data frames than we really would like.  The purpose of this exercise is to pull out information we would like to keep, create a single data frame for some future analysis, do some basic analysis, and write the resulting data frame to disc. As before, all steps must be done in R and save your commands in a commented script.</p>
+
+<ol>
+<li>Subset your station information data frame so that you only have the following columns: SITE_ID, VISIT_NO, SITE_TYPE, STATE_NAME</li>
+<li>Subset your water quality information so that you have: SITE_ID, NTL, PTL, CHLA </li>
+<li>Susbset your landuse data frame so that you have: SITE_ID, PCT_DEVELOPED_BUFR,  PCT_FOREST_BUFR, PCT_AGRIC_BUFR, and PCT_WETLAND_BUFR.</li>
+<li>Subset your streamlined verison of station information (created in step 1) so that only the first visit of the probability lakes are returned.  First visits are those records that have a VISIT_NO of 1 and probability lakes are SITE_TYPE of PROB_lake.</li>
+<li>Create a single data frame that combines the station information from step 4, the water quality info from step 2, and the landuse information from step 3. </li>
+<li>How many rows and columns in this new data frame?  Is it what you expected?</li>
+<li>Calculate the mean, median, min, and max (1st and 3rd quartiles ok too) for each of the data columns.  You can do this many ways, but you have the tools to do it in one, very clean line of code!</li>
+<li>Once you are certain your new data frame has all the proper rows and columns, write the data frame out to a .csv file.  We will be using this file as input later, so keep track of where you put it.</li>
+</ol>
 
 </body>
 
