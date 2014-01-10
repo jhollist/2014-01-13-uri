@@ -207,10 +207,9 @@ hljs.initHighlightingOnLoad();
 x &lt;- c(c(1:40) + rnorm(40, sd = 10), c(41:60) + rnorm(20, sd = 10), c(61:100) + 
     rnorm(40, sd = 10))
 xf &lt;- c(rep(&quot;low&quot;, 50), rep(&quot;high&quot;, 50))
-y &lt;- x + rnorm(100, sd = 2)
-z &lt;- x + rnorm(100, sd = 10)
+y &lt;- x + rnorm(100, sd = 2) + 10
+z &lt;- x + rnorm(100, sd = 10) + 100
 df &lt;- data.frame(xf, x, y, z)
-
 </code></pre>
 
 <p>Now, let&#39;s do a simple scatter plot</p>
@@ -254,7 +253,7 @@ barplot(sapply(df[, -1], mean) + c(0, 10, 50))
 
 <p>So, now that we&#39;ve seen some basic plots with <code>base</code>, it is obvious that the stock look of these plots is adequate, but they are very simple plots and may not be as flashy or publication ready as you&#39;d like.  In part, <code>ggplot2</code> was created to ease the creation of more complex figures.</p>
 
-<p>A lot has been written about <code>ggplot2</code>.  In particular see <a href="http://ggplot2.org/">here</a>, <a href="http://docs.ggplot2.org/current/">here</a> and <a href="https://github.com/karthikram/ggplot-lecture">here</a>.  The gist of all this, is that <code>ggplot2</code> is an implementation of something known as the &ldquo;grammar of graphics.&rdquo;  This separates the basic components of a graphic into distinct parts (e.g. like the parts of speach in a sentence).  You add these parts together and get a figure.</p>
+<p>A lot has been written and discussed about <code>ggplot2</code>.  In particular see <a href="http://ggplot2.org/">here</a>, <a href="http://docs.ggplot2.org/current/">here</a> and <a href="https://github.com/karthikram/ggplot-lecture">here</a>.  The gist of all this, is that <code>ggplot2</code> is an implementation of something known as the &ldquo;grammar of graphics.&rdquo;  This separates the basic components of a graphic into distinct parts (e.g. like the parts of speach in a sentence).  You add these parts together and get a figure.</p>
 
 <p>Before we start developing some graphics, we need to do a bit of package maintenance as <code>ggplot2</code> is not installed by default.</p>
 
@@ -269,8 +268,9 @@ library(ggplot2)
 
 <p><strong>Note: Programmers rely on API documentation. The <code>ggplot2</code> equivalent of that is the <a href="http://docs.ggplot2.org/current/">documentation</a>.  I will try to remember to search through that, as if I were building a plot from scratch.  I work this way (editor in one monitor, API documentaion in another)</strong></p>
 
-<pre><code class="r"># aes() are the &#39;aesthetics&#39; info.  I find this confusing.  as you are
-# mostly just passing the variables to plot
+<pre><code class="r"># aes() are the &#39;aesthetics&#39; info.  When you simply add the x and y that can
+# seem a bit of a confusing term.  You also use aes() to change color,
+# shape, size etc.
 ggDf &lt;- ggplot(df, aes(x = x, y = z))
 </code></pre>
 
@@ -294,7 +294,7 @@ ggDf + geom_point()
     geom_point(aes(color = xf, shape = xf), size = 5)
 </code></pre>
 
-<p>Much easier that using base.  Now <code>ggplot2</code> really shines when you want to add stats (regression lines, intervals, etc.).</p>
+<p>Much easier that using base.  Now <code>ggplot2</code> really shines when you want to add stats (regression lines, intervals, etc.). </p>
 
 <p>Lets add a loess line with 95% confidence intervals</p>
 
@@ -318,19 +318,35 @@ ggDf + geom_point()
 
 <p>Barplots (FIX ME)</p>
 
-<pre><code class="r"># I am not up-to-speed on reshape2.  So for the time-being, melt is magic
-mdf &lt;- melt(df)
-ggplot(mdf, aes(x = factor(variable), y = mean(value + c(0, 10, 100)))) + geom_bar()
+<pre><code class="r"># I am not up-to-speed on reshape2 or plyr.  So for the time-being, melt is
+# magic
+library(reshape2)
+library(plyr)
+mdf &lt;- ddply(melt(df), .(variable), summarise, meanVal = mean(value), low = mean(value) - 
+    sd(value)/sqrt(length(value)), high = mean(value) + sd(value)/sqrt(length(value)))
+myBarChart &lt;- ggplot(mdf, aes(x = factor(variable), y = meanVal, fill = variable)) + 
+    geom_bar(stat = &quot;identity&quot;) + geom_errorbar(aes(ymin = low, ymax = high, 
+    width = 0.3)) + labs(title = &quot;Bar Plot with SE error bars&quot;, x = &quot;Treatment&quot;, 
+    y = &quot;Mean Response&quot;)
+
+myBarChart
 </code></pre>
 
-<p>Those are kind of small and we should color them based on our high/low labelling</p>
+<p>So, not spectacular yet, but with a bit more dithering, the plot would be publication ready, provided you could save it as an image file.  Well, you can do that too!</p>
+
+<pre><code class="r">ggsave(plot = myBarChart, file = &quot;myBarChart.jpg&quot;)
+</code></pre>
+
+<h2>Data Viz Exercise</h2>
+
+<p>Write a documented function that creates a data visualization of the NLA data frame we have been working with.  Use your imagination!  When youa are done and have an image on your screen, raise your hands.  We will pick some favorites and show the rest of the class.</p>
 
 <h1>R Data Viz Examples</h1>
 
 <ul>
-<li>Base examples</li>
-<li>ggplot examples</li>
-<li>Accidental aRt (R Data Viz, gone wrong)</li>
+<li>Base examples: <a href="">R Gallery</a></li>
+<li>ggplot examples: <a href="http://goo.gl/P0q2Lx">Google Image Search</a></li>
+<li>R Data Viz, gone wrong:<a href="http://accidental-art.tumblr.com">Accidental aRt</a> </li>
 </ul>
 
 </body>
